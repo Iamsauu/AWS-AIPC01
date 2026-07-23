@@ -1,0 +1,2027 @@
+[
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Create an API Gateway HTTP API with a Lambda proxy integration that specifies payloadFormatVersion 2.0. Grant API Gateway permission to invoke the function, and have Lambda call InvokeModel with one shared JSON body for all selected models.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Create an API Gateway HTTP API with a Lambda proxy integration that specifies payloadFormatVersion 2.0. Grant API Gateway permission to invoke the function, and have Lambda call Converse on the Amazon Bedrock service endpoint with streaming permission.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Create an API Gateway REST API with a Lambda proxy integration and a stage deployment. Grant API Gateway permission to invoke the function, and have Lambda call Converse on bedrock-runtime with bedrock:InvokeModel permission.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Create an API Gateway HTTP API with a Lambda proxy integration that specifies payloadFormatVersion 2.0. Grant API Gateway permission to invoke the function, and have Lambda call Converse on bedrock-runtime with bedrock:InvokeModel permission.",
+        "was_selected": true
+      }
+    ],
+    "question": "A museum consortium's visitor-experience engineering team is adding a GenAI question-answering feature to an existing web application. The frontend will call an HTTPS microservice and can wait for a complete response. The team wants the least complex serverless integration that preserves a common conversation request pattern when switching among Amazon Bedrock text models that support messages. The API and integration will be deployed with AWS CloudFormation. Which implementation best meets these requirements?",
+    "question_number": 1
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Deploy a streamable-HTTP MCP server container to AgentCore Runtime, keep default stateless MCP handling, listen on 0.0.0.0:8000/mcp, and reuse Mcp-Session-Id values.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Deploy a streamable-HTTP MCP server container to AgentCore Runtime, configure stateful MCP handling, listen on 0.0.0.0:8000/tools, and route MCP calls through a proxy.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Deploy a streamable-HTTP MCP server container to AgentCore Runtime, configure stateful MCP handling, listen on 0.0.0.0:8000/mcp, and use the official mcp client session.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Deploy a streamable-HTTP MCP server container to AgentCore Runtime, configure stateful MCP handling, listen on 0.0.0.0:8000/mcp, and require Accept: application/x-ndjson.",
+        "was_selected": true
+      }
+    ],
+    "question": "A medical imaging equipment manufacturer's service AI team is extending an FM-based troubleshooting assistant with MCP tools. The team will deploy the MCP server to Amazon Bedrock AgentCore Runtime. One tool runs multi-step calibration simulations that can emit progress updates and can request missing parameter values during the same tool interaction. The team wants client integrations to remain portable across local testing and remote runtime invocation. Which implementation approach will meet these requirements?",
+    "question_number": 2
+  },
+  {
+    "answers": [
+      {
+        "is_correct": true,
+        "text": "Use API Gateway validation and throttling, run a Lambda preprocessor that uses Amazon Comprehend and ApplyGuardrail with source INPUT, invoke Bedrock with guardrail input tags, and run Lambda plus ApplyGuardrail with source OUTPUT before returning responses.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Use API Gateway validation and throttling, configure Bedrock denied topics for customer identifiers and word filters for unsafe subjects, invoke Bedrock without guardrail input tags, and run Lambda formatting checks before returning responses.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Use API Gateway validation and throttling, invoke Bedrock Guardrails only during model calls, use sensitive information Mask to protect all logs and traces, read ApplyGuardrail action as ALLOW or DENY, and suppress unsafe responses in Lambda.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Use API Gateway validation and throttling, call ApplyGuardrail with source INPUT for prompt attack checks, run contextual grounding checks against the prompt before invocation, set grounding thresholds to 1, and return masked responses directly.",
+        "was_selected": false
+      }
+    ],
+    "question": "An online gaming studio's player-support security team is releasing an Amazon Bedrock chat assistant behind an API. The assistant must reduce FM misuse by screening unsafe requests before inference when possible, detecting prompt attacks in both nonstreaming and streaming model calls, redacting sensitive user data, and validating generated responses before they are returned to clients. The team wants a defense-in-depth design rather than relying on a single safeguard. Which implementation will best meet these requirements?",
+    "question_number": 3
+  },
+  {
+    "answers": [
+      {
+        "is_correct": true,
+        "text": "Create prompts in Amazon Bedrock Prompt Management with variables and versions. Store prompt source artifacts in a versioned S3 repository. Promote prompt versions through a manual deployment approval step, audit Bedrock API activity with CloudTrail, and write prompt access metadata from applications to CloudWatch Logs.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Store prompt templates as encrypted S3 objects with object tags for environments. Load the latest approved object at application startup. Track S3 object reads with CloudTrail data events, and emit application request metadata to CloudWatch Logs.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Store each prompt template in AWS Secrets Manager with a separate secret for each environment. Rotate prompt secrets after approval, audit secret updates with CloudTrail, and emit application access metadata to CloudWatch Logs.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Define each prompt as an Amazon Bedrock Flow node with input variables. Store the Flow JSON definitions in S3. Promote Flow aliases after review, audit Flow API calls with CloudTrail, and emit orchestration logs to CloudWatch Logs.",
+        "was_selected": false
+      }
+    ],
+    "question": "A financial market data provider's AI platform team manages Amazon Bedrock prompts that are used by multiple internal applications. Developers currently copy prompt text into application repositories, which has caused inconsistent behavior and unclear ownership of production changes. The team needs reusable parameterized templates, controlled promotion of prompt changes, a stable versioned production reference for each approved prompt, auditability for prompt resource changes, and application-emitted access logs for troubleshooting. Which approach will meet these requirements with the MOST appropriate governance?",
+    "question_number": 4
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Deploy an Amazon Bedrock agent, federate users through Amazon Cognito, store document ACLs as vector metadata, and apply retrieval filters in each request.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Deploy an API Gateway front end, authorize requests with IAM roles, invoke Amazon Bedrock directly from Lambda, and restrict source access with bucket policies.",
+        "was_selected": true
+      },
+      {
+        "is_correct": true,
+        "text": "Deploy an Amazon Q Business application, connect it to IAM Identity Center, configure supported data connectors and plugins, and assign access by users and groups.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Deploy an Amazon Kendra index, federate users through a SAML identity provider, connect the index to a Bedrock agent, and implement actions through Lambda.",
+        "was_selected": false
+      }
+    ],
+    "question": "A global architectural design firm's knowledge management team is launching a generative AI assistant for employees. The assistant must answer questions from SharePoint, Amazon S3 project archives, and Jira, and must take actions in approved business systems. The firm uses an enterprise identity provider that is already connected to AWS IAM Identity Center. The security team requires per-user authorization to be enforced from the source systems where possible, centralized user and group assignment, and minimal custom code for access-control decisions. Which implementation will BEST meet these requirements?",
+    "question_number": 5
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Configure Lambda ingestion workers to invoke amazon.titan-embed-text-v2:0 for each validated section and apply half-precision quantization to 512-dimensional embeddings before writing vectors.",
+        "was_selected": true
+      },
+      {
+        "is_correct": true,
+        "text": "Configure Lambda ingestion workers to invoke amazon.titan-embed-text-v2:0 for each validated section and request 256-dimensional floating-point embeddings before writing vectors.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Configure Lambda ingestion workers to invoke amazon.titan-embed-text-v2:0 for each validated section and convert default-dimensional embeddings to binary vectors before writing vectors.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Configure Lambda ingestion workers to invoke amazon.titan-embed-text-v2:0 for each validated section and convert 512-dimensional embeddings to binary vectors before writing vectors.",
+        "was_selected": false
+      }
+    ],
+    "question": "A university library consortium is building semantic search for scanned policy documents that have already been converted to cleaned text. A Lambda ingestion pipeline reads SQS message batches, splits text into document sections, and writes embeddings to a vector index. The production index is being created from the prototype with the same HNSW parameters and metadata schema, but the team can choose the vector dimension before first ingestion. The offline tests used the index's standard floating-point vector representation, and the launch window does not allow another relevance test or index rebuild after ingestion starts. The sections are all below 50,000 characters and below 8,192 tokens. The prototype used Amazon Titan Text Embeddings V2 default output dimensions. Offline testing produced these results relative to the prototype: 1,024 dimensions, nDCG@10 of 0.846 and 100% vector footprint; 512 dimensions, nDCG@10 of 0.845 and 50% vector footprint; 256 dimensions, nDCG@10 of 0.842 and 25% vector footprint. Production must meet nDCG@10 of at least 0.840, reduce vector storage footprint by at least 70%, and preserve section-level retrieval granularity and the Bedrock API based ingestion flow. Which approach should the team use?",
+    "question_number": 6
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Create automatic model evaluation jobs with applicationType ModelEvaluation. Store the prompt dataset and external candidate responses as JSON Lines in S3, select one task type per job, and configure the S3 output destination.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Create LLM-as-a-judge model evaluation jobs with applicationType ModelEvaluation. Store both candidates' responses in one JSON Lines file with two modelResponses per prompt, select built-in judge metrics, and configure the S3 output destination.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Create LLM-as-a-judge model evaluation jobs with applicationType ModelEvaluation. Store the prompt dataset and the external candidate's single precomputed response per prompt as JSON Lines in S3, select built-in judge metrics, and configure the S3 output destination.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Create RAG evaluation jobs with applicationType RagEvaluation. Store each candidate answer as retrieved context in the prompt dataset, select retrieve-only metrics, and configure the S3 output destination.",
+        "was_selected": false
+      }
+    ],
+    "question": "An investment research publisher's AI governance team is validating a market commentary assistant before a production release. One candidate uses an Amazon Bedrock model, and another candidate runs outside Amazon Bedrock. For the external candidate, the team has already generated responses for a fixed prompt set with expert reference responses. The team needs an automated assessment that goes beyond lexical overlap by scoring qualities such as relevance, factual accuracy, helpfulness, and coherence; includes an explanation for each prompt and response; writes the full report to S3; and does not call the external model during evaluation. Which approach will meet these requirements?",
+    "question_number": 7
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Route live traffic between both prompt versions by using Amazon Bedrock Flows, and select the version with the highest overall user satisfaction score.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Run an Amazon Bedrock evaluation with an LLM-as-a-judge on a stratified prompt dataset for both prompt versions, and publish cohort-level results as CloudWatch metrics.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Run Amazon SageMaker Clarify bias reports on the claims source dataset, and select the prompt version with the lowest class imbalance metric.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Run an Amazon Bedrock evaluation with an LLM-as-a-judge on a randomized prompt dataset for both prompt versions, and publish aggregate results as CloudWatch metrics.",
+        "was_selected": false
+      }
+    ],
+    "question": "A national insurance carrier's claims automation team is validating a generative AI assistant that drafts claim denial explanations. The team has two prompt templates stored as versions in Amazon Bedrock Prompt Management and uses the same foundation model for both templates. Before production release, the team must determine whether either prompt produces systematically different quality or tone for claimant cohorts represented in a test set, while minimizing custom model development and preserving operational metrics for compliance review. Which approach will meet these requirements MOST effectively?",
+    "question_number": 8
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Purchase Amazon Bedrock provisioned throughput for the model in the home Region, and increase exponential backoff settings for failed runtime calls.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Invoke the model through an Amazon Bedrock cross-Region inference profile, and update the application to use the profile identifier in existing Bedrock runtime calls.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Create separate Amazon Bedrock model integrations in each supported Region, and use Route 53 health checks to direct runtime calls to the closest healthy endpoint.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Wrap each Bedrock runtime call in an AWS Step Functions circuit breaker, and return cached commentary until the home Region becomes healthy.",
+        "was_selected": false
+      }
+    ],
+    "question": "A live sports analytics provider runs a fan-facing commentary assistant on Amazon Bedrock. The assistant uses a specific foundation model that is available in only a subset of AWS Regions. During major events, the provider sees intermittent throttling and wants the assistant to keep generating fresh responses with the same model if the application's home Region has a temporary Bedrock capacity issue. The team must minimize routing logic and operational overhead. Which solution best meets these requirements?",
+    "question_number": 9
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Invoke the Lambda function from the CRM webhook with InvocationType=RequestResponse. Return the generated summary through the CRM webhook response.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Invoke the Lambda function from the integration layer with InvocationType=Event. Write each generated summary to the CRM without an idempotency check.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Configure an Amazon SQS event source mapping for the Lambda function. Use the interaction ID as the idempotency key when writing the CRM summary.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Configure an Amazon SQS event source mapping for the Lambda function. Treat batch delivery semantics as sufficient to prevent duplicate CRM summary writes.",
+        "was_selected": false
+      }
+    ],
+    "question": "A luxury hotel chain's guest experience platform team is enhancing its CRM with a generative AI summary for each guest-service interaction. The CRM integration writes a compact event containing the interaction ID and transcript pointer to an Amazon SQS queue. A Lambda function calls Amazon Bedrock, writes the summary back to the CRM, and completes well within the Lambda timeout. The CRM API supports an idempotency key. Traffic arrives in bursts, summaries do not need to be returned to the original CRM request, and the team must minimize operational overhead while preventing duplicate CRM updates. Which implementation should the team use?",
+    "question_number": 10
+  },
+  {
+    "answers": [
+      {
+        "is_correct": true,
+        "text": "Call InvokeAgent with enableTrace set to true. Persist returned trace events with each request and present the final response from chunk.bytes separately from the reviewer trace.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Enable Bedrock model invocation logging to CloudWatch Logs. Persist the logged payloads for each request and present the logged model outputs as the reviewer trace.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Call ConverseStream for the agent workflow. Persist returned reasoningContent blocks for each request and present reasoningText values as the reviewer trace.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Attach Automated Reasoning checks to a guardrail. Persist returned findings for each request and present policy-rule feedback as the reviewer trace.",
+        "was_selected": false
+      }
+    ],
+    "question": "A biotech lab's regulatory submissions team built an Amazon Bedrock agent that searches internal SOP knowledge bases and invokes Lambda-backed action groups to draft answers for auditors. During a pilot, reviewers see only the final natural-language responses and cannot reconstruct why the agent chose a knowledge base, invoked an action group, or stopped after a failed step. The team wants per-request transparency for reviewers without adding a separate orchestration framework. The team does not need to expose provider-internal foundation model chain-of-thought. Which implementation will meet these requirements?",
+    "question_number": 11
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Move the workload to Amazon Bedrock batch inference, add CachePointBlock objects to each request payload, and use response streaming only for user-visible follow-up requests.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Add a Bedrock prompt cache checkpoint after the retrieved snippets and user question, keep the checkpoint ttl at 1h, and rely on Bedrock to reuse the earlier prompt material.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Add cache checkpoints every 1,024 tokens throughout the full request, set each CachePointBlock type to default, and use the same checkpoint layout for every supported foundation model.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Add a Bedrock prompt cache checkpoint after the shared instructions, citation rules, and taxonomy, keep that prefix unchanged across requests, and verify it meets the model-specific minimum token count.",
+        "was_selected": true
+      }
+    ],
+    "question": "An online legal research provider's search AI team runs a customer-facing assistant by using Amazon Bedrock ConverseStream with a supported on-demand Claude model. Each request begins with the same long system instructions, citation rules, and jurisdiction taxonomy. The application then appends retrieved case snippets and the user's question, which vary for each request. Profiling shows that repeated processing of the shared prompt material is increasing initial response latency and input-token cost. The team wants to reduce latency and cost without changing models or building a separate response cache. Which caching configuration will meet these requirements?",
+    "question_number": 12
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Use Step Functions to invoke a Lambda function that decomposes the query, call the Knowledge Bases RetrieveAndGenerate operation for each subquery, and pass generated answers to the existing generation prompt.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Use a Lambda function to expand the original query into a single broader query, call the Knowledge Bases Retrieve operation once, and pass the returned contexts to the existing generation prompt.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Use the Knowledge Bases RetrieveAndGenerate operation with query transformation enabled, return the generated response, and apply the JSON schema in a post-processing Lambda function.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Use Step Functions to invoke a Lambda function that decomposes the query, call the Knowledge Bases Retrieve operation for each subquery, and pass merged contexts to the existing generation prompt.",
+        "was_selected": true
+      }
+    ],
+    "question": "A museum archive's digital preservation team is building a RAG assistant by using Amazon Bedrock Knowledge Bases. Researchers often submit multi-intent questions that compare preservation guidance across several media types. Profiling shows that a single semantic retrieval call often returns strong results for one part of the question but misses evidence for the other parts. The application already performs final answer generation with a separate Amazon Bedrock model invocation because it must inject a strict JSON response schema and human review metadata. Which approach will improve retrieval effectiveness while preserving application control over final generation?",
+    "question_number": 13
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Deploy a SageMaker real-time endpoint with target tracking scaling, invoke it from parallel Lambda workers, and store responses in Amazon S3.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Deploy a SageMaker Asynchronous Inference endpoint, submit each S3 record as an invocation, and collect the generated outputs in Amazon S3.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Configure SageMaker Batch Transform to use MultiRecord batching, increase MaxConcurrentTransforms, and tune MaxPayloadInMB for the container.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Configure SageMaker Batch Transform to keep one record per request, increase the instance count, and keep per-instance concurrency unchanged.",
+        "was_selected": false
+      }
+    ],
+    "question": "A municipal tax software provider runs a nightly generative AI classification workload on Amazon SageMaker AI. The workload reads millions of small JSON Lines records from Amazon S3 and writes the classification results back to Amazon S3. The current transform job sends one record per container request on GPU instances, and monitoring shows low GPU utilization even though GPU memory has significant headroom. The model container can process newline-delimited batches and return one result per input record. The provider wants the job to finish faster while keeping the existing offline processing pattern. Which change will meet these requirements with the LEAST architectural change?",
+    "question_number": 14
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Send requests directly with a reduced maxTokens value during busy periods, track throttling responses, and adjust per-tenant request-rate buckets afterward.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Invoke a smaller Bedrock model to summarize each request, combine the summary length with the output limit, and admit requests through per-tenant token buckets.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Calculate tokens with a shared tokenizer library, combine the estimate with historical averages, and admit requests through per-tenant request-rate buckets.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Call CountTokens for the selected model with the planned request shape, combine the estimate with the output limit, and admit requests through per-tenant token buckets.",
+        "was_selected": true
+      }
+    ],
+    "question": "A regional energy utility's grid operations AI team runs a multi-tenant incident-analysis assistant on Amazon Bedrock. Each request can include a small alert or several pages of retrieved outage history, so requests per minute has not correlated with throttling or cost. The team needs to allocate per-tenant capacity before model invocation, defer work that would exceed each tenant's minute-level token budget, and avoid paying for capacity-estimation calls. Which approach will meet these requirements with the MOST accurate resource allocation?",
+    "question_number": 15
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Create an S3 .jsonl prompt dataset with single-turn records that include knowledgeBaseIdentifier and retrievedResults. Run a retrieve-only RAG evaluation with Builtin.Correctness and Builtin.Completeness. Use model-runtime CloudWatch metrics for latency analysis.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Create an S3 .jsonl prompt dataset with single-turn records that include prompt and referenceContexts. Run a retrieve-only RAG evaluation with Builtin.ContextRelevance and Builtin.ContextCoverage. Use KnowledgeBases CloudWatch metrics for latency analysis.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Create an S3 .jsonl prompt dataset with single-turn records that include prompt and referenceResponses. Run a retrieve-only RAG evaluation with Builtin.ContextRelevance and Builtin.ContextCoverage. Use AWS X-Ray traces for Retrieve latency analysis.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Create an S3 .jsonl prompt dataset with up to five-turn records that include prompt and referenceResponses. Run a retrieve-and-generate RAG evaluation with Builtin.Faithfulness and Builtin.CitationCoverage. Use KnowledgeBases CloudWatch metrics for latency analysis.",
+        "was_selected": false
+      }
+    ],
+    "question": "A maritime insurance underwriter's claims AI platform team uses Amazon Bedrock Knowledge Bases for a RAG assistant. The team is tuning chunking and retrieval settings before connecting the retrieved content to a foundation model. The team needs a repeatable prerelease test that evaluates only the retrieval component against SME-written ground-truth answers, and the team also needs request-level troubleshooting for retrieval path latency without adding application-side timing code. Which approach best meets these requirements?",
+    "question_number": 16
+  },
+  {
+    "answers": [
+      {
+        "is_correct": true,
+        "text": "Build a model-aware serialization layer that sets contentType to application/json and converts the canonical request into the documented native body for each modelId.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Build a source-model serialization layer that sets contentType to application/json and sends the original foundation model body to every customized or imported model.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Build a shared serialization layer that sets contentType to application/json and sends the same messages, system, temperature, and maxTokens body to each modelId.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Build a prompt-only serialization layer that sets contentType to application/json and sends prompt text plus all optional parameters, leaving unsupported keys in place.",
+        "was_selected": false
+      }
+    ],
+    "question": "A regional airline's contact center platform team uses Amazon Bedrock Runtime InvokeModel from a middleware service that receives a fixed internal request object from web and mobile clients. The middleware routes requests to multiple Bedrock model IDs, including base models from different providers and customized models. After adding an imported customized model, some requests fail validation and other requests complete but do not honor several generation settings. The team must keep the client contract unchanged and must continue using InvokeModel. Which change should the team implement?",
+    "question_number": 17
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Apply an Amazon Bedrock guardrail only to model responses in the gateway Lambda, add Lambda checks for player prompts, and start Step Functions only for human review exceptions.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Apply an Amazon Bedrock guardrail to prompts and responses in the gateway Lambda, add Lambda checks for studio-specific policies, and start Step Functions only for human review exceptions.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Run a custom Lambda moderation service before Bedrock, use Amazon Comprehend for entity detection, mask responses in Lambda, and start Step Functions only for low-confidence cases.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Run each chat turn through a Step Functions Express workflow, invoke Lambda pre-checks, apply a Bedrock guardrail during inference, and branch to human review for ambiguous cases.",
+        "was_selected": false
+      }
+    ],
+    "question": "A global video game studio's trust and safety team is building a real-time NPC chat feature by using Amazon Bedrock. The feature must block harmful player prompts before they reach the foundation model, mask sensitive information in model responses, enforce studio-specific banned topics, and send only ambiguous moderation cases to a human review process. Normal conversations must stay on the synchronous request path with minimal added latency. Which solution will meet these requirements with the LEAST operational overhead?",
+    "question_number": 18
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Use ListFoundationModels as the only selection source, then rank candidates by context window, service tier, quotas, and model-specific inference parameters.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Run a latency and token-cost bakeoff by using Converse-compatible prompts for models with tool use, then prioritize the fastest acceptable response profile.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Run Bedrock evaluation jobs on representative prompt datasets, then compare evaluation results with measured latency, throughput needs, and pricing for the shortlisted models.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Use public benchmark results and Bedrock model cards to seed a shortlist, then choose the lowest priced model that supports text output and streaming.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Build a candidate matrix from Bedrock model documentation and discovery APIs that compares modalities, API support, Region availability, inference types, and lifecycle status.",
+        "was_selected": true
+      }
+    ],
+    "question": "A precision agriculture equipment manufacturer’s connected-equipment AI team is choosing Amazon Bedrock foundation models for a field-support assistant. The assistant must answer text questions, stream responses to mobile clients, call application tools when needed, run in approved production Regions, and avoid models that could create near-term migration risk. Executives want a defensible selection process that weighs business quality, operational fit, and cost instead of relying only on public benchmark rankings. Which TWO actions should the team take to select foundation models that best align with these requirements? (Select TWO.)",
+    "question_number": 19
+  },
+  {
+    "answers": [
+      {
+        "is_correct": true,
+        "text": "Configure an Amazon Bedrock guardrail for production invocations, maintain a model card for the approved FM, and use a Lambda wrapper to block drafts that fail validation.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Configure inline Comprehend PII detection and regex filters for production Converse API calls, maintain a model card for the approved FM, and use a Lambda wrapper to block drafts that fail validation.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Configure policy-focused prompt templates for production Converse API calls, maintain a model card for the approved FM, and use a Lambda wrapper to block drafts that fail validation.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Configure an Amazon Bedrock guardrail for production invocations, record evaluation scorecards for the approved FM, and use a Lambda wrapper to block drafts that fail validation.",
+        "was_selected": false
+      }
+    ],
+    "question": "A regional airline's customer care team is deploying a generative AI assistant that drafts responses to passenger complaints. The assistant uses a supported text foundation model in Amazon Bedrock through the Converse API. The airline's responsible AI policy requires inline enforcement before any draft is shown to an agent: disallowed compensation advice must be blocked, profanity and unsafe content must be filtered, PII in generated drafts must be masked, and the selected FM's intended use, limitations, and evaluation results must be documented for governance review. The solution must minimize custom ML development and must fail closed when automated compliance checks do not pass. Which implementation best meets these requirements?",
+    "question_number": 20
+  },
+  {
+    "answers": [
+      {
+        "is_correct": true,
+        "text": "Configure Amazon Macie sensitive data discovery for source S3 buckets. Use a Lambda preprocessor with Amazon Comprehend PII detection to redact user text before invocation. Apply an Amazon Bedrock guardrail with sensitive information filters to mask PII in responses. Configure S3 Lifecycle expiration on prompt and response artifact buckets.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Configure Amazon Macie sensitive data discovery for source S3 buckets. Use API Gateway request validation with a JSON schema to reject malformed user text before invocation. Apply an Amazon Bedrock guardrail with denied topics and word filters to mask PII in responses. Configure S3 Lifecycle expiration on prompt and response artifact buckets.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Configure Amazon Macie sensitive data discovery for source S3 buckets. Use a Lambda preprocessor with Amazon Comprehend PII detection to redact user text before invocation. Apply an Amazon Bedrock guardrail with sensitive information filters to mask PII in responses. Configure S3 Object Lock retention on prompt and response artifact buckets.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Configure Amazon Comprehend asynchronous analysis jobs for source S3 buckets. Use a Lambda preprocessor with Amazon Macie findings to redact user text before invocation. Apply an Amazon Bedrock guardrail with sensitive information filters to mask PII in responses. Configure S3 Lifecycle expiration on prompt and response artifact buckets.",
+        "was_selected": false
+      }
+    ],
+    "question": "A municipal benefits agency's caseworker platform team is building an Amazon Bedrock based assistant that summarizes eligibility case notes stored in Amazon S3 and accepts free text follow-up questions from staff. The case files and questions can include names, government identifiers, phone numbers, and bank account details. The agency requires a managed way to identify sensitive data in stored source files, redact sensitive entities from free text before any FM invocation, reduce the chance that sensitive values appear in generated answers, and delete prompt and response artifacts after 30 days. The team wants to avoid training or operating a custom PII model. Which architecture best meets these requirements?",
+    "question_number": 21
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Create an Amazon OpenSearch Managed cluster in VPC-only mode with engine version 2.16 and a faiss k-NN index that stores binary vectors.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Create an Amazon OpenSearch Managed cluster with public access and a k-NN index that uses the nmslib engine with vector, text, and metadata fields.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Create an Amazon OpenSearch Serverless vector collection with a faiss vector index that defines the vector, text, and metadata fields and matches the embedding dimensions.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Create an Amazon Aurora PostgreSQL database with pgvector tables that store binary embeddings, document text, and metadata fields and configure Bedrock to use the tables.",
+        "was_selected": true
+      }
+    ],
+    "question": "A museum consortium's digital preservation team is building a RAG application with Amazon Bedrock Knowledge Bases. The team will use a customer-managed vector store because it must control vector index mappings. The embedding configuration stores binary vector embeddings to reduce storage footprint. The team wants the lowest operational burden while allowing Bedrock to ingest, index, and retrieve content from the vector store. Which configuration will meet these requirements?",
+    "question_number": 22
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Create a versioned chat prompt in Prompt Management with system instructions, messages that use {{caseSummary}} variables, and JSON formatting instructions. Invoke the prompt ARN with Converse, and override inferenceConfig and additionalModelRequestFields per application.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Create a versioned managed prompt in Prompt Management with both chat and text PromptTemplateConfiguration sections, and select the needed template in each request. Invoke the prompt ARN with Converse by passing promptVariables, and enforce safety with a separate Guardrail.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Create a versioned chat prompt in Prompt Management with system instructions, messages that define 25 inputVariables for all policy fields and response sections, and JSON formatting instructions. Invoke the prompt ARN with Converse, and enforce safety with a separate Guardrail.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Create a versioned chat prompt in Prompt Management with system instructions, messages that use {{caseSummary}} variables, and JSON formatting instructions. Invoke the prompt ARN with Converse by passing promptVariables, and enforce safety with a separate Bedrock Guardrail.",
+        "was_selected": true
+      }
+    ],
+    "question": "A regional pharmacy benefits manager's clinical AI team is standardizing an Amazon Bedrock assistant that drafts prior authorization summaries. Three internal applications will call the same chat model by using the Converse API. The team must centralize reusable role instructions, support runtime substitution of case details, keep JSON formatting guidance consistent across applications, maintain prompt versions for controlled rollout, and enforce responsible AI controls outside the prompt text. Which implementation will meet these requirements with the LEAST duplication?",
+    "question_number": 23
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Store prompt templates in a source repository, run CI checks against sample outputs, inject policy context at runtime, and compare release notes after deployment.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Keep the prompt in application code, lower temperature to zero, request step-by-step reasoning, and use average response length as the primary quality signal.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Apply Amazon Bedrock Guardrails to the existing prompt, configure denied topics and PII masking, validate JSON in application code, and use guardrail intervention counts as the feedback loop.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Store prompt releases in Amazon Bedrock Prompt Management, define variables for policy context and user intent, specify a JSON response contract, and correlate user ratings with prompt versions.",
+        "was_selected": true
+      }
+    ],
+    "question": "A retail bank's digital channels AI team runs an Amazon Bedrock assistant that answers policy questions for branch employees. Several developers edit the same prompt frequently. Some prompt releases improve factual completeness, but other releases produce responses that downstream systems cannot parse. The bank wants to improve answer quality over time, preserve a traceable history of prompt changes, and avoid model customization. Which approach best meets these requirements?",
+    "question_number": 24
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Deploy the model with a standard SageMaker PyTorch inference container. Reference a `tar.gz` artifact with `ModelDataUrl`; increase endpoint instance count and set longer client-side read timeouts for invocations.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Deploy the model with a custom SageMaker inference container. Download the weights from S3 during the first invocation; keep the default model download and container startup settings for the endpoint.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Deploy the model with a SageMaker LMI container. Reference the S3 prefix with `ModelDataSource` and `CompressionType` set to `None`; set `VolumeSizeInGB`, `ModelDataDownloadTimeoutInSeconds`, and `ContainerStartupHealthCheckTimeoutInSeconds` for the production variant.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Deploy the model with a SageMaker multi-model endpoint. Store each shard as a separate S3 model artifact; rely on dynamic loading and leave the production variant storage settings unchanged.",
+        "was_selected": false
+      }
+    ],
+    "question": "A biomedical imaging software vendor's AI platform team is deploying a 70 GB open-weight LLM to a SageMaker real-time endpoint for interactive report drafting. The model artifact is stored in Amazon S3. Endpoint creation repeatedly fails before the model can serve traffic because downloading the artifact and passing the container startup health check take too long. The selected GPU instance configuration does not provide local instance storage large enough for the full model artifact. The team also wants a deployment pattern that is designed for LLM memory use, GPU utilization, and token processing capacity without building a custom serving stack. Which deployment approach best meets these requirements?",
+    "question_number": 25
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Create per-document sidecar files in the same S3 location, name each fileName.extension.metadata.json, keep each file under 10 KB, and set includeForEmbedding for all metadata fields.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Create per-document sidecar files in the same S3 location, name each fileName.extension.metadata.json, keep each file under 10 KB, and set includeForEmbedding only for semantic fields.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Create per-document sidecar files in the same S3 location, name each fileName.metadata.json, keep each file under 10 KB, and set includeForEmbedding only for semantic fields.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Create separate Knowledge Bases for each vessel class and subsystem, store revision date and owner in sidecar files, and route retrieval to the selected Knowledge Base.",
+        "was_selected": false
+      }
+    ],
+    "question": "A maritime logistics provider's knowledge management team is building an Amazon Bedrock Knowledge Base from vessel maintenance manuals stored in Amazon S3. Users must ask natural language questions and optionally narrow retrieval by vessel class, manual revision date, subsystem, and document owner. The team wants vessel class and subsystem to contribute to semantic context, but revision date and owner must be available only for filtering and must not affect semantic similarity. The solution must avoid custom ingestion code and keep metadata associated with each source document. Which implementation best meets these requirements?",
+    "question_number": 26
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Build the review workflow as an Amazon Bedrock Flow with separate flow input nodes for applicant details, parcel data, and uploaded document text.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Build the multi-turn clarification path with prompt and condition nodes in Amazon Bedrock Flows; resume user questions by passing prior flowOutputEvent content.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Build the resident chat front end with Amplify Gen 2 AI conversation routes and Amplify UI primitives; configure owner-based authorization for each user's conversations.",
+        "was_selected": true
+      },
+      {
+        "is_correct": true,
+        "text": "Build the permitting review workflow in Amazon Bedrock Flows by linking input, prompt, knowledge base, condition, and Lambda nodes; test with InvokeFlow tracing enabled.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Build the resident chat front end with Amplify UI primitives and call InvokeFlow from the browser; store conversation turns in local storage for each session.",
+        "was_selected": false
+      }
+    ],
+    "question": "A municipal permitting office is replacing several spreadsheet-driven review steps with a generative AI portal for residents and permit reviewers. The office wants front-end teams to embed an accessible chat experience quickly, stream multi-turn responses from Amazon Bedrock foundation models, persist each user's conversation history without building custom storage, and scope access to each signed-in user. The office also wants non-developer process analysts to maintain a branching review workflow that can call prompts, a knowledge base, and Lambda functions, and developers must be able to inspect per-node inputs and outputs during testing. Which TWO implementation steps meet these requirements? (Select TWO.)",
+    "question_number": 27
+  },
+  {
+    "answers": [
+      {
+        "is_correct": true,
+        "text": "Configure Amazon Bedrock prompt caching for reusable system instructions and shared policy context, and keep changing user input outside the cached prefix.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Buy Amazon Bedrock provisioned throughput for the current model, and leave retrieval depth and prompt construction unchanged.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Tune Knowledge Bases retrieval parameters to return fewer metadata-filtered chunks, and use profiling results to remove redundant or obsolete context.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Route every request to a smaller foundation model with prompt routing, and keep the existing retrieved context in each request.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Move the workflow to a SageMaker asynchronous inference endpoint with SQS buffering, and have clients poll for generated answers.",
+        "was_selected": false
+      }
+    ],
+    "question": "A global insurance claims platform team runs an interactive claims-assistance application by using Amazon Bedrock Knowledge Bases and a supported foundation model. Users report slow first responses during normal traffic. Amazon CloudWatch shows rare throttling, but high input token counts and elevated time to first token. API profiling shows that most requests reuse a long static claims-handling policy prompt, while retrieval often returns many overlapping passages from prior policy versions. Which combination of actions will improve performance while reducing unnecessary model work? (Select TWO.)",
+    "question_number": 28
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Call Amazon Comprehend DetectPiiEntities synchronously and custom regex filters before and after Converse, mask detected spans in application code, keep model invocation logging enabled, and store the logs for audit.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Call Amazon Comprehend ContainsPiiEntities synchronously for each user message, replace returned PII labels with placeholders, invoke the model without a guardrail, and log transformed prompts and responses for audit.",
+        "was_selected": true
+      },
+      {
+        "is_correct": true,
+        "text": "Configure an Amazon Bedrock guardrail with sensitive information filters and custom regex filters, apply masking during inference, keep model invocation logging disabled for this workload, and store sanitized audit fields that omit original matches.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Configure an Amazon Bedrock guardrail with sensitive information filters and custom regex filters, apply masking during inference, enable model invocation logging for this workload, and archive complete guardrail traces for audit review.",
+        "was_selected": false
+      }
+    ],
+    "question": "A clinical research consortium's patient engagement team is building a low-latency chat assistant with Amazon Bedrock Converse for English and Spanish messages. User prompts and model responses can contain names, email addresses, phone numbers, patient IDs, and study-specific identifiers that match internal patterns. The assistant must preserve utility by masking sensitive values rather than dropping whole conversations, must protect both user input and text responses, and must retain safety audit records without storing raw identifiers in model invocation logs or guardrail trace fields. Batch-only redaction is not acceptable. Which implementation best meets these requirements?",
+    "question_number": 29
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Run simple prompt optimization for the draft prompt separately for each candidate model. Compare the rewritten prompts in Prompt builder, save the best variant as the draft, and use the draft in production.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Create an automatic model evaluation job with a custom S3 JSONL prompt dataset. Put the three prompt templates in the dataset, compare the model report scores, and deploy the highest-scoring template.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Create an Advanced Prompt Optimization JSONL input file for the template with 75 evaluationSamples and three target models. Select one evaluation method, review the optimized result, and create a Prompt management version for production.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Use Prompt builder Compare variants mode with three variants and temporary test variables. Run each variant in the console, save the preferred variant as the draft, and use the draft in production.",
+        "was_selected": false
+      }
+    ],
+    "question": "A renewable energy grid operator's GenAI enablement team uses Amazon Bedrock Prompt management for an incident-summary assistant. After several manual prompt edits, the team sees semantic drift and inconsistent output style across edge-case tickets. The team has 75 curated evaluation samples with expected behavior and wants an evaluation-driven way to refine one prompt template across three candidate models before promoting a production snapshot. The team must avoid custom orchestration and must not rely only on heuristic rewrites. Which approach best meets these requirements?",
+    "question_number": 30
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Route all traffic through InvokeModel with provider-specific payloads, and emulate any missing chat or OpenAI-compatible behaviors inside the gateway.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Select the highest-quality text FM in the preferred Region, purchase Provisioned Throughput, and validate endpoint API support during integration testing.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Evaluate candidate FMs by modality, context window, tool-use support, endpoint API support, Region availability, and on-demand versus Provisioned Throughput needs.",
+        "was_selected": true
+      },
+      {
+        "is_correct": true,
+        "text": "Use Bedrock-native APIs through the Bedrock Runtime endpoint for internal workloads, and use a documented OpenAI-compatible Bedrock API path for the acquired product.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Standardize every workload on the Converse API by building a gateway adapter that translates OpenAI-compatible requests before model invocation.",
+        "was_selected": true
+      }
+    ],
+    "question": "A life sciences contract research organization's AI platform team is designing a generative AI gateway on Amazon Bedrock. Internal applications already use Bedrock-native request patterns for chat orchestration and tool use. A newly acquired product uses an OpenAI-compatible SDK and must be onboarded with minimal first-release code changes. The platform team also expects one regulated document-review workload to have steady high volume, while exploratory workloads will remain unpredictable. The architecture must avoid locking all workloads into a single API style and must account for model capability, Regional availability, and throughput planning before production rollout. Which TWO actions should the team include in the architecture? (Select TWO.)",
+    "question_number": 31
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Create a CodePipeline with a source stage, a CodeBuild test action whose buildspec defines six report groups, and a deploy stage configured for automatic rollback after the first failed execution.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Create a CodePipeline with a source stage configured for automatic rollback, a CodeBuild test action that uploads JUnit reports to S3, and a deploy stage that always reuses the current source revision.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Create a CodePipeline with a source stage, a CodeBuild test action that emits secondary artifacts, and a deploy stage configured with both automatic retry and an onFailure rollback condition.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Create a CodePipeline with a source stage, a CodeBuild test action whose buildspec defines one to five report groups, and a deploy stage configured for automatic rollback after a successful baseline execution.",
+        "was_selected": false
+      }
+    ],
+    "question": "A maritime logistics provider's platform engineering team operates a centralized GenAI gateway that standardizes access to Amazon Bedrock prompts, guardrail checks, audit logging, and client throttling. Product teams submit prompt packages and gateway configuration through Git. The release process must run security, prompt regression, and guardrail integration tests before deployment, publish test results for each run, and automatically recover from a failed non-source deployment stage by returning to the last known good gateway configuration. The team wants to use native AWS CodePipeline and AWS CodeBuild capabilities with minimal custom orchestration and no unsupported rollback behavior. Which implementation will meet these requirements?",
+    "question_number": 32
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Configure CloudWatch dashboards and alarms for AWS/Bedrock/KnowledgeBases Retrieve metrics only, and use ingestion job summary statistics to infer document status and chunk failures.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Configure CloudWatch dashboards and alarms for AWS/Bedrock/KnowledgeBases Retrieve metrics and AWS/AOSS ingestion and search metrics, and enable knowledge base ingestion log delivery to inspect document status and chunk statistics.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Configure CloudWatch dashboards and alarms for AWS/AOSS StorageUsedInS3 and SearchOCU metrics, and compare StorageUsedInS3 with index size reports to validate document ingestion and logical index growth.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Configure CloudWatch dashboards and alarms for AWS/AOSS ingestion and search request metrics only, and use application request logs to infer Bedrock retrieval throttling and failures.",
+        "was_selected": false
+      }
+    ],
+    "question": "An online legal research platform's AI operations team runs a RAG assistant by using Amazon Bedrock managed knowledge bases backed by Amazon OpenSearch Serverless. The team must detect retrieval throttling and failures, identify OpenSearch Serverless indexing and search issues, and trace ingestion failures back to individual source documents while inspecting chunk creation, deletion, and failure statistics. The team wants to use managed AWS observability features and minimize custom instrumentation. Which operational management approach will BEST meet these requirements?",
+    "question_number": 33
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Implement an Amazon Bedrock human model evaluation job with a work team. Store generated dispositions as a JSON Lines prompt dataset in S3 and use evaluator ratings as approvals.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Implement a Standard Step Functions workflow with a callback Task state. Send reviewer links to an API Gateway endpoint in the workload account that invokes Lambda to call SendTaskSuccess or SendTaskFailure.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Implement a Standard Step Functions workflow with an activity task. Use an activity worker in the workload account to obtain review tasks and call SendTaskSuccess after reviewer decisions.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Implement an Express Step Functions workflow with Wait and Choice states around a DynamoDB decision record. Send reviewer links to an API Gateway endpoint in the workload account that invokes Lambda to write the decision.",
+        "was_selected": true
+      }
+    ],
+    "question": "An online brokerage's compliance engineering team uses a generative AI application to draft trade-surveillance case dispositions. Cases above a risk threshold must pause for up to 5 business days until a human reviewer approves or rejects the disposition. The reviewer portal runs in a separate AWS account, but it can call APIs in the workload account. The solution must resume the workflow after the decision, avoid custom polling workers, and keep callback completion within the workload account. Which implementation will meet these requirements with the LEAST custom orchestration code?",
+    "question_number": 34
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Run the preprocessing service on EC2 instances in an Outposts rack subnet. Use the rack local gateway with direct VPC routing to the instance private IPs, create a Bedrock Runtime interface VPC endpoint in the VPC, and invoke a global inference profile.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Run the preprocessing service on EC2 instances in an Outposts rack subnet. Use the rack local gateway with direct VPC routing to the Bedrock endpoint ENI IPs, create a Bedrock Runtime interface VPC endpoint in the VPC, and invoke an EU geographic inference profile.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Run the preprocessing service on EC2 instances in an Outposts rack subnet. Use the rack local gateway with direct VPC routing to the instance private IPs, route Bedrock Runtime API calls through a NAT gateway, and invoke an EU geographic inference profile.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Run the preprocessing service on EC2 instances in an Outposts rack subnet. Use the rack local gateway with direct VPC routing to the instance private IPs, create a Bedrock Runtime interface VPC endpoint in the VPC, and invoke an EU geographic inference profile.",
+        "was_selected": true
+      }
+    ],
+    "question": "A European pharmaceutical manufacturer's lab automation team is building a generative AI assistant for researchers. Raw experiment records must be normalized inside the manufacturer's data center in Germany before any prompt is sent to Amazon Bedrock. Bedrock prompt processing may occur in AWS Regions within the EU geography, but not in Regions outside that geography. The data center has an AWS Outposts rack attached to a VPC with non-overlapping CIDR ranges, and the application does not require Provisioned Throughput. The design must avoid public internet paths for Bedrock API calls and must use supported routing between on-premises systems, the Outposts rack, and AWS services. Which architecture will meet these requirements?",
+    "question_number": 35
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Create one k-NN enabled index per domain, allocate many small 10-30 GiB shards to maximize fan-out, store embeddings in dimensioned knn_vector fields, route by domain metadata, and set k to 20 without size.",
+        "was_selected": true
+      },
+      {
+        "is_correct": true,
+        "text": "Create one k-NN enabled index per domain, decide primary shard counts before ingestion to keep shards near 30-50 GiB, store embeddings in dimensioned knn_vector fields, fan out to every domain index, and globally merge the top 20 matches.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Create one index per domain after ingestion completes, resize primary shards as each domain grows, store embeddings as numeric arrays, route through aliases, and use standard search requests to return the top 20 vector matches.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Create one k-NN enabled index for all domains, accept the managed service default shard layout, store the domain in metadata, use filtered vector queries, and set k to 20 without overriding size in k-NN queries.",
+        "was_selected": false
+      }
+    ],
+    "question": "An industrial robotics manufacturer's GenAI platform team is building a RAG retrieval layer for maintenance manuals, safety notices, parts catalogs, and warranty procedures. The team will use managed Amazon OpenSearch Service as the vector database. Each corpus has different terminology, receives large nightly document revisions, and may need different embedding settings. The application uses pure semantic search with a moderate latency target, must return the top 20 matches for each query across the whole corpus, and must avoid a large reindexing effort after launch. Which indexing and query design will best meet these requirements?",
+    "question_number": 36
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Deploy each prompt variant behind an Amazon API Gateway endpoint that invokes Amazon Bedrock. Route employees to the endpoints and compare thumbs-up feedback after a pilot period.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Build an AWS Step Functions workflow that invokes Amazon Bedrock for every dataset item. Store outputs in Amazon S3 and ask SMEs to manually score every generated answer.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Fine-tune one Amazon Bedrock supported model by using the SME dataset. Compare the fine-tuned model with a base model after deploying both through application endpoints.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Create managed Amazon Bedrock evaluation jobs for the candidate models and prompt variants by using the SME dataset. Review the evaluation results and invocation characteristics before selecting a configuration.",
+        "was_selected": true
+      }
+    ],
+    "question": "A national tax advisory firm's digital products team is building a proof of concept for an Amazon Bedrock based assistant that answers questions about internal tax research notes. The team has three prompt variants, two foundation models, and a representative dataset of 400 SME-written questions with expected answers. The team must decide whether the assistant is feasible before any production integration, and must compare quality, latency, and cost with minimal custom evaluation infrastructure. Which approach will BEST meet these requirements?",
+    "question_number": 37
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Configure separate API Gateway stages for each provider, and require client applications to select the stage that matches the desired model backend.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Configure Amazon Bedrock prompt routing for all requests, and pass the selected provider name from each client as the model identifier.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Store provider endpoints, model identifiers, routing rules, and failover flags in AWS AppConfig, and have the Lambda adapter load validated configuration at runtime.",
+        "was_selected": true
+      },
+      {
+        "is_correct": true,
+        "text": "Front the inference service with Amazon API Gateway and route requests to an AWS Lambda provider adapter that normalizes provider-specific requests and responses.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Store provider choices in Lambda environment variables, and publish a new Lambda version whenever the selected model or endpoint changes.",
+        "was_selected": false
+      }
+    ],
+    "question": "A pharmaceutical manufacturing platform team operates a generative AI service that creates regulated document summaries for several internal applications. The service currently invokes one Amazon Bedrock text model, but the team must support multiple Bedrock models and one approved external model provider. The team needs to change routing by document type, tenant, cost tier, or temporary provider outage without redeploying client applications or changing application code. The public request and response contract must remain stable across providers. Which combination of steps will meet these requirements? (Select TWO.)",
+    "question_number": 38
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Centralize AWS CloudTrail Lake queries for API Gateway, Lambda, and Bedrock events, then use the audit events as the primary source for prompt content, model response, and latency analysis.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Enable Amazon Bedrock model invocation logging for full request and response payloads in CloudWatch Logs, then use CloudWatch Logs Insights queries to mask PHI values when engineers investigate incidents.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Emit structured JSON logs from the Lambda function with a correlation ID, prompt version, model ID, sanitized prompt and response attributes, latency, validation outcome, and Bedrock request metadata; analyze the fields with CloudWatch Logs Insights queries.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Configure Amazon Bedrock agent tracing for preprocessing, orchestration, postprocessing, and guardrail traces, then use the traces to inspect every Lambda request without changing the direct FM invocation path.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Enable X-Ray tracing on API Gateway and Lambda, instrument the Lambda AWS SDK client to create downstream Bedrock subsegments, and include the trace or correlation ID in the structured application logs.",
+        "was_selected": true
+      }
+    ],
+    "question": "A telemedicine provider's clinical documentation AI team operates an internal note-drafting service. The API layer is an Amazon API Gateway REST API, AWS Lambda calls the Amazon Bedrock Converse API directly, and the Lambda function writes only unstructured error strings. Support engineers spend hours correlating reports of wrong output, validation exceptions, and latency spikes. The team must improve triage across prompt versions, model invocations, and API hops. The solution must avoid storing raw PHI in logs and must not introduce a separate observability data store. Which TWO actions will meet these requirements? (Select TWO.)",
+    "question_number": 39
+  },
+  {
+    "answers": [
+      {
+        "is_correct": true,
+        "text": "Implement the reasoning loop as an ASL state machine that uses Task states for model and tool calls, Choice states for loop control, and Fail states for unsafe terminal outcomes.",
+        "was_selected": true
+      },
+      {
+        "is_correct": true,
+        "text": "Implement manual approval as a callback task that passes $$.Task.Token to a same-account component that calls SendTaskSuccess or SendTaskFailure after review.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Implement the workflow as an Express state machine with CloudWatch Logs enabled, and run model calls, tool calls, and manual approvals from the same ASL definition.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Implement manual approval as a Request Response task that returns an acknowledgement immediately and lets the external approval process finish before the next model call.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Implement every model and approval step with the .sync pattern, and rely on Step Functions to cancel downstream work whenever an execution is stopped.",
+        "was_selected": false
+      }
+    ],
+    "question": "A precision agriculture robotics vendor's field-support AI team is building a diagnostic assistant for field technicians. The assistant must follow a structured reasoning loop: call an Amazon Bedrock model to choose the next diagnostic action, invoke existing tool APIs for observations, branch based on the results, and stop safely when a repair recommendation is unsafe. Some repair recommendations require a human engineer to approve the next step, and the approval can take several hours. A single diagnostic session can last several days, and compliance auditors must be able to review the workflow path after completion. Which combination of implementation choices will meet these requirements? (Select TWO.)",
+    "question_number": 40
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Call the Amazon Bedrock AgentCore Evaluations Evaluate API with CloudWatch log events only, set evaluatorId to Builtin.Correctness, and pass expectedResponse values in sessionMetadata.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Start a batch Amazon Bedrock AgentCore Evaluations job over CloudWatch Logs, set evaluatorId to Builtin.Correctness, and pass expectedResponse values in evaluationReferenceInputs.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Create an online Amazon Bedrock AgentCore Evaluations configuration from application traces, set evaluatorId to Builtin.Correctness, and pass expectedResponse values in evaluationReferenceInputs.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Call the Amazon Bedrock AgentCore Evaluations Evaluate API with OpenTelemetry sessionSpans, set evaluatorId to Builtin.Correctness, and pass expectedResponse values in evaluationReferenceInputs.",
+        "was_selected": true
+      }
+    ],
+    "question": "A professional sports league's officiating analytics team is validating a multi-step rules assistant built with Strands Agents. The assistant invokes statistics and rulebook tools, and the CI pipeline replays one synthetic session at a time from OpenTelemetry trace data before each deployment. The team needs caller-initiated scoring that returns results directly to the pipeline and compares the final agent response to an SME-approved expected response. Which evaluation approach will meet these requirements?",
+    "question_number": 41
+  },
+  {
+    "answers": [
+      {
+        "is_correct": true,
+        "text": "Create an Amazon Bedrock guardrail in the Standard tier. Set Hate, Insults, Sexual, Violence, and Misconduct filters to Medium for prompts and responses, set Prompt Attack to Detect, and set sensitive information filters to Mask.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Create an Amazon Bedrock guardrail in the Standard tier. Set Hate, Insults, Sexual, Violence, and Misconduct filters to Medium for prompts only, set Prompt Attack to Block, and configure word filters for PII values.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Create an Amazon Bedrock guardrail in the Standard tier. Set Hate, Insults, Sexual, Violence, and Misconduct filters to Low for prompts and responses, set Prompt Attack to Block, and set sensitive information filters to Mask.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Create an Amazon Bedrock guardrail in the Standard tier. Set Hate, Insults, Sexual, Violence, and Misconduct filters to High for prompts and responses, add jailbreaks as denied topics, and set sensitive information filters to Block.",
+        "was_selected": false
+      }
+    ],
+    "question": "A digital banking platform's conversational AI team runs a customer-facing assistant on Amazon Bedrock. Red-team testing found harmful language in both user prompts and generated responses, plus jailbreak and prompt leakage attempts. Compliance requires blocking harmful content when the guardrail classification is MEDIUM or HIGH, but allowing LOW classifications to reduce false positives. The team also needs to observe prompt attack detections for 30 days before changing user-visible behavior, and must anonymize PII in text responses. Which configuration will meet these requirements?",
+    "question_number": 42
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Implement the workflow by using AWS Step Functions Standard Workflows with Lambda tasks that invoke Amazon Bedrock models.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Implement the workflow by using Strands Agents with specialized agents for entity extraction, classification, and summarization.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Implement the workflow by using Amazon Bedrock Flows with prompt nodes that invoke models and condition nodes for branching.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Implement the workflow by using AWS Agent Squad to route each request among task-specific Bedrock agents.",
+        "was_selected": true
+      }
+    ],
+    "question": "A national news publisher's editorial AI team is building an internal assistant that prepares article briefs. Each request must run a sequence of FM prompts: extract entities, classify the article topic, generate a short summary, and then choose one of several style prompts based on the classification result. Editors frequently revise the prompt sequence, and the team wants a managed AWS-native implementation that minimizes custom orchestration code while allowing the workflow to be defined and reviewed as configuration. Which implementation will BEST meet these requirements?",
+    "question_number": 43
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Create an Amazon Bedrock knowledge base with an Amazon S3 data source and a MONGO_DB_ATLAS storage configuration for a vector index.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Create an Amazon Bedrock knowledge base with a custom data source that reads the S3 objects and an OPENSEARCH_SERVERLESS storage configuration.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Create an Amazon Bedrock knowledge base with an Amazon S3 data source and an RDS storage configuration for a dedicated vector index.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Create an Amazon Bedrock knowledge base with an Amazon S3 data source and an OPENSEARCH_SERVERLESS storage configuration for a dedicated vector index.",
+        "was_selected": true
+      }
+    ],
+    "question": "A global architecture firm's design-knowledge team stores building codes, project standards, and design-review notes as unstructured files in Amazon S3. The team is building a RAG assistant with Amazon Bedrock. The solution must use a managed Knowledge Bases ingestion path that parses documents, chunks content, creates embeddings, and writes those embeddings to a supported vector index. The platform team has no existing vector database service, wants to minimize new operational ownership, and wants the initial design to remain production ready while the source repository stays in S3. Which approach will BEST meet these requirements?",
+    "question_number": 44
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Configure Guardrails Automated Reasoning checks to block invalid generations and evaluate retrieved Knowledge Base references before the response is returned.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Use AWS/Bedrock runtime metrics in CloudWatch as per-response confidence and uncertainty scores, and display them with generated answers.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Capture reasoningContent from supported Converse responses as supplemental debugging metadata and use reasoningText in place of citations and agent traces when present.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Return the RetrieveAndGenerate citation spans and retrieved references with each answer so users can inspect supporting document content and locations.",
+        "was_selected": true
+      },
+      {
+        "is_correct": true,
+        "text": "Invoke the Bedrock agent with enableTrace set to true and persist trace events for audit review of orchestration steps and failures.",
+        "was_selected": false
+      }
+    ],
+    "question": "A regional court system's case-access technology team is building a generative AI assistant on Amazon Bedrock. The assistant answers questions from public court procedure documents by using an Amazon Bedrock Knowledge Base, and it uses an Amazon Bedrock agent for multi-step internal workflows that can call action groups. The compliance team requires user-facing evidence for generated answers and an auditable record of how each agent request selected knowledge bases, action groups, and follow-up steps. The solution must not depend on undocumented model confidence scores or assume that provider-internal reasoning is always available. Which TWO actions should the team implement to meet these transparency requirements? (Select TWO.)",
+    "question_number": 45
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Create SageMaker Model Cards with an Approved status, store source attribution only in card custom fields, use AWS Glue crawlers for schema snapshots, and use CloudTrail as the decision log.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Set SageMaker Model Cards to Approved for each release, store evaluation reports only as S3 objects, run AWS Glue crawlers for schema cataloging, and rely on default Bedrock invocation logging.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Export SageMaker Model Cards to PDF after each deployment, tag S3 documents with source owners, update Glue ETL jobs without catalog metadata, and use CloudTrail only for Bedrock auditing.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Create SageMaker Model Cards with schema-valid JSON, link evaluation reports from S3, maintain AWS Glue Data Catalog lineage metadata, and enable Bedrock model invocation logging for supported runtime calls.",
+        "was_selected": false
+      }
+    ],
+    "question": "A pharmaceutical clinical operations team is preparing a generative AI assistant for regulated trial-document review. The assistant uses Amazon Bedrock for inference, SageMaker AI jobs for evaluation reports, and AWS Glue pipelines to prepare indexed document metadata. Auditors require a repeatable compliance evidence framework that records intended use and risk for each model release, preserves evaluation evidence, attributes outputs to governed data sources, and captures runtime model interaction evidence for supported Bedrock calls. The team wants to automate evidence collection without treating any single artifact as a legal compliance attestation. Which implementation will BEST meet these requirements?",
+    "question_number": 46
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Invoke the Retrieve operation with vectorSearchConfiguration metadata filters for jurisdiction and inspect only filtered chunks for the same prompt set.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Invoke the Retrieve operation with overrideSearchType set to HYBRID and compare the returned chunks against semantic-only results for the same prompt set.",
+        "was_selected": true
+      },
+      {
+        "is_correct": true,
+        "text": "Invoke the Retrieve operation with vectorSearchConfiguration and inspect retrievalResults content, metadata, location, and score for a fixed test prompt set.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Invoke the RetrieveAndGenerate operation and inspect the returned citations for each generated answer in the same fixed test prompt set.",
+        "was_selected": false
+      }
+    ],
+    "question": "A legal research publisher's editorial AI team runs a RAG assistant on Amazon Bedrock Knowledge Bases. The knowledge base is a custom knowledge base backed by a Pinecone vector store. After a large content migration, reviewers report that generated answers often cite paragraphs from the wrong jurisdiction. The team needs to determine whether the retrieval stage is returning poorly ranked chunks before changing prompts or generation settings. The team must keep the existing vector store during troubleshooting. Which approach will MOST directly isolate the retrieval problem?",
+    "question_number": 47
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Create an AgentCore Gateway Lambda target with the Lambda ARN and a toolSchema that defines each tool. In the Lambda dispatcher, validate the event fields and route directly by bedrockAgentCoreToolName after registering handlers with Gateway-visible names.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Create an AgentCore Gateway Lambda target with the Lambda ARN and outputSchema definitions for each tool. In the Lambda dispatcher, read tool arguments from the context metadata and route directly by bedrockAgentCoreToolName.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Create an AgentCore Gateway OpenAPI target from a Swagger 2.0 document that describes the Lambda operations. In the Lambda dispatcher, map operationId values to handlers and validate request bodies after invocation.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Create an AgentCore Gateway Lambda target with the Lambda ARN and a toolSchema that defines each tool. In the Lambda dispatcher, validate the event fields from each inputSchema and strip the Gateway target-name prefix from bedrockAgentCoreToolName before selecting the handler.",
+        "was_selected": true
+      }
+    ],
+    "question": "A precision agriculture startup's platform team is exposing existing diagnostic tools to autonomous agents by using Amazon Bedrock AgentCore Gateway. The tools are implemented in one shared AWS Lambda function, which currently dispatches to internal handlers by unprefixed names such as getSoilStatus and scheduleIrrigation. The team wants the tools to be MCP-compatible through Gateway, keep the existing handler names, and add defensive parameter validation in the Lambda code. Which implementation will meet these requirements with the least custom integration code?",
+    "question_number": 48
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Run Amazon Bedrock Evaluations across very low top_p candidates, then deploy the configuration that best satisfies repeatability checks.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Run Amazon Bedrock Evaluations across maxTokens and JSON-template candidates while keeping sampling unchanged, then deploy the configuration that passes schema checks.",
+        "was_selected": true
+      },
+      {
+        "is_correct": true,
+        "text": "Run Amazon Bedrock Evaluations across low-temperature and narrower-sampling candidates, then deploy the supported configuration that meets the quality thresholds.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Run Amazon Bedrock Evaluations across temperature-only candidates, then deploy the configuration with the highest semantic correctness score.",
+        "was_selected": false
+      }
+    ],
+    "question": "A telehealth triage platform's clinical operations team uses a single Amazon Bedrock text model to generate structured intake summaries from nurse chat transcripts. The downstream system rejects summaries when required JSON fields are missing or when the same transcript produces materially different field values across repeated runs. The team has 2,000 reviewed transcripts with expected summaries and must choose inference settings for production without building a custom experimentation service. Which approach will best meet these requirements?",
+    "question_number": 49
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Create an Amazon Bedrock agent for the engineering organization. Index AWS documentation in a knowledge base, and use action groups to run lint, test, and build commands.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Create Amazon Q Apps for the engineering organization. Build reusable workflow apps for code review checklists, prompt templates, and issue tracking updates through approved plugins.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Deploy Amazon Q Business for the engineering organization. Connect source repositories and AWS documentation, and expose custom plugins for pull request and build workflow actions.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Deploy Amazon Q Developer in the approved IDEs. Configure project guidance, and use chat, inline suggestions, refactoring support, and security scans during pull request preparation.",
+        "was_selected": true
+      }
+    ],
+    "question": "A digital textbook platform's engineering productivity team is standardizing how developers build generative AI features that use AWS Lambda, AWS CDK, and Amazon Bedrock APIs. Developers work in Visual Studio Code and JetBrains IDEs. The team needs help with AWS SDK questions, code suggestions and refactoring in the IDE, repository coding guidance, and security issue identification before pull requests. The team wants the fastest path with the least custom integration. Which approach will meet these requirements MOST effectively?",
+    "question_number": 50
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Configure AWS Glue Data Quality in the Data Catalog after the ETL job writes the curated table, generate recommended completeness and uniqueness rules, enable scheduled evaluations, and quarantine records by interpreting failed-rule results.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Build an AWS Glue ETL validation stage that flattens nested fields, uses EvaluateDataQuality.processRows or Glue Studio row-level output with case-sensitive DQDL, enables CloudWatch metrics, and splits pass and fail records for curated and quarantine writes.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Configure AWS Glue Data Quality in the Data Catalog on the raw JSON table, generate recommended rules for completeness and uniqueness, publish the catalog run results, and use the resulting score to quarantine failing records before embedding.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Build an AWS Glue ETL validation stage that reads the raw nested JSON, runs EvaluateDataQuality with a lowercase dqdl rules list, leaves default publishing options unchanged, and writes records with failed row percentages to quarantine.",
+        "was_selected": false
+      }
+    ],
+    "question": "A pharmaceutical clinical operations platform ingests partner trial-site notes as JSON into Amazon S3, normalizes them, and then creates embeddings for an Amazon Bedrock RAG application. The incoming JSON contains nested structs and lists, and the team must quarantine records that fail completeness and uniqueness checks before the curated dataset is loaded for embedding. The workflow must publish rule pass and fail counts to Amazon CloudWatch for alarms and minimize custom validation code. Which validation design best meets these requirements?",
+    "question_number": 51
+  },
+  {
+    "answers": [
+      {
+        "is_correct": true,
+        "text": "Schedule CloudWatch Synthetics canaries to invoke the API routes with representative prompts and scripted response checks. Run an Amazon Bedrock retrieve-and-generate evaluation job using the S3 .jsonl dataset, and gate promotion on the canary results and built-in response-quality metrics.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Schedule a Step Functions workflow to invoke the API routes with representative prompts and store transcripts in S3. Run an Amazon Bedrock retrieve-and-generate evaluation job using the S3 .jsonl dataset, and gate promotion on built-in response-quality metrics.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Schedule CloudWatch Synthetics canaries to invoke the API routes with representative prompts and scripted response checks. Run an Amazon Bedrock model evaluation job against the changed FM, and gate promotion on built-in correctness and faithfulness metrics.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Schedule CloudWatch Synthetics canaries to invoke the API routes with representative prompts and scripted response checks. Run an Amazon Bedrock retrieve-only evaluation job using the S3 .jsonl dataset, and gate promotion on context relevance and coverage metrics.",
+        "was_selected": false
+      }
+    ],
+    "question": "A public-sector weather agency's citizen-services team runs a RAG assistant on Amazon Bedrock Knowledge Bases to answer storm-preparedness questions through an API. The team is changing the FM used for generation, but the retrieval source and application code are unchanged. Before each promotion, the team must exercise the deployed API path with production-like user journeys, check availability and latency, and automatically compare generated answers against an 850-prompt regression set stored in S3 as .jsonl. The regression set includes reference contexts, and no conversation has more than four turns. The team wants to catch answer drift and unsupported claims without building a separate evaluation platform. Which validation design best meets these requirements?",
+    "question_number": 52
+  },
+  {
+    "answers": [
+      {
+        "is_correct": true,
+        "text": "Use API Gateway to validate requests and start a Step Functions workflow. Run a lightweight classification step, use Choice states for routing, and invoke the selected Bedrock model from a Lambda task.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Use API Gateway to validate requests and invoke a Lambda function. Evaluate routing rules in Lambda from the message text, select a Bedrock model, and emit routing metrics to CloudWatch.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Use Amazon Bedrock prompt routing as the primary selector. Configure supported model choices for cost and capability tradeoffs, and send each airline message through one shared generation prompt.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Use API Gateway to start a Step Functions workflow. Route with Choice states based on locale and account tier, and invoke the mapped Bedrock model from a Lambda task.",
+        "was_selected": false
+      }
+    ],
+    "question": "A global airline's disruption-management team is building a generative AI service that classifies passenger messages and generates responses by using several Amazon Bedrock foundation models. Simple itinerary questions should use a low-cost model, policy disputes should use a model tuned for reasoning, and multilingual rebooking requests should use a model with stronger language support. Existing clients send only free-form text, locale, and account tier, and the team does not want clients to choose models. The solution must keep an auditable routing path, allow routing rules to change without redeploying clients, and invoke only one generation model for each request to control cost. Which implementation will meet these requirements?",
+    "question_number": 53
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Increase client-side concurrency for the Converse calls, and retry throttled requests with exponential backoff.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Set task-specific maxTokens ceilings for the short JSON responses, and trim oversized prompt context before invocation.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Use a cross-Region inference profile for the Converse calls, and keep the 4,096-token ceiling for every request.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Enable response streaming for the existing Converse calls, and keep the 4,096-token ceiling for every request.",
+        "was_selected": false
+      }
+    ],
+    "question": "A maritime logistics firm's operations AI team runs an Amazon Bedrock assistant by using the Converse API through the bedrock-runtime endpoint. Each request contains small structured inputs and asks the model to return one of three short JSON decisions. During port congestion events, the workload receives token-based throttling even though most completed responses contain fewer than 150 tokens. The application sets maxTokens to 4,096 on every request to avoid truncation. The team must improve completed requests per minute while continuing to use the same model, the same Converse API integration, and on-demand throughput. Which action will MOST directly improve throughput under these constraints?",
+    "question_number": 54
+  },
+  {
+    "answers": [
+      {
+        "is_correct": true,
+        "text": "Create Bedrock model evaluation jobs for each model and prompt on the shared dataset with automated metrics and human review, add CountTokens and CloudWatch measurements to score price performance, then canary the selected variant while capturing feedback.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Run an A/B test that samples a limited production cohort across all model and prompt combinations, collect user ratings with API Gateway and DynamoDB, use CloudWatch and CountTokens to rank price performance, then promote the best variant.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Invoke each model and prompt against the shared benchmark dataset with Bedrock automated evaluation metrics, record CountTokens and CloudWatch latency data by variant, then canary the top variant while collecting clickstream feedback.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Create Bedrock model evaluation jobs for each model and prompt on the shared dataset with automated metrics and human review, add CountTokens and CloudWatch measurements to score price performance, then fully deploy the highest-scoring variant.",
+        "was_selected": false
+      }
+    ],
+    "question": "A renewable energy grid operator's AI reliability team is evaluating a generative AI assistant that drafts incident summaries from operator notes. The team has three Amazon Bedrock foundation models and two prompt versions under consideration. The team must compare the candidates against the same benchmark dataset, include automated and human quality judgments, account for token usage and latency, and expose only a limited production cohort before choosing the final configuration. Which evaluation strategy will meet these requirements with the LEAST operational overhead?",
+    "question_number": 55
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Build the synchronous chat interface with the AWS SDK by calling InvokeModel on the regional bedrock-runtime endpoint, and require each application to send the native request body for its chosen provider.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Build the synchronous chat interface with the AWS SDK by calling the Converse API on the regional bedrock-runtime endpoint, and pass model-specific parameters through additionalModelRequestFields when needed.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Build the streaming interface with the AWS CLI by calling ConverseStream for every selected chat model, and fall back to InvokeModelWithResponseStream when a stream fails.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Build the streaming interface with an AWS SDK by calling ConverseStream or InvokeModelWithResponseStream only after checking GetFoundationModel for responseStreamingSupported on the selected model.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Build the synchronous chat interface with the AWS SDK by calling Converse for supported message-capable models, and grant callers only bedrock:InvokeModelWithResponseStream permission.",
+        "was_selected": false
+      }
+    ],
+    "question": "A national retail bank's digital servicing platform team is standardizing how internal applications interact with Amazon Bedrock models. The team needs one synchronous chat interface that can support multiple message-capable models while still allowing model-specific parameters when required. A second interface must support real-time streaming for selected models, but the implementation must avoid unsupported client tooling and must verify model capability before enabling streaming. The bank wants to use Bedrock-native inference endpoints rather than OpenAI-compatible compatibility APIs or provider-specific endpoint families. Which combination of actions will meet these requirements? (Select TWO.)",
+    "question_number": 56
+  },
+  {
+    "answers": [
+      {
+        "is_correct": true,
+        "text": "Use RetrieveAndGenerate for non-managed knowledge bases, inspect citations with generated response spans and retrieved references, and suppress unsupported answer segments.",
+        "was_selected": true
+      },
+      {
+        "is_correct": true,
+        "text": "Use the Retrieve API for managed knowledge bases, evaluate returned chunks and relevance scores, and run semantic similarity checks against the retrieved content.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Use RetrieveAndGenerate for non-managed knowledge bases, require at least one citation, and skip comparison between answer spans and retrieved references.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Use the Retrieve API for all knowledge bases, combine relevance scores with source metadata, and approve generated answers when top-ranked chunks match the query.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Use RetrieveAndGenerate for managed knowledge bases, inspect output text and session identifiers, and approve answers when a session identifier is returned.",
+        "was_selected": false
+      }
+    ],
+    "question": "A maritime logistics firm's safety analytics team is building an Amazon Bedrock RAG assistant that answers questions from vessel maintenance manuals and incident procedures. The application uses a mix of knowledge base configurations, including managed knowledge bases, and must verify groundedness before returning answers to operations staff. The team wants to preserve source traceability and avoid treating retrieval metadata as a guaranteed factuality signal. Which TWO implementation steps should the team take to reduce hallucinations while meeting these requirements? (Select TWO.)",
+    "question_number": 57
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Delete and recreate the knowledge base vector store on a schedule to guarantee that all removed and changed objects disappear.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Track each refresh workflow until the ingestion job reaches a terminal successful status before marking the update complete.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Submit changed S3 documents by using direct document ingestion and run periodic data source syncs to reconcile the bucket later.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Run a refresh workflow that starts a data source ingestion job for the knowledge base after source changes are published.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Modify only metadata sidecar files for CSV content when tags change so the next refresh avoids re-ingesting the documents.",
+        "was_selected": true
+      }
+    ],
+    "question": "A maritime logistics company's operations AI team runs an Amazon Bedrock Knowledge Bases RAG application that uses an Amazon S3 data source containing port regulations, vessel handling procedures, and safety bulletins. The S3 objects are updated by multiple upstream systems throughout the day. The team must keep the vector store current, minimize unnecessary embedding-model usage, detect failed refreshes, and avoid creating a second source of truth outside the S3 bucket. Which combination of steps should the team implement? (Select TWO.)",
+    "question_number": 58
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Create an AWS Audit Manager assessment from the AWS Generative AI Best Practices Framework v1, collect automated evidence where supported, and attach manual evidence for procedural controls.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Create an AWS Audit Manager assessment from the AWS Generative AI Best Practices Framework v2, collect automated evidence where supported, and attach manual evidence for procedural controls.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Create a custom AWS Audit Manager framework, define all responsible AI controls manually, and use application logs as the primary source for evidence collection.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Create Amazon Bedrock Guardrails for each application, collect intervention results during inference, and use blocked responses as the primary governance evidence.",
+        "was_selected": false
+      }
+    ],
+    "question": "A medical device manufacturer's AI governance office already uses AWS Audit Manager for internal control evidence. The office is standardizing oversight for several FM applications that use Amazon Bedrock and Amazon SageMaker AI. The governance program must align with responsible AI principles, support automated and manually collected evidence, and avoid treating the assessment results as a formal compliance certification. Which approach will meet these requirements with the LEAST custom governance implementation?",
+    "question_number": 59
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Build a Lambda orchestrator that maintains the plan and revise loop in memory; invoke the same tool adapters with configured timeouts; cache failed API names in the execution context; attach a shared read-only IAM role.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Build a Step Functions Express workflow that uses Retry and Catch handlers around each tool call; invoke Lambda adapters with configured timeouts; alarm on downstream failures in CloudWatch; throttle invocations by adjusting reserved concurrency.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Build an Amazon Bedrock agent with action groups for each tool; define parameter schemas and confirmation prompts; invoke Lambda action handlers with configured timeouts; attach least-privilege IAM roles and enable Bedrock Guardrails.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Build an AWS Step Functions Standard workflow that tracks cycle count and risk flags with Choice and Fail states; invoke Lambda tool adapters with configured timeouts; store circuit-breaker state in DynamoDB; apply least-privilege IAM roles to each adapter.",
+        "was_selected": true
+      }
+    ],
+    "question": "A regional electric utility's grid reliability AI team is implementing an Amazon Bedrock based assistant that recommends restoration actions during outages. Each request can go through several plan, tool-call, and revise cycles. Tools are AWS Lambda functions that read operational APIs. Safety reviewers require the workflow to stop after a fixed maximum number of cycles or after a high-risk tool result, prevent the FM path from accessing anything except approved read APIs, and avoid repeatedly calling an unhealthy operational API for several minutes after consecutive failures. The team wants a serverless design with explicit execution history and minimal custom orchestration code. Which implementation best meets these requirements?",
+    "question_number": 60
+  },
+  {
+    "answers": [
+      {
+        "is_correct": true,
+        "text": "Route message-style assistant requests to the regional bedrock-runtime endpoint by using the Converse API for supported chat models.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Route image and embedding requests through the Converse API so the adapter can use one message schema for every model.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Route every request through InvokeModel with a generic cross-model JSON body and omit contentType when accept is JSON.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Route all adapter traffic to the regional bedrock-runtime endpoint by using Chat Completions as the single payload contract.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Route specialized generation requests to InvokeModel with application/json request bodies that match each selected model schema.",
+        "was_selected": true
+      }
+    ],
+    "question": "A national insurance carrier's claims integration team is modernizing an existing service bus that already exposes HTTPS APIs to internal claims systems. The team is adding Amazon Bedrock capabilities through a small adapter service. One integration path will support a claims-assistant chat experience and should make it easy to switch among Bedrock models that support message-style conversations. Another integration path will call specialized Bedrock models for image generation and embedding generation, and those calls must preserve model-specific request parameters. The adapter must avoid routing failures caused by using the wrong Bedrock endpoint or payload contract. Which TWO implementation actions should the team take? (Select TWO.)",
+    "question_number": 61
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Switch the client path to ConverseStream, add prompt cache checkpoints to static instructions, and monitor InvocationLatency and cache token counts in CloudWatch.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Switch the client path to ConverseStream, request performanceConfig.latency set to optimized, and monitor TimeToFirstToken, InvocationLatency, and token counts in CloudWatch.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Switch the client path to ConverseStream, use the default performanceConfig.latency route, and monitor TimeToFirstToken, InvocationLatency, and token counts in CloudWatch.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Keep the Converse calls synchronous, request performanceConfig.latency set to optimized, and monitor InvocationLatency and token counts in CloudWatch.",
+        "was_selected": false
+      }
+    ],
+    "question": "An airline operations center's disruption-management AI team uses the Amazon Bedrock Converse API with Amazon Nova Pro to draft passenger rebooking explanations during irregular operations. Agents complain that full responses take too long, but the team must keep the same model and return partial text to the browser as soon as possible. Requests are interactive, not predictable enough for precomputed answers, and the team wants to benchmark first-token responsiveness and generation speed after deployment. Which approach will best meet these requirements while preserving operational simplicity?",
+    "question_number": 62
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Redact PII from the fan question with Amazon Comprehend, and rely on the redacted prompt to prevent jailbreak behavior.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Run adversarial prompt test cases in Step Functions during release validation, and send production prompts without guardContent tags.",
+        "was_selected": true
+      },
+      {
+        "is_correct": true,
+        "text": "Specify the configured guardrail identifier and version on each InvokeModel request, and wrap the fan question in Bedrock guardContent input tags.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Configure the stored guardrail content policy with a Standard tier PROMPT_ATTACK filter, set an appropriate inputStrength, and set inputAction to BLOCK.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Configure denied topics and word filters in the guardrail, and rely on those filters to classify prompt injection attempts.",
+        "was_selected": false
+      }
+    ],
+    "question": "A professional sports league's fan engagement AI team runs a public chatbot on Amazon Bedrock by calling the InvokeModel API directly from a backend service. The service builds each prompt from fixed system instructions, retrieved league policy content, and a free-form fan question. Recent red-team tests show attempts to override the system instructions, reveal hidden prompt text, and bypass safety behavior. The team wants runtime defenses that use managed Bedrock capabilities where possible and that block adversarial user input before it reaches the model. Which combination of steps will meet these requirements? (Select TWO.)",
+    "question_number": 63
+  },
+  {
+    "answers": [
+      {
+        "is_correct": true,
+        "text": "Configure interface VPC endpoints for Bedrock Runtime, Athena, and AWS Glue, add an S3 gateway endpoint with endpoint and bucket policies, grant table and column access with Lake Formation, and send relevant CloudTrail events to CloudWatch Logs for metric filters and alarms.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Configure interface VPC endpoints for Bedrock Runtime and S3, copy authorized data into project-specific S3 buckets, grant bucket access with IAM policies, and monitor Amazon S3 request metrics with CloudWatch alarms.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Configure interface VPC endpoints for Bedrock Runtime, Athena, and AWS Glue, add an S3 gateway endpoint with endpoint and bucket policies, enforce project access only with IAM policies on S3 prefixes, and publish Lambda application logs to CloudWatch alarms.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Configure private subnets with NAT gateways for Bedrock Runtime, Athena, and AWS Glue, restrict egress with IAM and security group rules, grant table and column access with Lake Formation, and send relevant CloudTrail events to CloudWatch Logs for metric filters and alarms.",
+        "was_selected": false
+      }
+    ],
+    "question": "An aerospace manufacturer's engineering AI team is deploying a generative design assistant. The application runs in AWS Lambda functions attached to private subnets, invokes Amazon Bedrock foundation models, and reads proprietary CAD metadata through Amazon Athena from an Amazon S3 data lake registered in the AWS Glue Data Catalog. Regulations require model invocations and data retrieval to stay off the public internet, project teams to see only authorized datasets and columns, and security operations to alarm on unusual access attempts with minimal custom code. Which design best meets these requirements?",
+    "question_number": 64
+  },
+  {
+    "answers": [
+      {
+        "is_correct": true,
+        "text": "Configure an AgentCore Memory user preference strategy, store USER and ASSISTANT turns with actorId and per-chat sessionId values, and close the Strands memory session after each chat.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Configure an AgentCore Memory user preference strategy, store USER and ASSISTANT turns with actorId and one persistent sessionId per learner, and rely on batch_size to flush messages automatically.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Configure an AgentCore Memory semantic strategy, store OTHER summaries with actorId and per-chat sessionId values, and close the Strands memory session after each chat.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Configure an AgentCore Memory resource with no long-term memory strategies, store USER and ASSISTANT turns with actorId and per-chat sessionId values, and close the Strands memory session after each chat.",
+        "was_selected": true
+      }
+    ],
+    "question": "An online learning platform's tutoring engineering team is building autonomous tutor agents with Strands Agents and Amazon Bedrock AgentCore Memory. The tutors must keep the problem-solving context separate for each active browser tab, learn each learner's preferred explanation style for future sessions, and reduce memory write overhead by buffering multiple messages. Some tutoring chats end after only one or two turns, before the configured batch threshold is reached. Which implementation will meet these requirements with the LEAST custom code while avoiding loss of state?",
+    "question_number": 65
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Configure an API Gateway REST API non-proxy HTTP integration in STREAM mode with VTL response templates. Have API Gateway convert Bedrock event-stream chunks into SSE frames.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Configure an API Gateway REST API AWS_PROXY Lambda integration in STREAM mode with the /response-streaming-invocations URI. Have Lambda call Bedrock ConverseStream and write SSE frames as deltas arrive.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Configure an API Gateway REST API AWS_PROXY Lambda integration in STREAM mode with the standard Lambda invocation URI. Have Lambda call Bedrock ConverseStream and write SSE frames as deltas arrive.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Configure an API Gateway REST API AWS_PROXY Lambda integration in BUFFERED mode with the standard Lambda invocation URI. Have Lambda call Bedrock ConverseStream and return one SSE-formatted response.",
+        "was_selected": false
+      }
+    ],
+    "question": "An online education platform's tutoring team runs a browser-based writing coach. The current API Gateway REST API invokes an AWS Lambda function that calls Amazon Bedrock synchronously, so students wait until the full answer is generated before seeing any feedback. The browser client already supports server-sent events, and the team must preserve the REST API contract without moving to a WebSocket protocol. The solution must reduce time to first byte and stream partial model output as it is generated. Which implementation will meet these requirements?",
+    "question_number": 66
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Publish reusable AWS CDK constructs for approved Bedrock integration patterns, and assess each deployment in AWS Well-Architected Tool by applying only the standard pillars.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Publish a shared Bedrock proxy service for approved Bedrock integration patterns, and assess each deployment by reviewing proxy invocation logs centrally.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Publish reusable AWS CDK constructs for approved Bedrock integration patterns, and assess each deployment in AWS Well-Architected Tool by applying the Generative AI Lens.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Publish reusable CloudFormation stacks for approved Bedrock integration patterns, and assess each deployment by storing checklist results in a shared repository.",
+        "was_selected": false
+      }
+    ],
+    "question": "An electric utility's grid operations software team is enabling several product teams to build Amazon Bedrock applications, including outage summarization, maintenance procedure Q&A, and regulatory report drafting. The product teams deploy independently in separate AWS accounts and sometimes use different RAG data sources, but the security office has found inconsistent IAM boundaries, guardrail use, logging, and retrieval patterns. The platform team must provide a reusable standard that teams can adopt without waiting for manual design approval, and must produce repeatable architecture review evidence for each deployment. Which approach will meet these requirements MOST effectively?",
+    "question_number": 67
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Create an Amazon Bedrock human-based model evaluation job with the candidate model and a bring-your-own response source named production-baseline. Use the S3 prompt dataset and an S3 output location, choose a comparison rating method, and set three workers per prompt.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Create an Amazon Bedrock human-based model evaluation job with the candidate model, the legacy response source, and a control response source. Use the S3 prompt dataset and an S3 output location, choose a comparison rank method, and set three workers per prompt.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Create an Amazon Bedrock automatic model evaluation job with the candidate model and a bring-your-own response source named legacy-assistant-v1. Use the S3 prompt dataset and an S3 output location, choose a quality metric, and review the computed scores.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Create an Amazon Bedrock human-based model evaluation job with the candidate model and a bring-your-own response source named legacy-assistant-v1. Use the S3 prompt dataset and an S3 output location, choose a comparison rating method, and set three workers per prompt.",
+        "was_selected": true
+      }
+    ],
+    "question": "An airline loyalty program's contact-center AI team wants to decide whether to replace an existing non-Bedrock answer generator with an Amazon Bedrock model. The team has prepared 750 representative customer prompts in Amazon S3. For each prompt, the dataset includes the existing system's response with modelIdentifier set to legacy-assistant-v1. The team has 45 senior agents who must independently rate the legacy response and the candidate model response for helpfulness and preference. At least three agents should review each prompt, and the team wants an AWS-managed workflow with results stored in S3 for later analysis. Which approach meets these requirements with the least custom development?",
+    "question_number": 68
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Create CloudWatch dashboards and alarms from CloudTrail API events for invocation volume, latency, token counts, errors, throttles, and TimeToFirstToken.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Create CloudWatch dashboards and alarms from AWS/Bedrock runtime metrics for invocation volume, latency, token counts, errors, throttles, and TimeToFirstToken.",
+        "was_selected": true
+      },
+      {
+        "is_correct": true,
+        "text": "Enable Amazon Bedrock model invocation logging in each inference Region to CloudWatch Logs or S3, and send attribution values by using requestMetadata.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Record product, tenant, and experiment IDs in application logs with Bedrock request IDs, and correlate those logs to invocation records during investigations.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Export AWS/Bedrock metrics from both Regions to a central dashboard, and use the metric records as the forensic source for prompts, responses, and attribution.",
+        "was_selected": false
+      }
+    ],
+    "question": "A global media streaming platform's personalization team operates an Amazon Bedrock FM feature that uses Converse and ConverseStream through the bedrock-runtime endpoint in us-east-1 and eu-west-1. The team must build observability that supports operational dashboards for latency, token use, throttles, errors, and streaming responsiveness. The team also must preserve forensic records with per-request product, tenant, and experiment identifiers. Logs must remain in the same account and Region where inference occurs, and the team wants to avoid parsing attribution values from prompt text. Which combination of steps will meet these requirements? (Select TWO.)",
+    "question_number": 69
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Create a Lambda-backed MCP gateway that calls Retrieve for every query, bind the managed knowledge base mapping in Lambda configuration, and rely on knowledge base guardrails for retrieved references.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Create Converse API tool definitions for the retrieval operations, mirror the MCP-visible tool names in toolConfig, and have the model execute the retrieval calls directly.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Create an Amazon Bedrock AgentCore Gateway target with the managed knowledge base connector, bind the managed knowledge base and retrieval settings to the target, and have clients invoke the target-prefixed Retrieve and AgenticRetrieveStream tools.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Create a custom MCP server that wraps RetrieveAndGenerate, bind the managed knowledge base mapping in server configuration, and route every request through one retrieval-and-generation operation.",
+        "was_selected": false
+      }
+    ],
+    "question": "A university admissions office's AI platform team is standardizing retrieval access for several admissions assistants. The team uses Amazon Bedrock Managed Knowledge Bases as the retrieval source. Some assistants are MCP-compatible agents, while other assistants use Amazon Bedrock chat-style model integrations. The platform must provide a consistent retrieval tool interface, prevent application developers from passing knowledge base identifiers at runtime, and support both single-pass retrieval and multi-step retrieval for complex questions with minimal custom code. Which implementation will best meet these requirements?",
+    "question_number": 70
+  },
+  {
+    "answers": [
+      {
+        "is_correct": true,
+        "text": "Persist session records in DynamoDB keyed by user ID and session ID; read recent turns, slot values, and TTL-controlled history before each Bedrock invocation.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Store full transcripts as versions in Amazon Bedrock Prompt Management; select the prompt version by session ID before each Bedrock invocation.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Classify utterances by prompting the same Bedrock FM for an intent label; route the free-form response through Lambda condition checks for clarification branches.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Persist session records in ElastiCache for Valkey keyed by user ID and session ID; read recent turns, slot values, and cache expiration before each invocation.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Classify utterances with an Amazon Comprehend custom classifier; route the intent and confidence through a Step Functions workflow that manages clarification branches.",
+        "was_selected": true
+      }
+    ],
+    "question": "An emergency roadside assistance network's digital dispatch team is adding an Amazon Bedrock based chat assistant to an API Gateway and Lambda application. Drivers may answer required questions over several turns, such as location, vehicle type, and service type. The front-end Lambda functions are stateless. The team has labeled historical chat utterances for supported intents such as towing, lockout, and fuel delivery. The solution must retain session context for about 30 days, route supported intents through auditable workflow states, ask deterministic follow-up questions when required values are missing, avoid managing model infrastructure, and avoid using the FM as the sole controller for workflow branching. Which combination of actions will meet these requirements? (Select TWO.)",
+    "question_number": 71
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Use Amazon Bedrock Data Automation blueprints for claim photos and PDF estimates, use Amazon Transcribe with custom vocabulary and PII redaction for calls, and run an AWS Glue Python job for CSV policy extracts.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Use Amazon Bedrock Data Automation blueprints for claim photos and PDF estimates, use Amazon Transcribe with a custom language model and PII redaction for calls, and run SageMaker Processing with the existing container for CSV policy extracts.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Use Amazon Textract AnalyzeDocument for claim photos and PDF estimates, use Amazon Transcribe with custom vocabulary and PII redaction for calls, and run SageMaker Processing with the existing container for CSV policy extracts.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Use Amazon Bedrock Data Automation blueprints for claim photos and PDF estimates, use Amazon Transcribe with custom vocabulary and PII redaction for calls, and run SageMaker Processing with the existing container for CSV policy extracts.",
+        "was_selected": true
+      }
+    ],
+    "question": "An auto insurance carrier's claims intelligence team is building a RAG application on Amazon Bedrock. The ingestion backlog includes photos of completed claim forms, PDF repair estimates with tables, recorded adjuster-customer calls, and CSV policy exports. The team must create structured artifacts in Amazon S3 for FM consumption, preserve table and layout context from documents, improve recognition of insurer-specific terms in calls, redact PII from call transcripts before indexing, and avoid maintaining custom OCR or ASR code. The team already has lightweight CSV normalization logic packaged in a Python container and wants to reuse it without building a Spark ETL pipeline. Which workflow will meet these requirements with the LEAST operational overhead?",
+    "question_number": 72
+  },
+  {
+    "answers": [
+      {
+        "is_correct": true,
+        "text": "Configure retrievalConfiguration.vectorSearchConfiguration with overrideSearchType HYBRID, set numberOfResults to a larger supported value, and add rerankingConfiguration with BEDROCK_RERANKING_MODEL and an appropriate numberOfRerankedResults.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Configure retrievalConfiguration.vectorSearchConfiguration with overrideSearchType HYBRID, set numberOfResults to a larger supported value, and add a metadata filter for model and error-code attributes instead of rerankingConfiguration.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Configure retrievalConfiguration.vectorSearchConfiguration with overrideSearchType HYBRID, keep numberOfResults at the default result count, and attach guardrails to filter irrelevant retrieved references before response generation.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Configure retrievalConfiguration.vectorSearchConfiguration with overrideSearchType SEMANTIC, set numberOfResults to a larger supported value, and add rerankingConfiguration with BEDROCK_RERANKING_MODEL and an appropriate numberOfRerankedResults.",
+        "was_selected": true
+      }
+    ],
+    "question": "An industrial robotics vendor's field-service AI team runs a RAG assistant on Amazon Bedrock Knowledge Bases. The knowledge base is a custom knowledge base backed by Amazon OpenSearch Serverless, and the vector index stores each chunk's raw text in a filterable text field. Technicians search by using both natural-language symptoms and exact robot model numbers or error codes. API profiling shows that semantic retrieval often misses chunks that contain exact codes, and relevant chunks are sometimes ranked below less useful chunks. The team wants to improve relevance from Retrieve and RetrieveAndGenerate requests without replacing the vector store or building a custom retrieval service. Which retrieval configuration should the team use?",
+    "question_number": 73
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Create an AWS Audit Manager assessment from Generative AI Best Practices Framework v2, then use assessment evidence as the production approval mechanism.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Publish the approved guardrail version and document it in the platform standards, then monitor application deployments for teams that omit the guardrail configuration.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Enable Bedrock model invocation logs for all production accounts, then review prompts and responses to identify teams that bypass the approved guardrail.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Apply IAM policies to production Bedrock roles that require the approved bedrock:GuardrailIdentifier on supported runtime APIs, and require applications to pass the guardrail version.",
+        "was_selected": false
+      }
+    ],
+    "question": "An international architecture firm's AI platform team is launching several internal design-assistant applications on Amazon Bedrock. The firm is not an existing AWS Audit Manager customer. The governance board has approved a standard Bedrock guardrail that includes denied topics and sensitive information filters. Application teams invoke Bedrock directly from their own production roles by using Converse, ConverseStream, InvokeModel, and InvokeModelWithResponseStream. The board wants a control that prevents production callers from bypassing the approved guardrail during inference, while preserving the existing Bedrock runtime APIs and avoiding a custom proxy layer. Which approach best meets these requirements?",
+    "question_number": 74
+  },
+  {
+    "answers": [
+      {
+        "is_correct": false,
+        "text": "Create a Bedrock Knowledge Base over S3 exports, copy Confluence and SharePoint content to S3, enable metadata filters, and schedule export and sync jobs.",
+        "was_selected": false
+      },
+      {
+        "is_correct": true,
+        "text": "Create a Managed Knowledge Base, add Confluence and SharePoint data sources, configure document-level permissions, pass user context during retrieval, and schedule recurring StartIngestionJob calls.",
+        "was_selected": true
+      },
+      {
+        "is_correct": false,
+        "text": "Create a customer-managed Bedrock Knowledge Base, ingest Confluence and SharePoint content into a self-managed vector store, apply user filters during retrieval, and schedule recurring sync jobs.",
+        "was_selected": false
+      },
+      {
+        "is_correct": false,
+        "text": "Create a custom Bedrock data source, ingest Confluence and SharePoint documents with KnowledgeBaseDocuments APIs, map ACL metadata in recurring jobs, and delete removed documents.",
+        "was_selected": false
+      }
+    ],
+    "question": "A university's research administration AI team is building an Amazon Bedrock RAG assistant for grants staff. The source content is split between Atlassian Confluence spaces and Microsoft SharePoint sites, both updated daily. The assistant must use supported source integrations rather than a custom crawler, minimize ownership of ingestion, indexing, storage, and retrieval infrastructure, and respect document-level access boundaries during retrieval for each grants staff user. The team can pass required user context from the application to retrieval calls, can tolerate externally scheduled synchronization, but cannot allow deleted or modified source documents to remain indefinitely stale in retrieval results. Which integration design best meets these requirements?",
+    "question_number": 75
+  }
+]
