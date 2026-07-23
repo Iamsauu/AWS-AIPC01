@@ -88,8 +88,12 @@ The official list is non-exhaustive and can change. This catalog explains why a 
 |---|---:|---|
 | Amazon Augmented AI (A2I) | 3 | Managed human-review workflows for supported ML/custom decisions. Compare with SFN callback for general orchestration. |
 | Amazon Bedrock | 1 | Managed FMs and GenAI application capabilities. |
+| Agents for Amazon Bedrock | 1 | Managed agent orchestration with action groups, knowledge bases, session state, and invocation traces. Prefer Step Functions when the workflow must be deterministic, long-lived, and explicitly auditable. |
 | Bedrock AgentCore | 1 | Managed agent runtime, Gateway, Memory, identity/observability/evaluation-related capabilities. Verify current subservice support. |
+| Bedrock Data Automation | 2 | Managed asynchronous extraction of structured insights from supported documents, images, audio, and video. Prefer Textract when the required result is form/table OCR structure and geometry. |
+| Bedrock Guardrails | 1 | Inline safety and policy controls for supported FM inputs and outputs, including denied topics, content filters, prompt attacks, sensitive information, and grounding checks. Does not replace IAM, tool authorization, deterministic validation, or S3 discovery. |
 | Bedrock Knowledge Bases | 1 | Managed RAG ingestion, vector integration, retrieval, generation, and citations. |
+| Bedrock Model Evaluation | 1 | Managed evaluation of supported models, prompts, RAG, or agents with automated or human metrics. Not a production availability canary or a substitute for representative datasets and release gates. |
 | Bedrock Prompt Management | 1 | Prompt variables, variants, versions, testing, and stable deployment references. |
 | Bedrock Prompt Flows / Flows | 1 | Managed nodes for prompts, conditions, KBs, Lambda, and configured orchestration. |
 | Amazon Comprehend | 2 | NLP entities, language, sentiment, custom classification, and real-time PII detection. |
@@ -119,6 +123,7 @@ The official list is non-exhaustive and can change. This catalog explains why a 
 | Service | Depth | Exam role and boundary |
 |---|---:|---|
 | AWS Auto Scaling | 2 | Scaling plans for supported resources such as EC2 Auto Scaling groups, ECS, DynamoDB, Aurora, and Spot Fleet. SageMaker endpoint autoscaling is configured through Application Auto Scaling. |
+| AWS Audit Manager | 3 | Collect and organize automated or manual control evidence, including the Generative AI Best Practices Framework. Does not certify compliance or enforce runtime controls. |
 | AWS Chatbot | 3 | Operational notifications and commands through chat channels; naming/integration can evolve. |
 | AWS CloudTrail | 1 | AWS API and resource-change audit: who did what and when. |
 | Amazon CloudWatch | 1 | Metrics, dashboards, alarms, logs, anomaly detection, and custom application signals. |
@@ -161,6 +166,7 @@ The official list is non-exhaustive and can change. This catalog explains why a 
 | IAM Access Analyzer | 2 | Identify external/public access and validate IAM policies. |
 | IAM Identity Center | 2 | Workforce SSO, groups, permission sets, and temporary credentials. |
 | AWS KMS | 2 | Managed encryption keys and key policies. |
+| AWS Lake Formation | 2 | Govern Data Catalog resources with table-, column-, row-, and cell-level permissions for integrated analytics paths. Not an FM content guardrail or a private network boundary. |
 | Amazon Macie | 2 | Discover/classify sensitive data stored in S3. |
 | AWS Secrets Manager | 2 | Store, retrieve, and rotate secrets; scope tool roles to specific secrets. |
 | AWS WAF | 2 | Web request filtering/rate rules at API/edge; not an FM semantic guardrail. |

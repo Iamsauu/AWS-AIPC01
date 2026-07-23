@@ -1,0 +1,1177 @@
+{
+  "schema_version": "1.0.0",
+  "scope": [
+    "Developer tools",
+    "Machine learning and GenAI"
+  ],
+  "items": [
+    {
+      "name": "AWS Amplify",
+      "category": "Developer tools",
+      "exam_patterns": [
+        "Chọn khi cần dựng nhanh frontend có xác thực, UI và dữ liệu cho ứng dụng web hoặc trải nghiệm GenAI.",
+        "Amplify Gen 2 phù hợp với chat nhiều lượt có streaming và lịch sử hội thoại được giới hạn theo chủ sở hữu."
+      ],
+      "strengths": [
+        "Tích hợp nhanh frontend, xác thực, dữ liệu và trải nghiệm hội thoại.",
+        "Giảm phần hạ tầng giao diện phải tự lắp ghép."
+      ],
+      "elimination_signals": [
+        "Nếu đề cần backend workflow có retry, callback và execution history, loại Amplify và nghĩ đến AWS Step Functions.",
+        "Nếu chỉ cần một API backend gọi model mà không có yêu cầu frontend, Amplify thường không phải trọng tâm."
+      ],
+      "trigger_keywords": [
+        "authenticated frontend",
+        "GenAI conversation UI",
+        "streamed multi-turn chat",
+        "owner-scoped history",
+        "rapid web application"
+      ],
+      "confused_with": [
+        "Amazon API Gateway",
+        "AWS AppSync",
+        "Amazon Cognito"
+      ]
+    },
+    {
+      "name": "AWS CDK",
+      "category": "Developer tools",
+      "exam_patterns": [
+        "Chọn khi đội ngũ muốn định nghĩa hạ tầng bằng ngôn ngữ lập trình và tái sử dụng các construct.",
+        "CDK phù hợp khi cần chuẩn hóa kiến trúc lặp lại giữa nhiều môi trường hoặc tài khoản."
+      ],
+      "strengths": [
+        "Cho phép đóng gói và tái sử dụng mẫu hạ tầng bằng code.",
+        "Kết hợp tốt với quy trình IaC nhất quán."
+      ],
+      "elimination_signals": [
+        "Nếu đề nhấn mạnh template khai báo YAML hoặc JSON trực tiếp, AWS CloudFormation là tín hiệu rõ hơn.",
+        "Nếu yêu cầu là build, test hoặc release gate, CDK không thay thế CodeBuild hay CodePipeline."
+      ],
+      "trigger_keywords": [
+        "infrastructure as code",
+        "programming language constructs",
+        "reusable constructs",
+        "synthesize CloudFormation",
+        "multi-account architecture"
+      ],
+      "confused_with": [
+        "AWS CloudFormation",
+        "AWS Service Catalog"
+      ]
+    },
+    {
+      "name": "AWS CLI",
+      "category": "Developer tools",
+      "exam_patterns": [
+        "Chọn cho thao tác hoặc script dòng lệnh gọi AWS APIs trong vận hành và tự động hóa.",
+        "CLI là công cụ điều khiển dịch vụ, không phải runtime của ứng dụng."
+      ],
+      "strengths": [
+        "Phù hợp với lệnh ad hoc và shell automation.",
+        "Cung cấp cách thống nhất để thao tác nhiều dịch vụ AWS."
+      ],
+      "elimination_signals": [
+        "Nếu code ứng dụng phải gọi AWS API trong production, loại CLI và dùng AWS SDKs and tools.",
+        "Nếu đề cần triển khai hạ tầng khai báo, CLI không thay thế AWS CloudFormation."
+      ],
+      "trigger_keywords": [
+        "command line",
+        "shell script",
+        "aws command",
+        "operational automation"
+      ],
+      "confused_with": [
+        "AWS SDKs and tools",
+        "AWS CloudFormation"
+      ]
+    },
+    {
+      "name": "AWS CloudFormation",
+      "category": "Developer tools",
+      "exam_patterns": [
+        "Chọn khi cần IaC khai báo và triển khai môi trường AWS có thể lặp lại.",
+        "Stack template là tín hiệu cho việc quản lý tài nguyên theo một cấu hình được kiểm soát."
+      ],
+      "strengths": [
+        "Triển khai hạ tầng nhất quán từ template.",
+        "Giảm cấu hình tài nguyên thủ công giữa các môi trường."
+      ],
+      "elimination_signals": [
+        "Nếu đề yêu cầu construct có thể tái sử dụng bằng ngôn ngữ lập trình, AWS CDK khớp hơn.",
+        "Nếu yêu cầu là source-to-test-to-approval-to-deploy, CloudFormation không phải release orchestrator."
+      ],
+      "trigger_keywords": [
+        "declarative IaC",
+        "CloudFormation stack",
+        "YAML template",
+        "JSON template",
+        "repeatable environment"
+      ],
+      "confused_with": [
+        "AWS CDK",
+        "AWS CodePipeline",
+        "AWS Service Catalog"
+      ]
+    },
+    {
+      "name": "AWS CodeArtifact",
+      "category": "Developer tools",
+      "exam_patterns": [
+        "Chọn khi build cần kho package hoặc artifact dependency được quản lý."
+      ],
+      "strengths": [
+        "Tập trung quản lý các package mà quy trình build sử dụng."
+      ],
+      "elimination_signals": [
+        "Nếu đề hỏi thực thi compile, test hoặc security scan, loại CodeArtifact và nghĩ đến AWS CodeBuild.",
+        "Nếu đề hỏi điều phối toàn bộ release pipeline, kho package không thay thế AWS CodePipeline."
+      ],
+      "trigger_keywords": [
+        "package repository",
+        "artifact repository",
+        "build dependencies",
+        "managed packages"
+      ],
+      "confused_with": [
+        "AWS CodeBuild",
+        "AWS CodePipeline",
+        "Amazon ECR"
+      ]
+    },
+    {
+      "name": "AWS CodeBuild",
+      "category": "Developer tools",
+      "exam_patterns": [
+        "Chọn khi pipeline cần chạy build, unit test, security test hoặc bộ test prompt và guardrail.",
+        "Report groups là dấu hiệu CodeBuild chịu trách nhiệm thực thi và xuất kết quả kiểm thử."
+      ],
+      "strengths": [
+        "Môi trường build và test được quản lý.",
+        "Phù hợp để biến kiểm thử chất lượng và bảo mật thành release gate."
+      ],
+      "elimination_signals": [
+        "Nếu đề hỏi điều phối source, approval và deploy, CodeBuild chỉ là một stage chứ không phải AWS CodePipeline.",
+        "Nếu đề hỏi canary hoặc linear traffic shifting khi triển khai, loại CodeBuild và nghĩ đến AWS CodeDeploy."
+      ],
+      "trigger_keywords": [
+        "build project",
+        "run tests",
+        "security scan",
+        "prompt regression tests",
+        "report groups"
+      ],
+      "confused_with": [
+        "AWS CodePipeline",
+        "AWS CodeDeploy",
+        "AWS CodeArtifact"
+      ]
+    },
+    {
+      "name": "AWS CodeDeploy",
+      "category": "Developer tools",
+      "exam_patterns": [
+        "Chọn khi cần tự động hóa triển khai và dịch chuyển traffic theo canary hoặc linear cho workload được hỗ trợ.",
+        "Với Lambda, cụm từ Lambda alias traffic shifting và rollback theo alarm thường dẫn đến CodeDeploy."
+      ],
+      "strengths": [
+        "Kiểm soát rollout theo từng bước thay vì thay đổi toàn bộ ngay lập tức.",
+        "Kết hợp với CloudWatch alarms để giảm rủi ro phát hành."
+      ],
+      "elimination_signals": [
+        "Nếu đề cần compile, test hoặc tạo report, loại CodeDeploy và chọn AWS CodeBuild.",
+        "Nếu đề cần điều phối source, approval và nhiều stage, CodeDeploy không thay thế AWS CodePipeline."
+      ],
+      "trigger_keywords": [
+        "canary deployment",
+        "linear deployment",
+        "traffic shifting",
+        "Lambda alias",
+        "deployment group",
+        "automatic rollback"
+      ],
+      "confused_with": [
+        "AWS CodeBuild",
+        "AWS CodePipeline",
+        "AWS AppConfig"
+      ]
+    },
+    {
+      "name": "AWS CodePipeline",
+      "category": "Developer tools",
+      "exam_patterns": [
+        "Chọn khi cần điều phối chuỗi source, test, approval và deployment.",
+        "Các ngưỡng đánh giá model hoặc prompt có thể trở thành release gate trong pipeline."
+      ],
+      "strengths": [
+        "Kết nối nhiều stage thành quy trình phát hành có kiểm soát.",
+        "Hỗ trợ approval và quality gate trước khi triển khai."
+      ],
+      "elimination_signals": [
+        "Nếu yêu cầu chỉ là chạy build hoặc test, AWS CodeBuild là executor trực tiếp hơn.",
+        "Nếu yêu cầu chỉ là dịch chuyển traffic canary hoặc linear, AWS CodeDeploy là thành phần triển khai phù hợp hơn."
+      ],
+      "trigger_keywords": [
+        "CI/CD orchestration",
+        "release pipeline",
+        "manual approval",
+        "quality gate",
+        "source to deploy"
+      ],
+      "confused_with": [
+        "AWS CodeBuild",
+        "AWS CodeDeploy",
+        "AWS Step Functions"
+      ]
+    },
+    {
+      "name": "Kiro",
+      "category": "Developer tools",
+      "exam_patterns": [
+        "Chọn khi đề nói đến agentic coding IDE hỗ trợ specs, code, test và debugging trong quy trình phát triển."
+      ],
+      "strengths": [
+        "Gắn đặc tả và tác vụ agentic trực tiếp vào vòng đời phát triển phần mềm."
+      ],
+      "elimination_signals": [
+        "Nếu đề cần trợ lý tìm kiếm kiến thức doanh nghiệp cho nhân viên, loại Kiro và nghĩ đến Amazon Q Business.",
+        "Nếu đề cần runtime để host agent hoặc MCP workload trong production, IDE không thay thế Bedrock AgentCore."
+      ],
+      "trigger_keywords": [
+        "agentic coding IDE",
+        "spec-driven development",
+        "generate tests",
+        "debug code",
+        "development workflow"
+      ],
+      "confused_with": [
+        "Amazon Q Developer",
+        "Amazon Q Business",
+        "Bedrock AgentCore"
+      ]
+    },
+    {
+      "name": "AWS SDKs and tools",
+      "category": "Developer tools",
+      "exam_patterns": [
+        "Chọn khi code ứng dụng phải gọi dịch vụ AWS bằng client đã xác thực, có retry và cấu hình kết nối.",
+        "Trong tích hợp Bedrock Runtime, SDK phù hợp để xử lý request model-aware, streaming và lỗi dịch vụ."
+      ],
+      "strengths": [
+        "Cung cấp client lập trình cho AWS APIs và cơ chế xác thực chuẩn.",
+        "Cho phép cấu hình retry, timeout, keep-alive và xử lý stream trong ứng dụng."
+      ],
+      "elimination_signals": [
+        "Nếu tác vụ chỉ là lệnh vận hành hoặc shell script, AWS CLI thường trực tiếp hơn.",
+        "Nếu đề cần orchestration không-code giữa nhiều bước, SDK không tự thay thế AWS Step Functions."
+      ],
+      "trigger_keywords": [
+        "application client",
+        "AWS API call",
+        "retry configuration",
+        "connection reuse",
+        "Bedrock Runtime SDK",
+        "stream events"
+      ],
+      "confused_with": [
+        "AWS CLI",
+        "AWS Step Functions",
+        "Amazon API Gateway"
+      ]
+    },
+    {
+      "name": "AWS X-Ray",
+      "category": "Developer tools",
+      "exam_patterns": [
+        "Chọn khi cần trace đường đi của một request qua API Gateway, Lambda, retrieval và model để cô lập latency.",
+        "Service map, trace và segment là tín hiệu của distributed tracing."
+      ],
+      "strengths": [
+        "Xác định thành phần nào trong request path gây chậm hoặc lỗi.",
+        "Liên kết latency giữa nhiều dịch vụ trong một giao dịch."
+      ],
+      "elimination_signals": [
+        "Nếu câu hỏi là who called which API and when, loại X-Ray và chọn AWS CloudTrail.",
+        "Nếu chỉ cần metrics, alarms hoặc log search, Amazon CloudWatch và CloudWatch Logs phù hợp hơn."
+      ],
+      "trigger_keywords": [
+        "distributed tracing",
+        "request path",
+        "service map",
+        "trace segments",
+        "latency isolation"
+      ],
+      "confused_with": [
+        "AWS CloudTrail",
+        "Amazon CloudWatch",
+        "CloudWatch Logs"
+      ]
+    },
+    {
+      "name": "Amazon Augmented AI (A2I)",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn khi một quyết định ML được hỗ trợ cần human review workflow theo confidence hoặc điều kiện kiểm tra.",
+        "A2I phù hợp với human loop quanh kết quả ML hơn là orchestration nghiệp vụ tổng quát."
+      ],
+      "strengths": [
+        "Đưa người đánh giá vào vòng quyết định ML theo cách được quản lý.",
+        "Hữu ích cho trường hợp không chắc chắn hoặc tác động cao cần kiểm tra."
+      ],
+      "elimination_signals": [
+        "Nếu đề nói general workflow chờ phê duyệt nhiều giờ bằng callback token, loại A2I và chọn AWS Step Functions.",
+        "Nếu mục tiêu là tạo nhãn dữ liệu huấn luyện quy mô lớn, SageMaker Ground Truth khớp hơn."
+      ],
+      "trigger_keywords": [
+        "human review workflow",
+        "human loop",
+        "low-confidence prediction",
+        "review ML decision",
+        "human-in-the-loop"
+      ],
+      "confused_with": [
+        "AWS Step Functions",
+        "SageMaker Ground Truth"
+      ]
+    },
+    {
+      "name": "Amazon Bedrock",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn Bedrock cho ứng dụng GenAI dùng foundation models được quản lý; Converse dùng giao diện messages chung, còn InvokeModel dùng body riêng theo model và các biến thể Stream trả kết quả dần.",
+        "CountTokens dùng trước invocation, Provisioned Throughput cho tải ổn định, Cross-Region inference cho áp lực capacity theo vùng, batch inference cho xử lý offline, còn prompt caching dành cho prefix dài và ổn định."
+      ],
+      "strengths": [
+        "Cung cấp nhiều foundation models và các khả năng GenAI được quản lý mà không phải vận hành hạ tầng model.",
+        "Có nhiều chế độ API, capacity, batch, streaming và caching để khớp hình dạng workload."
+      ],
+      "elimination_signals": [
+        "Nếu đề cần custom container, GPU topology, huấn luyện hoặc kiểm soát serving sâu, loại Bedrock managed inference và nghĩ đến Amazon SageMaker AI.",
+        "Nếu tải chỉ tăng tạm thời theo vùng thì loại Provisioned Throughput; nếu yêu cầu tương tác thì loại batch inference, còn prefix thay đổi theo từng user thì loại prompt caching."
+      ],
+      "trigger_keywords": [
+        "Converse / ConverseStream",
+        "InvokeModel",
+        "CountTokens",
+        "Provisioned Throughput",
+        "Cross-Region inference",
+        "batch inference / prompt caching"
+      ],
+      "confused_with": [
+        "Amazon SageMaker AI",
+        "Bedrock Knowledge Bases",
+        "Amazon Titan"
+      ]
+    },
+    {
+      "name": "Agents for Amazon Bedrock",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn khi foundation model cần tự chọn action group hoặc knowledge base để hoàn thành tác vụ nhiều bước.",
+        "Session state và invocation trace giúp theo dõi quyết định orchestration, tool call và lỗi của agent."
+      ],
+      "strengths": [
+        "Orchestration agent được quản lý với action groups, knowledge bases và trạng thái phiên.",
+        "Trace cho thấy các bước agent đã chọn mà không cần tự xây toàn bộ agent loop."
+      ],
+      "elimination_signals": [
+        "Nếu workflow phải deterministic, long-lived, có callback và audit từng nhánh, loại agent orchestration và chọn AWS Step Functions.",
+        "Nếu đề cần host agent hoặc MCP runtime, Gateway hay Memory như hạ tầng dùng chung, Bedrock AgentCore khớp hơn."
+      ],
+      "trigger_keywords": [
+        "action groups",
+        "InvokeAgent",
+        "agent trace",
+        "knowledge base selection",
+        "session state",
+        "dynamic tool selection"
+      ],
+      "confused_with": [
+        "Bedrock AgentCore",
+        "Bedrock Prompt Flows / Flows",
+        "AWS Step Functions"
+      ]
+    },
+    {
+      "name": "Bedrock AgentCore",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn AgentCore Runtime để host agent hoặc MCP workload cần runtime được quản lý, routed hoặc long-running.",
+        "Gateway phù hợp để expose tools với schema rõ ràng, còn Memory lưu short-term, long-term hoặc user-preference memory theo actor và session."
+      ],
+      "strengths": [
+        "Cung cấp các primitive runtime, gateway, memory, identity và observability dành cho hệ thống agent.",
+        "Giảm phần hạ tầng phải tự xây cho agent hoặc MCP server."
+      ],
+      "elimination_signals": [
+        "Nếu đề chỉ cần agent Bedrock chọn action groups và knowledge base, loại AgentCore và nghĩ đến Agents for Amazon Bedrock.",
+        "Nếu luồng phải deterministic, có callback, retry và execution history rõ ràng, AWS Step Functions là ranh giới an toàn hơn."
+      ],
+      "trigger_keywords": [
+        "AgentCore Runtime",
+        "AgentCore Gateway",
+        "AgentCore Memory",
+        "MCP endpoint",
+        "long-running agent",
+        "actorId sessionId"
+      ],
+      "confused_with": [
+        "Agents for Amazon Bedrock",
+        "AWS Step Functions",
+        "Bedrock Prompt Flows / Flows"
+      ]
+    },
+    {
+      "name": "Bedrock Data Automation",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn khi cần trích xuất bất đồng bộ dữ liệu có cấu trúc từ tài liệu, hình ảnh, âm thanh hoặc video được hỗ trợ.",
+        "Blueprint và schema đầu ra là tín hiệu cho pipeline xử lý unstructured media có định dạng thay đổi."
+      ],
+      "strengths": [
+        "Hợp nhất xử lý nhiều loại unstructured media trong một dịch vụ được quản lý.",
+        "Giảm code ghép nhiều extractor khi cần structured insights."
+      ],
+      "elimination_signals": [
+        "Nếu yêu cầu chính là OCR biểu mẫu, bảng và geometry rõ ràng, loại Data Automation và chọn Amazon Textract.",
+        "Nếu chỉ cần speech-to-text với custom vocabulary hoặc PII redaction, Amazon Transcribe trực tiếp hơn."
+      ],
+      "trigger_keywords": [
+        "unstructured media",
+        "structured insights",
+        "blueprints",
+        "documents images audio video",
+        "asynchronous extraction"
+      ],
+      "confused_with": [
+        "Amazon Textract",
+        "Amazon Transcribe",
+        "AWS Glue"
+      ]
+    },
+    {
+      "name": "Bedrock Guardrails",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn cho policy safety áp dụng trực tiếp lên input và output của foundation model, gồm harmful content, denied topics, prompt attacks và sensitive information.",
+        "Guardrail ID cùng version hoặc ApplyGuardrail là tín hiệu triển khai kiểm soát nhất quán quanh inference."
+      ],
+      "strengths": [
+        "Bộ chính sách safety được quản lý và có phiên bản cho model input hoặc output.",
+        "Hỗ trợ lọc, chặn, ẩn dữ liệu nhạy cảm và kiểm tra grounding theo cấu hình."
+      ],
+      "elimination_signals": [
+        "Nếu đề cần discover sensitive data already stored in S3, loại Guardrails và chọn Amazon Macie.",
+        "Nếu đề cần IAM authorization, tool permission hoặc deterministic business validation, Guardrails không thay thế các lớp kiểm soát đó."
+      ],
+      "trigger_keywords": [
+        "denied topics",
+        "prompt attack detection",
+        "sensitive information masking",
+        "content filters",
+        "contextual grounding",
+        "ApplyGuardrail"
+      ],
+      "confused_with": [
+        "Amazon Comprehend",
+        "Amazon Macie",
+        "AWS IAM"
+      ]
+    },
+    {
+      "name": "Bedrock Knowledge Bases",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn khi tài liệu thay đổi và câu trả lời phải grounded bằng retrieval thay vì retraining model.",
+        "RetrieveAndGenerate phù hợp khi Bedrock vừa tìm vừa sinh câu trả lời, còn Retrieve dùng khi ứng dụng cần tự kiểm soát chunks và prompt cuối."
+      ],
+      "strengths": [
+        "Quản lý ingestion, vector retrieval, generation và citations trong kiến trúc RAG.",
+        "Cập nhật tri thức bằng đồng bộ nguồn dữ liệu mà không cần fine-tuning nội dung."
+      ],
+      "elimination_signals": [
+        "Nếu đáp án đề xuất fine-tuning chỉ để cập nhật tài liệu thường xuyên, loại đáp án đó và nghĩ đến Knowledge Bases.",
+        "Nếu cần enterprise assistant có Identity Center, connectors, source ACLs và plugins, Amazon Q Business trực tiếp hơn."
+      ],
+      "trigger_keywords": [
+        "managed RAG",
+        "changing documents",
+        "RetrieveAndGenerate",
+        "Retrieve API",
+        "citations",
+        "ingestion job"
+      ],
+      "confused_with": [
+        "Amazon Kendra",
+        "Amazon Q Business",
+        "Amazon OpenSearch Service"
+      ]
+    },
+    {
+      "name": "Bedrock Model Evaluation",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn khi cần so sánh model, prompt, RAG hoặc agent bằng dataset đại diện và các metric tự động, LLM-as-a-judge hoặc human evaluation.",
+        "S3 JSONL, reference responses và release threshold là tín hiệu đánh giá trước khi promotion."
+      ],
+      "strengths": [
+        "Đo chất lượng ứng viên trên cùng dataset và rubric thay vì dựa vào benchmark chung.",
+        "Phù hợp để biến chất lượng model hoặc prompt thành CI/CD release gate."
+      ],
+      "elimination_signals": [
+        "Nếu đề kiểm tra availability, HTTP journey hoặc latency của production API, loại Model Evaluation và chọn CloudWatch Synthetics.",
+        "Nếu đề hỏi bias hoặc explainability của ML workflow, SageMaker Clarify khớp hơn; nếu hỏi drift endpoint, nghĩ đến SageMaker Model Monitor."
+      ],
+      "trigger_keywords": [
+        "LLM-as-a-judge",
+        "reference responses",
+        "model comparison",
+        "RAG evaluation",
+        "human evaluation",
+        "quality release gate"
+      ],
+      "confused_with": [
+        "SageMaker Clarify",
+        "SageMaker Model Monitor",
+        "CloudWatch Synthetics"
+      ]
+    },
+    {
+      "name": "Bedrock Prompt Management",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn khi prompt cần template tái sử dụng, variables, variants, versions và reference triển khai ổn định.",
+        "Đề nhấn mạnh governance hoặc thay prompt mà không chép cứng vào application code thường dẫn đến Prompt Management."
+      ],
+      "strengths": [
+        "Quản lý vòng đời prompt và liên kết evaluation với đúng phiên bản.",
+        "Giúp rollout và rollback prompt có dấu vết rõ ràng."
+      ],
+      "elimination_signals": [
+        "Nếu đề cần graph có prompt, condition, knowledge base và Lambda nodes, loại Prompt Management và chọn Bedrock Prompt Flows / Flows.",
+        "Nếu đề cần chặn harmful content hoặc PII quanh inference, prompt versioning không thay thế Bedrock Guardrails."
+      ],
+      "trigger_keywords": [
+        "prompt variables",
+        "prompt variants",
+        "prompt version",
+        "managed prompt ARN",
+        "reusable template",
+        "prompt governance"
+      ],
+      "confused_with": [
+        "Bedrock Prompt Flows / Flows",
+        "Bedrock Guardrails",
+        "AWS AppConfig"
+      ]
+    },
+    {
+      "name": "Bedrock Prompt Flows / Flows",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn khi cần graph GenAI được quản lý gồm prompt, condition, knowledge base và Lambda nodes.",
+        "Editable workflow mà người không cần sửa application code vẫn thay được nhánh là tín hiệu của Flows."
+      ],
+      "strengths": [
+        "Biểu diễn prompt chain và nhánh xử lý dưới dạng node được quản lý.",
+        "Giảm bespoke orchestration code cho flow GenAI có cấu trúc."
+      ],
+      "elimination_signals": [
+        "Nếu workflow phải long-running, auditable, có callback, retry và compensation, loại Flows và chọn AWS Step Functions.",
+        "Nếu model phải tự chọn tool linh hoạt qua nhiều lượt, Agents for Amazon Bedrock phù hợp hơn graph cấu hình sẵn."
+      ],
+      "trigger_keywords": [
+        "prompt flow",
+        "condition node",
+        "knowledge base node",
+        "Lambda node",
+        "editable graph",
+        "managed prompt chain"
+      ],
+      "confused_with": [
+        "Bedrock Prompt Management",
+        "Agents for Amazon Bedrock",
+        "AWS Step Functions"
+      ]
+    },
+    {
+      "name": "Amazon Comprehend",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn cho NLP được quản lý như entity extraction, language, sentiment, custom classification và PII detection trong text.",
+        "PII trong free text cần phát hiện hoặc redact trước khi gọi foundation model là pattern nổi bật."
+      ],
+      "strengths": [
+        "Phân tích văn bản mà không phải tự huấn luyện toàn bộ NLP pipeline.",
+        "Phù hợp cho tiền xử lý text trước GenAI inference."
+      ],
+      "elimination_signals": [
+        "Nếu dữ liệu nhạy cảm đã nằm trong S3 và cần discovery ở quy mô bucket, loại Comprehend và chọn Amazon Macie.",
+        "Nếu yêu cầu là policy safety trên cả FM input và output, loại Comprehend và chọn Bedrock Guardrails."
+      ],
+      "trigger_keywords": [
+        "PII detection",
+        "entity extraction",
+        "sentiment analysis",
+        "language detection",
+        "custom classification",
+        "text redaction"
+      ],
+      "confused_with": [
+        "Bedrock Guardrails",
+        "Amazon Macie",
+        "Amazon Textract"
+      ]
+    },
+    {
+      "name": "Amazon Kendra",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn cho enterprise intelligent search có connectors và relevance ranking.",
+        "Kendra phù hợp khi nhu cầu cốt lõi là trải nghiệm search, không phải RAG component tùy biến trong ứng dụng."
+      ],
+      "strengths": [
+        "Tìm kiếm doanh nghiệp được quản lý với kết nối nguồn dữ liệu.",
+        "Tập trung vào relevance của kết quả search."
+      ],
+      "elimination_signals": [
+        "Nếu đề cần enterprise assistant có identity, source permissions và plugins, loại Kendra và chọn Amazon Q Business.",
+        "Nếu ứng dụng tùy chỉnh cần managed retrieval, generation và citations, Bedrock Knowledge Bases khớp hơn."
+      ],
+      "trigger_keywords": [
+        "enterprise search",
+        "intelligent search",
+        "search connectors",
+        "relevance ranking",
+        "document search"
+      ],
+      "confused_with": [
+        "Amazon Q Business",
+        "Bedrock Knowledge Bases",
+        "Amazon OpenSearch Service"
+      ]
+    },
+    {
+      "name": "Amazon Lex",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn khi chatbot hoặc voice bot cần thu thập hội thoại theo intents và slots.",
+        "Lex phù hợp với dialog capture xác định trước hơn là reasoning GenAI tự do."
+      ],
+      "strengths": [
+        "Quản lý giao diện hội thoại dựa trên intent và slot.",
+        "Phù hợp cho luồng thu thập thông tin có cấu trúc."
+      ],
+      "elimination_signals": [
+        "Nếu đề cần foundation model reasoning hoặc sinh nội dung mở, loại Lex và nghĩ đến Amazon Bedrock.",
+        "Nếu đề cần trợ lý tri thức doanh nghiệp với connectors và quyền nguồn, Amazon Q Business trực tiếp hơn."
+      ],
+      "trigger_keywords": [
+        "intents and slots",
+        "conversational interface",
+        "voice bot",
+        "dialog capture",
+        "slot elicitation"
+      ],
+      "confused_with": [
+        "Amazon Bedrock",
+        "Amazon Q Business",
+        "Amazon Connect"
+      ]
+    },
+    {
+      "name": "Amazon Q Business",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn cho enterprise assistant hoặc search dùng connectors được hỗ trợ, workforce identity và quyền truy cập từ nguồn.",
+        "Identity Center, user or group ACLs và plugins là các tín hiệu mạnh."
+      ],
+      "strengths": [
+        "Trải nghiệm trợ lý doanh nghiệp được quản lý gắn với identity và source permissions.",
+        "Giảm việc tự xây lớp connector, search và access filtering."
+      ],
+      "elimination_signals": [
+        "Nếu đề cần managed RAG building block nằm trong custom application, loại Q Business và chọn Bedrock Knowledge Bases.",
+        "Nếu người dùng cần coding assistance trong IDE hoặc CLI, Amazon Q Developer mới là đáp án."
+      ],
+      "trigger_keywords": [
+        "enterprise assistant",
+        "Identity Center",
+        "source permissions",
+        "enterprise connectors",
+        "plugins",
+        "user group access"
+      ],
+      "confused_with": [
+        "Bedrock Knowledge Bases",
+        "Amazon Kendra",
+        "Amazon Q Developer"
+      ]
+    },
+    {
+      "name": "Amazon Q Business Apps",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn khi người dùng doanh nghiệp cần tạo ứng dụng dựa trên dữ liệu và khả năng sẵn có của Amazon Q Business."
+      ],
+      "strengths": [
+        "Mở rộng tri thức và khả năng Q Business thành ứng dụng phục vụ công việc."
+      ],
+      "elimination_signals": [
+        "Nếu yêu cầu chỉ là enterprise search hoặc assistant nền tảng với connectors và ACLs, Amazon Q Business là lớp cốt lõi.",
+        "Nếu cần dựng frontend ứng dụng AWS tổng quát với auth và data, loại Q Business Apps và nghĩ đến AWS Amplify."
+      ],
+      "trigger_keywords": [
+        "Q Business data",
+        "user-created app",
+        "enterprise application",
+        "business app builder"
+      ],
+      "confused_with": [
+        "Amazon Q Business",
+        "AWS Amplify",
+        "Amazon Quick"
+      ]
+    },
+    {
+      "name": "Amazon Q Developer",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn khi developer cần IDE hoặc CLI assistant cho code, AWS guidance, refactoring, tests và security scans.",
+        "Inline suggestions và hỗ trợ hiểu hoặc sửa project là tín hiệu mạnh."
+      ],
+      "strengths": [
+        "Tăng năng suất phát triển ngay trong công cụ lập trình.",
+        "Kết hợp hỗ trợ code với kiến thức AWS và security review."
+      ],
+      "elimination_signals": [
+        "Nếu đề cần enterprise assistant truy cập tài liệu nội bộ theo source ACLs, loại Q Developer và chọn Amazon Q Business.",
+        "Nếu yêu cầu là host production agent hoặc MCP runtime, coding assistant không thay thế Bedrock AgentCore."
+      ],
+      "trigger_keywords": [
+        "IDE chat",
+        "inline code suggestions",
+        "code refactoring",
+        "generate tests",
+        "security scan",
+        "AWS guidance"
+      ],
+      "confused_with": [
+        "Kiro",
+        "Amazon Q Business",
+        "Bedrock AgentCore"
+      ]
+    },
+    {
+      "name": "Amazon Quick",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn khi đề mô tả AI workspace kết nối knowledge, agents, research, analytics, workflows và actions."
+      ],
+      "strengths": [
+        "Tập hợp nhiều hoạt động tri thức và phân tích trong một AI workspace.",
+        "Kết nối insight với workflow và action thay vì chỉ hiển thị dữ liệu."
+      ],
+      "elimination_signals": [
+        "Nếu yêu cầu chỉ là dashboard và stakeholder visualization, Amazon Quick Sight (formerly Amazon QuickSight) trực tiếp hơn.",
+        "Nếu yêu cầu là coding assistance trong IDE hoặc CLI, loại Amazon Quick và chọn Amazon Q Developer."
+      ],
+      "trigger_keywords": [
+        "AI workspace",
+        "connected knowledge",
+        "research and analytics",
+        "agents and workflows",
+        "business actions"
+      ],
+      "confused_with": [
+        "Amazon Quick Sight (formerly Amazon QuickSight)",
+        "Amazon Q Business",
+        "Amazon Q Business Apps"
+      ]
+    },
+    {
+      "name": "Amazon Rekognition",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn cho image hoặc video analysis như labels, moderation, faces và text detection.",
+        "Đây là computer vision được quản lý, không phải generative multimodal reasoning."
+      ],
+      "strengths": [
+        "Nhận diện nội dung hình ảnh và video bằng API được quản lý.",
+        "Có các khả năng chuyên biệt cho moderation và faces."
+      ],
+      "elimination_signals": [
+        "Nếu đề cần OCR biểu mẫu, bảng hoặc key-value trong tài liệu, loại Rekognition và chọn Amazon Textract.",
+        "Nếu đề cần suy luận hoặc sinh câu trả lời đa phương thức, Rekognition không thay thế Amazon Bedrock."
+      ],
+      "trigger_keywords": [
+        "image labels",
+        "video analysis",
+        "face detection",
+        "image moderation",
+        "text in images"
+      ],
+      "confused_with": [
+        "Amazon Textract",
+        "Amazon Bedrock",
+        "Bedrock Data Automation"
+      ]
+    },
+    {
+      "name": "Amazon SageMaker AI",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn khi cần build, process, train, evaluate, deploy hoặc vận hành custom ML model và foundation model.",
+        "Custom container, LMI, real-time endpoint hoặc Batch Transform là tín hiệu cần quyền kiểm soát serving cao."
+      ],
+      "strengths": [
+        "Kiểm soát sâu model lifecycle, container và inference endpoint.",
+        "Phù hợp cho custom hoặc open-weight model mà managed Bedrock offering không đáp ứng."
+      ],
+      "elimination_signals": [
+        "Nếu đề chỉ cần truy cập foundation models được quản lý với least operational overhead, loại SageMaker và chọn Amazon Bedrock.",
+        "Nếu chỉ cần gọi model đã có qua API mà không huấn luyện hay vận hành endpoint, tự dựng SageMaker serving thường là overengineering."
+      ],
+      "trigger_keywords": [
+        "custom model training",
+        "real-time endpoint",
+        "custom container",
+        "LMI container",
+        "Batch Transform",
+        "model serving control"
+      ],
+      "confused_with": [
+        "Amazon Bedrock",
+        "SageMaker JumpStart",
+        "SageMaker Processing"
+      ]
+    },
+    {
+      "name": "SageMaker Clarify",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn khi ML workflow cần đo bias hoặc giải thích prediction và feature contribution.",
+        "Pre-training hoặc post-training bias là tín hiệu của Clarify, không phải đánh giá semantic quality của prompt."
+      ],
+      "strengths": [
+        "Cung cấp phân tích fairness và explainability cho model ML.",
+        "Hỗ trợ tạo bằng chứng về bias trong vòng đời model."
+      ],
+      "elimination_signals": [
+        "Nếu đề hỏi correctness, relevance, faithfulness hoặc LLM-as-a-judge cho prompt và FM, loại Clarify và chọn Bedrock Model Evaluation.",
+        "Nếu đề hỏi production endpoint data drift hoặc model quality drift, SageMaker Model Monitor khớp hơn."
+      ],
+      "trigger_keywords": [
+        "bias metrics",
+        "model explainability",
+        "feature attribution",
+        "pre-training bias",
+        "post-training bias"
+      ],
+      "confused_with": [
+        "Bedrock Model Evaluation",
+        "SageMaker Model Monitor"
+      ]
+    },
+    {
+      "name": "SageMaker Data Wrangler",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn khi data scientist cần chuẩn bị, khám phá hoặc biến đổi dữ liệu theo cách tương tác trong môi trường SageMaker.",
+        "Visual inspection và interactive data preparation là tín hiệu rõ của Data Wrangler."
+      ],
+      "strengths": [
+        "Hỗ trợ khám phá và chuẩn bị dữ liệu tương tác.",
+        "Giảm code cho các bước biến đổi dữ liệu trong quá trình phát triển."
+      ],
+      "elimination_signals": [
+        "Nếu đề yêu cầu nightly automated validation bằng rules và metrics, loại Data Wrangler và chọn AWS Glue Data Quality.",
+        "Nếu cần chạy existing custom container cho xử lý dữ liệu quy mô lớn, SageMaker Processing phù hợp hơn."
+      ],
+      "trigger_keywords": [
+        "interactive data preparation",
+        "visual data inspection",
+        "data profiling",
+        "SageMaker Studio",
+        "prepare ML data"
+      ],
+      "confused_with": [
+        "AWS Glue",
+        "SageMaker Processing"
+      ]
+    },
+    {
+      "name": "SageMaker Ground Truth",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn khi cần tạo nhãn dữ liệu hoặc thu thập human annotations cho training dataset."
+      ],
+      "strengths": [
+        "Quản lý quy trình data labeling và lực lượng gán nhãn.",
+        "Tạo ground-truth annotations phục vụ huấn luyện hoặc đánh giá."
+      ],
+      "elimination_signals": [
+        "Nếu cần human review cho từng quyết định ML đang chạy, Amazon Augmented AI (A2I) phù hợp hơn.",
+        "Nếu cần so sánh chất lượng prompt hoặc FM bằng managed evaluation job, loại Ground Truth và chọn Bedrock Model Evaluation."
+      ],
+      "trigger_keywords": [
+        "data labeling",
+        "human annotations",
+        "labeling job",
+        "training labels",
+        "ground truth dataset"
+      ],
+      "confused_with": [
+        "Amazon Augmented AI (A2I)",
+        "Bedrock Model Evaluation"
+      ]
+    },
+    {
+      "name": "SageMaker JumpStart",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn khi cần bắt đầu từ pretrained model hoặc solution có sẵn rồi triển khai hoặc tùy biến trong SageMaker."
+      ],
+      "strengths": [
+        "Rút ngắn thời gian tìm và khởi tạo model hoặc solution.",
+        "Cung cấp điểm xuất phát cho deployment trong hệ sinh thái SageMaker."
+      ],
+      "elimination_signals": [
+        "Nếu đề cần API managed truy cập nhiều foundation models mà không vận hành endpoint, Amazon Bedrock phù hợp hơn.",
+        "Nếu yêu cầu là tự xây training pipeline hoặc serving stack từ đầu, JumpStart chỉ là điểm bắt đầu chứ không phải toàn bộ giải pháp."
+      ],
+      "trigger_keywords": [
+        "pretrained models",
+        "prebuilt solutions",
+        "model catalog",
+        "deployment starting point",
+        "SageMaker solution"
+      ],
+      "confused_with": [
+        "Amazon Bedrock",
+        "Amazon SageMaker AI",
+        "Amazon Titan"
+      ]
+    },
+    {
+      "name": "SageMaker Model Monitor",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn khi cần theo dõi data quality, model quality hoặc drift của model đã deploy trên SageMaker.",
+        "Production endpoint drift và baseline comparison là tín hiệu chính."
+      ],
+      "strengths": [
+        "Phát hiện thay đổi dữ liệu hoặc hành vi model sau triển khai.",
+        "Hỗ trợ giám sát liên tục thay vì chỉ đánh giá trước release."
+      ],
+      "elimination_signals": [
+        "Nếu đề hỏi bias hoặc explainability của model, loại Model Monitor và chọn SageMaker Clarify.",
+        "Nếu đề hỏi semantic quality của prompt, RAG hoặc Bedrock FM trước release, chọn Bedrock Model Evaluation."
+      ],
+      "trigger_keywords": [
+        "data drift",
+        "model quality drift",
+        "deployed endpoint monitoring",
+        "baseline comparison",
+        "production model monitoring"
+      ],
+      "confused_with": [
+        "SageMaker Clarify",
+        "Bedrock Model Evaluation",
+        "Amazon CloudWatch"
+      ]
+    },
+    {
+      "name": "SageMaker Model Registry",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn khi custom model cần version, metadata, lineage, approval status và kiểm soát release.",
+        "Register adapted model rồi require approval trước canary deployment là pattern điển hình."
+      ],
+      "strengths": [
+        "Tạo nguồn quản trị tập trung cho các phiên bản model.",
+        "Liên kết model package với approval và release lifecycle."
+      ],
+      "elimination_signals": [
+        "Nếu đề cần theo dõi drift của endpoint đang chạy, registry không thay thế SageMaker Model Monitor.",
+        "Nếu đề nói package dependency cho build thay vì model version, loại Model Registry và chọn AWS CodeArtifact."
+      ],
+      "trigger_keywords": [
+        "model version",
+        "model package",
+        "approval status",
+        "model lineage",
+        "register adapted model",
+        "release custom model"
+      ],
+      "confused_with": [
+        "SageMaker Model Monitor",
+        "AWS CodeArtifact",
+        "Amazon ECR"
+      ]
+    },
+    {
+      "name": "SageMaker Neo",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn khi cần compile và optimize model cho inference target được hỗ trợ."
+      ],
+      "strengths": [
+        "Tối ưu model artifact theo target thay vì thay đổi toàn bộ training pipeline."
+      ],
+      "elimination_signals": [
+        "Nếu đề cần train hoặc fine-tune model, Neo không phải dịch vụ huấn luyện.",
+        "Nếu đề cần quản lý version và approval của model, loại Neo và chọn SageMaker Model Registry."
+      ],
+      "trigger_keywords": [
+        "model compilation",
+        "optimize inference",
+        "target hardware",
+        "supported inference target"
+      ],
+      "confused_with": [
+        "Amazon SageMaker AI",
+        "SageMaker Model Registry"
+      ]
+    },
+    {
+      "name": "SageMaker Processing",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn khi cần chạy script hoặc existing custom container cho preprocessing, postprocessing hoặc evaluation job được quản lý.",
+        "Specialized transform không có sẵn dưới dạng managed extractor là tín hiệu của Processing."
+      ],
+      "strengths": [
+        "Tái sử dụng code và container tùy chỉnh cho xử lý dữ liệu ở quy mô được quản lý.",
+        "Phù hợp với tác vụ batch không phải online model endpoint."
+      ],
+      "elimination_signals": [
+        "Nếu chỉ cần interactive preparation và visual inspection, loại Processing và chọn SageMaker Data Wrangler.",
+        "Nếu yêu cầu là row-level data-quality rules lặp lại cùng metrics, AWS Glue phù hợp hơn custom processing job."
+      ],
+      "trigger_keywords": [
+        "processing job",
+        "custom processing script",
+        "existing custom container",
+        "preprocessing",
+        "postprocessing",
+        "custom evaluation"
+      ],
+      "confused_with": [
+        "SageMaker Data Wrangler",
+        "AWS Glue",
+        "Amazon SageMaker AI"
+      ]
+    },
+    {
+      "name": "SageMaker Unified Studio",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn khi cần môi trường phát triển được quản trị chung cho data, analytics và machine learning workflows."
+      ],
+      "strengths": [
+        "Tập hợp trải nghiệm phát triển dữ liệu, phân tích và ML trong một workspace có governance."
+      ],
+      "elimination_signals": [
+        "Nếu đề chỉ cần deploy hoặc invoke custom model endpoint, Unified Studio không phải inference runtime.",
+        "Nếu yêu cầu chỉ là dashboard cho stakeholder, Amazon Quick Sight (formerly Amazon QuickSight) trực tiếp hơn."
+      ],
+      "trigger_keywords": [
+        "governed development environment",
+        "unified data workspace",
+        "analytics and ML",
+        "SageMaker development environment"
+      ],
+      "confused_with": [
+        "Amazon SageMaker AI",
+        "Amazon Quick",
+        "Amazon Quick Sight (formerly Amazon QuickSight)"
+      ]
+    },
+    {
+      "name": "Amazon Textract",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn khi cần OCR và trích xuất cấu trúc từ tài liệu, biểu mẫu hoặc bảng.",
+        "Forms, tables, key-value và document geometry là các tín hiệu mạnh."
+      ],
+      "strengths": [
+        "Trả về cấu trúc tài liệu thay vì chỉ chuỗi text thô.",
+        "Phù hợp với pipeline xử lý form và table được quản lý."
+      ],
+      "elimination_signals": [
+        "Nếu input gồm nhiều loại tài liệu, ảnh, audio hoặc video và cần structured insights theo blueprint, Bedrock Data Automation khớp hơn.",
+        "Nếu yêu cầu là labels, faces hoặc moderation cho image và video, loại Textract và chọn Amazon Rekognition."
+      ],
+      "trigger_keywords": [
+        "OCR",
+        "forms and tables",
+        "key-value extraction",
+        "document geometry",
+        "scanned documents"
+      ],
+      "confused_with": [
+        "Bedrock Data Automation",
+        "Amazon Rekognition",
+        "Amazon Comprehend"
+      ]
+    },
+    {
+      "name": "Amazon Titan",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn khi đề gọi rõ AWS foundation model thuộc họ Titan cho text hoặc embeddings.",
+        "Titan Text Embeddings và multimodal embeddings phù hợp khi cần vector cho semantic search hoặc không gian chung giữa text và image."
+      ],
+      "strengths": [
+        "Cung cấp các foundation model do AWS cung cấp trong hệ sinh thái Bedrock.",
+        "Có lựa chọn embedding phục vụ RAG và multimodal retrieval."
+      ],
+      "elimination_signals": [
+        "Nếu đề chỉ hỏi nền tảng managed để truy cập nhiều model, đáp án là Amazon Bedrock chứ không mặc định là một model Titan.",
+        "Nếu cần train, containerize và kiểm soát serving custom model, loại Titan và nghĩ đến Amazon SageMaker AI."
+      ],
+      "trigger_keywords": [
+        "Titan Text Embeddings",
+        "multimodal embeddings",
+        "AWS foundation model",
+        "vector embeddings",
+        "semantic search"
+      ],
+      "confused_with": [
+        "Amazon Bedrock",
+        "Amazon SageMaker AI",
+        "Bedrock Knowledge Bases"
+      ]
+    },
+    {
+      "name": "Amazon Transcribe",
+      "category": "Machine learning and GenAI",
+      "exam_patterns": [
+        "Chọn khi audio cần chuyển thành text ở chế độ streaming hoặc batch.",
+        "Custom vocabulary và PII redaction trong transcript là các tín hiệu mạnh."
+      ],
+      "strengths": [
+        "Speech-to-text được quản lý cho audio trực tiếp hoặc file ghi âm.",
+        "Hỗ trợ thích nghi từ vựng và xử lý dữ liệu nhạy cảm trong transcript theo khả năng được hỗ trợ."
+      ],
+      "elimination_signals": [
+        "Nếu input là scanned forms hoặc tables, loại Transcribe và chọn Amazon Textract.",
+        "Nếu đã có text và cần sentiment, entities hoặc classification, Amazon Comprehend trực tiếp hơn."
+      ],
+      "trigger_keywords": [
+        "speech to text",
+        "audio transcription",
+        "custom vocabulary",
+        "streaming transcription",
+        "batch transcription",
+        "PII redaction"
+      ],
+      "confused_with": [
+        "Amazon Comprehend",
+        "Amazon Textract",
+        "Bedrock Data Automation"
+      ]
+    }
+  ]
+}

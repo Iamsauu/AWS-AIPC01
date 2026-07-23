@@ -1,0 +1,878 @@
+{
+  "schema_version": "1.0.0",
+  "scope": [
+    "Analytics",
+    "Application integration",
+    "Compute",
+    "Containers",
+    "Customer engagement",
+    "Databases"
+  ],
+  "items": [
+  {
+    "name": "Amazon Athena",
+    "category": "Analytics",
+    "exam_patterns": [
+      "Dữ liệu hoặc kết quả đánh giá nằm trong Amazon S3 và cần truy vấn bằng SQL mà không vận hành máy chủ.",
+      "Luồng báo cáo thường đi từ AWS Glue Data Catalog qua Athena rồi hiển thị bằng Amazon Quick Sight."
+    ],
+    "strengths": [
+      "Truy vấn SQL trực tiếp trên dữ liệu trong S3 với mô hình serverless.",
+      "Phù hợp cho phân tích và báo cáo trên dữ liệu đã được catalog."
+    ],
+    "elimination_signals": [
+      "Thấy \"transactional writes\" hoặc \"OLTP\", loại Athena.",
+      "Thấy \"vector similarity search\" hoặc \"hybrid search\", ưu tiên công cụ tìm kiếm vector."
+    ],
+    "trigger_keywords": [
+      "serverless SQL",
+      "query data in S3",
+      "ad hoc analytics",
+      "Glue Data Catalog",
+      "evaluation reporting"
+    ],
+    "confused_with": [
+      "AWS Glue",
+      "Amazon OpenSearch Service",
+      "Amazon RDS"
+    ]
+  },
+  {
+    "name": "Amazon EMR",
+    "category": "Analytics",
+    "exam_patterns": [
+      "Bài toán cần các framework big data như Spark hoặc Hadoop cho xử lý tùy chỉnh quy mô lớn.",
+      "Chọn EMR khi quyền kiểm soát framework quan trọng hơn mức vận hành tối thiểu."
+    ],
+    "strengths": [
+      "Cung cấp môi trường được quản lý cho các framework xử lý big data.",
+      "Hỗ trợ pipeline Spark hoặc Hadoop cần tùy biến sâu."
+    ],
+    "elimination_signals": [
+      "Thấy \"least operational overhead\" cho ETL thông thường, ưu tiên AWS Glue.",
+      "Thấy tác vụ \"short, stateless, event-driven\", loại EMR."
+    ],
+    "trigger_keywords": [
+      "Apache Spark",
+      "Apache Hadoop",
+      "big data frameworks",
+      "custom distributed processing"
+    ],
+    "confused_with": [
+      "AWS Glue",
+      "SageMaker Processing"
+    ]
+  },
+  {
+    "name": "AWS Glue",
+    "category": "Analytics",
+    "exam_patterns": [
+      "Dữ liệu có cấu trúc cần ETL, crawler hoặc catalog trước khi được truy vấn hay đưa vào pipeline GenAI.",
+      "Các bản ghi chạy định kỳ cần DQDL, kiểm tra chất lượng, quarantine và xuất metrics."
+    ],
+    "strengths": [
+      "Kết hợp ETL serverless, crawler và Data Catalog trong một dịch vụ được quản lý.",
+      "Glue Data Quality phù hợp với quy tắc dữ liệu lặp lại và kết quả pass hoặc fail ở mức bản ghi."
+    ],
+    "elimination_signals": [
+      "Thấy \"interactive data preparation\" hoặc khám phá thủ công một lần, ưu tiên SageMaker Data Wrangler.",
+      "Thấy chỉ cần \"SQL over S3\" trên dữ liệu đã có, ưu tiên Amazon Athena."
+    ],
+    "trigger_keywords": [
+      "serverless ETL",
+      "Data Catalog",
+      "crawler",
+      "DQDL rules",
+      "quarantine failed records",
+      "data lineage"
+    ],
+    "confused_with": [
+      "SageMaker Data Wrangler",
+      "Amazon Athena",
+      "Amazon EMR"
+    ]
+  },
+  {
+    "name": "Amazon Kinesis",
+    "category": "Analytics",
+    "exam_patterns": [
+      "Sự kiện hoặc telemetry đến liên tục và cần ingestion hoặc xử lý streaming theo thời gian thực.",
+      "Chọn Kinesis khi đề nhấn mạnh luồng bản ghi có thứ tự và thông lượng cao, không phải hàng đợi công việc đơn giản."
+    ],
+    "strengths": [
+      "Phù hợp cho luồng dữ liệu liên tục cần xử lý gần thời gian thực.",
+      "Giữ mô hình stream cho producer và consumer xử lý bản ghi."
+    ],
+    "elimination_signals": [
+      "Thấy \"durable work queue\", \"backpressure\" hoặc một worker path, ưu tiên Amazon SQS.",
+      "Thấy một business event cần \"rule-based fanout\" tới consumer thay đổi, ưu tiên Amazon EventBridge."
+    ],
+    "trigger_keywords": [
+      "real-time streaming",
+      "ordered records",
+      "streaming ingestion",
+      "telemetry stream",
+      "high-throughput stream"
+    ],
+    "confused_with": [
+      "Amazon SQS",
+      "Amazon EventBridge",
+      "Amazon MSK"
+    ]
+  },
+  {
+    "name": "Amazon OpenSearch Service",
+    "category": "Analytics",
+    "exam_patterns": [
+      "RAG cần vector search hoặc hybrid search để kết hợp ngữ nghĩa với mã lỗi và định danh chính xác.",
+      "Đề yêu cầu tự kiểm soát index, shard, tìm kiếm hoặc log analytics."
+    ],
+    "strengths": [
+      "Hỗ trợ tìm kiếm vector, từ khóa và hybrid trên cùng nền tảng.",
+      "Cho phép kiểm soát index và shard khi cần tinh chỉnh truy xuất."
+    ],
+    "elimination_signals": [
+      "Thấy \"relational transactions\" hoặc quan hệ dữ liệu là yêu cầu chính, ưu tiên Amazon Aurora hoặc Amazon RDS.",
+      "Thấy \"least operational overhead\" cho RAG được quản lý và không cần kiểm soát index, ưu tiên Bedrock Knowledge Bases."
+    ],
+    "trigger_keywords": [
+      "vector search",
+      "hybrid search",
+      "exact error codes",
+      "k-NN index",
+      "shard control",
+      "log analytics"
+    ],
+    "confused_with": [
+      "Amazon Aurora",
+      "Bedrock Knowledge Bases",
+      "Amazon Kendra"
+    ]
+  },
+  {
+    "name": "Amazon Quick Sight (formerly Amazon QuickSight)",
+    "category": "Analytics",
+    "exam_patterns": [
+      "Các bên liên quan cần dashboard theo dõi kết quả đánh giá, chất lượng hoặc xu hướng theo thời gian.",
+      "Luồng thường dùng dữ liệu trong S3, catalog bằng AWS Glue và truy vấn bằng Amazon Athena trước khi trực quan hóa."
+    ],
+    "strengths": [
+      "Tạo dashboard và báo cáo phân tích cho stakeholder.",
+      "Phù hợp với trực quan hóa kết quả đánh giá theo thời gian."
+    ],
+    "elimination_signals": [
+      "Thấy \"transform data\", \"crawler\" hoặc \"data quality rules\", ưu tiên AWS Glue.",
+      "Thấy chỉ cần chạy \"serverless SQL over S3\", ưu tiên Amazon Athena."
+    ],
+    "trigger_keywords": [
+      "BI dashboards",
+      "stakeholder visualization",
+      "evaluation trends",
+      "analytics reporting",
+      "longitudinal reporting"
+    ],
+    "confused_with": [
+      "Amazon Athena",
+      "AWS Glue",
+      "Amazon Managed Grafana"
+    ]
+  },
+  {
+    "name": "Amazon MSK",
+    "category": "Analytics",
+    "exam_patterns": [
+      "Hệ thống đã dùng Apache Kafka hoặc yêu cầu tương thích Kafka cho event streaming.",
+      "Chọn MSK khi Kafka là ràng buộc rõ ràng, dù vận hành nặng hơn các dịch vụ queue hoặc event native."
+    ],
+    "strengths": [
+      "Cung cấp Apache Kafka được quản lý cho hệ sinh thái Kafka hiện có.",
+      "Phù hợp với yêu cầu event streaming gắn với giao thức và công cụ Kafka."
+    ],
+    "elimination_signals": [
+      "Thấy \"least operational overhead\" mà không có yêu cầu Kafka, ưu tiên dịch vụ AWS native phù hợp.",
+      "Thấy chỉ cần \"durable queue\" hoặc \"rule-based event routing\", loại MSK."
+    ],
+    "trigger_keywords": [
+      "existing Kafka",
+      "Apache Kafka compatibility",
+      "Kafka ecosystem",
+      "managed Kafka",
+      "event streaming platform"
+    ],
+    "confused_with": [
+      "Amazon Kinesis",
+      "Amazon EventBridge",
+      "Amazon SQS"
+    ]
+  },
+  {
+    "name": "Amazon AppFlow",
+    "category": "Application integration",
+    "exam_patterns": [
+      "Nội dung từ ứng dụng SaaS như Salesforce cần được sao chép vào Amazon S3 bằng luồng được quản lý.",
+      "Đề yêu cầu tích hợp dữ liệu SaaS với AWS mà không muốn tự viết pipeline trích xuất."
+    ],
+    "strengths": [
+      "Cung cấp luồng truyền dữ liệu SaaS sang AWS được quản lý.",
+      "Giảm mã tích hợp riêng cho các nguồn SaaS được hỗ trợ."
+    ],
+    "elimination_signals": [
+      "Thấy \"rule-based event routing\" tới nhiều consumer, ưu tiên Amazon EventBridge.",
+      "Thấy workflow có \"branches, retries, callbacks\", ưu tiên AWS Step Functions."
+    ],
+    "trigger_keywords": [
+      "Salesforce to S3",
+      "SaaS data transfer",
+      "managed connector",
+      "compliance copy",
+      "SaaS integration"
+    ],
+    "confused_with": [
+      "Amazon EventBridge",
+      "AWS DataSync",
+      "AWS Glue"
+    ]
+  },
+  {
+    "name": "AWS AppConfig",
+    "category": "Application integration",
+    "exam_patterns": [
+      "Ứng dụng cần đổi model ID, inference settings, endpoint hoặc routing mà không triển khai lại code.",
+      "Cấu hình hoặc feature flag cần validation, rollout theo giai đoạn và rollback khi alarm phát hiện lỗi."
+    ],
+    "strengths": [
+      "Tách thay đổi cấu hình runtime khỏi deployment ứng dụng.",
+      "Hỗ trợ rollout có kiểm soát, validation và rollback dựa trên giám sát."
+    ],
+    "elimination_signals": [
+      "Thấy \"source-to-test-to-deploy pipeline\", ưu tiên AWS CodePipeline.",
+      "Thấy \"prompt templates, variables, variants, versions\", ưu tiên Bedrock Prompt Management."
+    ],
+    "trigger_keywords": [
+      "without redeploying",
+      "runtime configuration",
+      "feature flags",
+      "staged rollout",
+      "automatic rollback",
+      "model routing"
+    ],
+    "confused_with": [
+      "AWS CodePipeline",
+      "AWS CodeDeploy",
+      "Bedrock Prompt Management"
+    ]
+  },
+  {
+    "name": "Amazon EventBridge",
+    "category": "Application integration",
+    "exam_patterns": [
+      "Một producer phát business event và nhiều consumer hiện tại hoặc tương lai được gắn bằng rule mà không sửa producer.",
+      "Event cần được định tuyến và fanout theo nội dung, không cần hàng đợi worker làm lớp backpressure."
+    ],
+    "strengths": [
+      "Tách producer khỏi các target bằng rule-based routing.",
+      "Dễ bổ sung consumer mới cho cùng một event."
+    ],
+    "elimination_signals": [
+      "Thấy \"durable backlog\", \"worker polling\" hoặc \"backpressure\", ưu tiên Amazon SQS.",
+      "Thấy \"branches, retries, execution history\" trong một workflow, ưu tiên AWS Step Functions."
+    ],
+    "trigger_keywords": [
+      "business event",
+      "rule-based routing",
+      "future consumers",
+      "event fanout",
+      "decoupled targets"
+    ],
+    "confused_with": [
+      "Amazon SQS",
+      "Amazon SNS",
+      "AWS Step Functions"
+    ]
+  },
+  {
+    "name": "Amazon SNS",
+    "category": "Application integration",
+    "exam_patterns": [
+      "Một thông báo cần được push tới nhiều subscriber hoặc gửi cảnh báo cho người duyệt.",
+      "SNS phù hợp với fanout thông báo, nhưng không tự lưu trạng thái workflow phê duyệt."
+    ],
+    "strengths": [
+      "Push notification và fanout tới nhiều subscriber.",
+      "Phù hợp để phát cảnh báo trong luồng human review."
+    ],
+    "elimination_signals": [
+      "Thấy \"durable work buffer\", \"backpressure\" hoặc worker polling, ưu tiên Amazon SQS.",
+      "Thấy phê duyệt phải \"pause and resume workflow\", ưu tiên AWS Step Functions callback."
+    ],
+    "trigger_keywords": [
+      "push notification",
+      "fanout notification",
+      "human-review alert",
+      "multiple subscribers"
+    ],
+    "confused_with": [
+      "Amazon SQS",
+      "Amazon EventBridge",
+      "AWS Step Functions"
+    ]
+  },
+  {
+    "name": "Amazon SQS",
+    "category": "Application integration",
+    "exam_patterns": [
+      "Webhook phải phản hồi nhanh trong khi tác vụ chậm được xử lý bất đồng bộ bởi một worker path.",
+      "Lưu lượng bursty cần durable queue, retry delivery, backpressure và dead-letter queue."
+    ],
+    "strengths": [
+      "Hấp thụ burst và tách producer khỏi worker xử lý chậm.",
+      "Giữ backlog bền vững cho xử lý bất đồng bộ và retry."
+    ],
+    "elimination_signals": [
+      "Thấy một event cần \"new rule-based consumers\" được thêm linh hoạt, ưu tiên Amazon EventBridge.",
+      "Thấy \"branches, callbacks, execution history\" thay vì backlog công việc, ưu tiên AWS Step Functions."
+    ],
+    "trigger_keywords": [
+      "bursty traffic",
+      "durable queue",
+      "backpressure",
+      "asynchronous workers",
+      "dead-letter queue",
+      "immediate acknowledgement"
+    ],
+    "confused_with": [
+      "Amazon EventBridge",
+      "Amazon SNS",
+      "AWS Step Functions"
+    ]
+  },
+  {
+    "name": "AWS Step Functions",
+    "category": "Application integration",
+    "exam_patterns": [
+      "Quy trình cần Choice, Parallel, retry, timeout, audit history hoặc phối hợp nhiều bước xác định.",
+      "Human approval kéo dài cần Standard workflow với callback task token thay vì giữ compute chờ."
+    ],
+    "strengths": [
+      "Điều phối workflow bền vững, có trạng thái và lịch sử thực thi.",
+      "Biểu diễn rõ nhánh, retry, chạy song song và callback dài hạn."
+    ],
+    "elimination_signals": [
+      "Thấy một tác vụ \"short, stateless, event-driven\" duy nhất, ưu tiên AWS Lambda.",
+      "Thấy graph chỉ gồm prompt, condition, Knowledge Base và Lambda do người dùng chỉnh sửa, ưu tiên Bedrock Prompt Flows / Flows."
+    ],
+    "trigger_keywords": [
+      "execution history",
+      "callback task token",
+      "human approval",
+      "Choice state",
+      "Parallel state",
+      "auditable workflow"
+    ],
+    "confused_with": [
+      "AWS Lambda",
+      "Bedrock Prompt Flows / Flows",
+      "Bedrock AgentCore"
+    ]
+  },
+  {
+    "name": "AWS App Runner",
+    "category": "Compute",
+    "exam_patterns": [
+      "Một web service hoặc container cần được triển khai với ít trách nhiệm hạ tầng.",
+      "Chọn App Runner khi mục tiêu là vận hành ứng dụng web được quản lý, không cần orchestration container phức tạp."
+    ],
+    "strengths": [
+      "Đơn giản hóa triển khai và vận hành web hoặc container service.",
+      "Giảm quyền sở hữu hạ tầng so với tự quản máy chủ."
+    ],
+    "elimination_signals": [
+      "Thấy \"short, stateless, event-driven function\", ưu tiên AWS Lambda.",
+      "Thấy yêu cầu rõ \"Kubernetes\", ưu tiên Amazon EKS."
+    ],
+    "trigger_keywords": [
+      "managed web service",
+      "deploy container service",
+      "low infrastructure ownership",
+      "web application deployment"
+    ],
+    "confused_with": [
+      "Amazon ECS",
+      "AWS Lambda",
+      "Amazon EKS"
+    ]
+  },
+  {
+    "name": "Amazon EC2",
+    "category": "Compute",
+    "exam_patterns": [
+      "Workload cần toàn quyền kiểm soát máy ảo, hệ điều hành hoặc host và không phù hợp với lựa chọn managed hay serverless.",
+      "EC2 là phương án khi yêu cầu tùy biến hạ tầng quan trọng hơn gánh nặng vận hành."
+    ],
+    "strengths": [
+      "Cung cấp quyền kiểm soát đầy đủ đối với VM và môi trường host.",
+      "Chạy workload tùy chỉnh không vừa với giới hạn của nền tảng được quản lý."
+    ],
+    "elimination_signals": [
+      "Thấy \"least operational overhead\" hoặc \"serverless\", thường loại Amazon EC2.",
+      "Thấy container cần chạy \"without managing servers\", ưu tiên AWS Fargate."
+    ],
+    "trigger_keywords": [
+      "full VM control",
+      "custom operating system",
+      "host-level access",
+      "self-managed compute"
+    ],
+    "confused_with": [
+      "AWS Lambda",
+      "AWS Fargate",
+      "AWS App Runner"
+    ]
+  },
+  {
+    "name": "AWS Lambda",
+    "category": "Compute",
+    "exam_patterns": [
+      "API, event hoặc tool cần adapter ngắn, stateless để validate, tiền xử lý hoặc gọi dịch vụ khác.",
+      "Lambda thường đứng sau Amazon API Gateway hoặc xử lý message từ Amazon SQS cho tác vụ serverless ngắn."
+    ],
+    "strengths": [
+      "Chạy code theo sự kiện mà không quản lý máy chủ.",
+      "Phù hợp với adapter, validator và tool có thời lượng ngắn."
+    ],
+    "elimination_signals": [
+      "Thấy \"wait days for human approval\" hoặc hàm phải ngủ chờ, loại Lambda và chọn callback workflow.",
+      "Thấy \"CPU-heavy\", native dependencies hoặc server dài hạn, ưu tiên container trên AWS Fargate."
+    ],
+    "trigger_keywords": [
+      "short stateless task",
+      "event-driven function",
+      "API adapter",
+      "input validation",
+      "Lambda proxy",
+      "lightweight MCP tool"
+    ],
+    "confused_with": [
+      "AWS Fargate",
+      "AWS Step Functions",
+      "Amazon EC2"
+    ]
+  },
+  {
+    "name": "Lambda@Edge",
+    "category": "Compute",
+    "exam_patterns": [
+      "Logic giới hạn cần chạy tại edge location gắn với Amazon CloudFront.",
+      "Chọn Lambda@Edge cho xử lý ở đường phân phối nội dung, không phải để chạy suy luận foundation model tổng quát."
+    ],
+    "strengths": [
+      "Đưa logic nhẹ đến gần người dùng tại CloudFront edge.",
+      "Tích hợp xử lý tùy chỉnh với luồng phân phối nội dung."
+    ],
+    "elimination_signals": [
+      "Thấy \"general FM inference\" hoặc tool backend thông thường, ưu tiên compute vùng phù hợp.",
+      "Thấy \"telecom edge\" và độ trễ mobile cực thấp, ưu tiên AWS Wavelength."
+    ],
+    "trigger_keywords": [
+      "CloudFront edge",
+      "edge locations",
+      "content delivery logic",
+      "run code at the edge"
+    ],
+    "confused_with": [
+      "AWS Lambda",
+      "Amazon CloudFront",
+      "AWS Wavelength"
+    ]
+  },
+  {
+    "name": "AWS Outposts",
+    "category": "Compute",
+    "exam_patterns": [
+      "Dữ liệu phải được tiền xử lý hoặc lưu tại chỗ do data residency, rồi chỉ gửi dữ liệu đã khử định danh lên dịch vụ AWS.",
+      "Tổ chức cần hạ tầng AWS ngay trong cơ sở on premises cho kiến trúc hybrid."
+    ],
+    "strengths": [
+      "Mang hạ tầng và mô hình vận hành AWS vào môi trường on premises.",
+      "Hỗ trợ xử lý cục bộ cho yêu cầu residency và kết nối hybrid."
+    ],
+    "elimination_signals": [
+      "Thấy \"ultra-low-latency mobile\" tại telecom edge, ưu tiên AWS Wavelength.",
+      "Không có yêu cầu on premises hoặc data residency, loại Outposts để tránh hạ tầng thừa."
+    ],
+    "trigger_keywords": [
+      "on premises",
+      "data residency",
+      "local preprocessing",
+      "hybrid access",
+      "AWS infrastructure on site"
+    ],
+    "confused_with": [
+      "AWS Wavelength",
+      "Amazon EC2",
+      "AWS PrivateLink"
+    ]
+  },
+  {
+    "name": "AWS Wavelength",
+    "category": "Compute",
+    "exam_patterns": [
+      "Ứng dụng mobile cần compute ở telecom edge để đạt độ trễ cực thấp.",
+      "Chỉ chọn Wavelength khi đề nói rõ yêu cầu edge di động hoặc mạng nhà cung cấp viễn thông."
+    ],
+    "strengths": [
+      "Đặt compute gần người dùng mobile trong hạ tầng telecom edge.",
+      "Phù hợp với workload nhạy cảm mạnh với độ trễ mạng."
+    ],
+    "elimination_signals": [
+      "Thấy \"on-premises data residency\", ưu tiên AWS Outposts.",
+      "Chỉ thấy web workload vùng thông thường mà không có mobile edge, loại Wavelength."
+    ],
+    "trigger_keywords": [
+      "telecom edge",
+      "ultra-low latency",
+      "mobile edge",
+      "edge mobile application",
+      "carrier network"
+    ],
+    "confused_with": [
+      "AWS Outposts",
+      "Lambda@Edge",
+      "AWS Global Accelerator"
+    ]
+  },
+  {
+    "name": "Amazon ECR",
+    "category": "Containers",
+    "exam_patterns": [
+      "Pipeline cần kho lưu container image cho Amazon ECS, Amazon EKS, SageMaker hoặc custom runtime.",
+      "ECR xuất hiện ở bước build và pull image, không phải dịch vụ thực thi container."
+    ],
+    "strengths": [
+      "Lưu và phân phối container image cho các runtime AWS.",
+      "Tạo registry trung tâm cho image của workload tùy chỉnh."
+    ],
+    "elimination_signals": [
+      "Thấy \"run containers\" hoặc \"container orchestration\", cần Amazon ECS, Amazon EKS hoặc AWS Fargate chứ không chỉ ECR.",
+      "Thấy lưu model artifact hoặc dataset dạng object, ưu tiên Amazon S3."
+    ],
+    "trigger_keywords": [
+      "container image registry",
+      "store container images",
+      "image URI",
+      "pull container image",
+      "custom runtime image"
+    ],
+    "confused_with": [
+      "Amazon ECS",
+      "Amazon EKS",
+      "Amazon S3"
+    ]
+  },
+  {
+    "name": "Amazon ECS",
+    "category": "Containers",
+    "exam_patterns": [
+      "Ứng dụng cần orchestration container theo kiểu AWS native và không có ràng buộc Kubernetes.",
+      "ECS thường đi với AWS Fargate khi muốn chạy container mà không quản lý host."
+    ],
+    "strengths": [
+      "Điều phối container theo mô hình AWS native.",
+      "Kết hợp với Fargate để giảm quản lý hạ tầng compute."
+    ],
+    "elimination_signals": [
+      "Thấy \"existing Kubernetes platform\" hoặc API Kubernetes bắt buộc, ưu tiên Amazon EKS.",
+      "Thấy \"short, stateless, event-driven\" và không cần container, ưu tiên AWS Lambda."
+    ],
+    "trigger_keywords": [
+      "AWS-native containers",
+      "container orchestration",
+      "ECS service",
+      "ECS on Fargate",
+      "managed container workload"
+    ],
+    "confused_with": [
+      "Amazon EKS",
+      "AWS Fargate",
+      "AWS Lambda"
+    ]
+  },
+  {
+    "name": "Amazon EKS",
+    "category": "Containers",
+    "exam_patterns": [
+      "Tổ chức đã có nền tảng Kubernetes hoặc workload bắt buộc dùng Kubernetes.",
+      "EKS là đáp án do ràng buộc cluster và hệ sinh thái Kubernetes, không chỉ vì workload được đóng container."
+    ],
+    "strengths": [
+      "Cung cấp Kubernetes được quản lý cho nền tảng hoặc yêu cầu Kubernetes hiện có.",
+      "Giữ mô hình API và công cụ Kubernetes cho workload container."
+    ],
+    "elimination_signals": [
+      "Thấy \"least operational overhead\" và không có yêu cầu Kubernetes, thường loại Amazon EKS.",
+      "Thấy tool \"short, stateless, event-driven\", ưu tiên AWS Lambda."
+    ],
+    "trigger_keywords": [
+      "Kubernetes requirement",
+      "existing Kubernetes platform",
+      "managed Kubernetes",
+      "cluster-specific requirement"
+    ],
+    "confused_with": [
+      "Amazon ECS",
+      "AWS Fargate",
+      "AWS Lambda"
+    ]
+  },
+  {
+    "name": "AWS Fargate",
+    "category": "Containers",
+    "exam_patterns": [
+      "Container cần chạy trên Amazon ECS hoặc Amazon EKS mà không quản lý server.",
+      "Tool hoặc MCP server nặng hơn, chạy lâu hơn hay cần native dependencies vượt kiểu tác vụ Lambda ngắn."
+    ],
+    "strengths": [
+      "Cung cấp compute serverless cho workload container.",
+      "Phù hợp với tiến trình container dài hoặc nặng mà không quản lý host."
+    ],
+    "elimination_signals": [
+      "Thấy \"short, stateless, event-driven function\" không cần container, ưu tiên AWS Lambda.",
+      "Thấy chỉ cần \"store container images\", chọn Amazon ECR chứ không phải Fargate."
+    ],
+    "trigger_keywords": [
+      "serverless containers",
+      "without managing servers",
+      "long-running MCP server",
+      "native dependencies",
+      "ECS Fargate"
+    ],
+    "confused_with": [
+      "AWS Lambda",
+      "Amazon ECS",
+      "Amazon EKS"
+    ]
+  },
+  {
+    "name": "Amazon Connect",
+    "category": "Customer engagement",
+    "exam_patterns": [
+      "Bài toán là contact center với agent assist, call workflow hoặc phân tích transcript cuộc gọi.",
+      "Connect là nền tảng tương tác khách hàng qua trung tâm liên hệ, không phải chatbot tổng quát độc lập."
+    ],
+    "strengths": [
+      "Cung cấp cloud contact center cho luồng cuộc gọi và hỗ trợ nhân viên.",
+      "Tạo điểm tích hợp GenAI với transcript và quy trình contact center."
+    ],
+    "elimination_signals": [
+      "Thấy \"intent and slot filling\" cho hội thoại xác định, ưu tiên Amazon Lex.",
+      "Thấy enterprise search trên tài liệu với quyền người dùng, ưu tiên Amazon Q Business."
+    ],
+    "trigger_keywords": [
+      "cloud contact center",
+      "agent assist",
+      "call workflows",
+      "call transcripts",
+      "customer service calls"
+    ],
+    "confused_with": [
+      "Amazon Lex",
+      "Amazon Q Business",
+      "Amazon Transcribe"
+    ]
+  },
+  {
+    "name": "Amazon Aurora",
+    "category": "Databases",
+    "exam_patterns": [
+      "Ứng dụng cần cơ sở dữ liệu quan hệ tương thích MySQL hoặc PostgreSQL được quản lý.",
+      "Aurora PostgreSQL với pgvector phù hợp khi dữ liệu quan hệ và vector phải cùng tồn tại."
+    ],
+    "strengths": [
+      "Cung cấp database quan hệ được quản lý với lựa chọn tương thích MySQL hoặc PostgreSQL.",
+      "Kết hợp relational semantics và vector search qua pgvector trong thiết kế phù hợp."
+    ],
+    "elimination_signals": [
+      "Thấy trọng tâm là \"hybrid search\", log analytics hoặc kiểm soát shard, ưu tiên Amazon OpenSearch Service.",
+      "Thấy chỉ cần session, job state hoặc key-value với TTL, ưu tiên Amazon DynamoDB."
+    ],
+    "trigger_keywords": [
+      "Aurora PostgreSQL",
+      "pgvector",
+      "relational plus vector",
+      "MySQL compatible",
+      "PostgreSQL compatible"
+    ],
+    "confused_with": [
+      "Amazon OpenSearch Service",
+      "Amazon RDS",
+      "Amazon DynamoDB"
+    ]
+  },
+  {
+    "name": "Amazon DocumentDB",
+    "category": "Databases",
+    "exam_patterns": [
+      "Workload document database cần tương thích với ứng dụng MongoDB hiện có.",
+      "Chọn DocumentDB vì mô hình tài liệu và yêu cầu tương thích MongoDB, không mặc định dùng cho vector RAG."
+    ],
+    "strengths": [
+      "Cung cấp document database được quản lý cho workload tương thích MongoDB.",
+      "Phù hợp khi cấu trúc tài liệu là mô hình lưu trữ chính."
+    ],
+    "elimination_signals": [
+      "Thấy \"relational joins\" hoặc giao dịch quan hệ là yêu cầu chính, ưu tiên Amazon Aurora hoặc Amazon RDS.",
+      "Thấy \"vector search\" hoặc \"hybrid retrieval\" cho RAG, loại DocumentDB mặc định."
+    ],
+    "trigger_keywords": [
+      "MongoDB compatible",
+      "document database",
+      "document records",
+      "existing MongoDB workload"
+    ],
+    "confused_with": [
+      "Amazon DynamoDB",
+      "Amazon Aurora",
+      "Amazon OpenSearch Service"
+    ]
+  },
+  {
+    "name": "Amazon DynamoDB",
+    "category": "Databases",
+    "exam_patterns": [
+      "Ứng dụng cần lưu session, job state, feedback, idempotency key, memory metadata hoặc circuit-breaker state.",
+      "TTL dùng cho dọn dữ liệu hết hạn, còn logic thời gian phải kiểm tra timestamp thay vì chờ bản ghi bị xóa."
+    ],
+    "strengths": [
+      "Lưu key-value và document theo mô hình serverless với ít vận hành.",
+      "Phù hợp cho trạng thái ứng dụng truy cập theo khóa và metadata có TTL."
+    ],
+    "elimination_signals": [
+      "Thấy \"semantic vector search\" hoặc reranking, loại DynamoDB làm vector engine.",
+      "Thấy \"relational joins\" và giao dịch quan hệ là cốt lõi, ưu tiên Amazon Aurora hoặc Amazon RDS."
+    ],
+    "trigger_keywords": [
+      "session state",
+      "job status",
+      "idempotency key",
+      "TTL metadata",
+      "circuit breaker",
+      "conversation history"
+    ],
+    "confused_with": [
+      "Amazon ElastiCache",
+      "Amazon Aurora",
+      "Amazon OpenSearch Service"
+    ]
+  },
+  {
+    "name": "DynamoDB Streams",
+    "category": "Databases",
+    "exam_patterns": [
+      "Thay đổi item trong Amazon DynamoDB cần phát sinh xử lý event-driven để đồng bộ hệ thống khác.",
+      "Nguồn sự kiện là change stream của bảng DynamoDB, không phải luồng ingestion chung."
+    ],
+    "strengths": [
+      "Cung cấp chuỗi thay đổi từ bảng DynamoDB cho consumer xử lý bất đồng bộ.",
+      "Gắn đồng bộ event-driven trực tiếp với thay đổi dữ liệu trong bảng."
+    ],
+    "elimination_signals": [
+      "Thấy \"general real-time telemetry stream\", ưu tiên Amazon Kinesis.",
+      "Thấy business event độc lập cần \"rule-based routing\", ưu tiên Amazon EventBridge."
+    ],
+    "trigger_keywords": [
+      "DynamoDB item changes",
+      "change stream",
+      "table update events",
+      "event-driven synchronization"
+    ],
+    "confused_with": [
+      "Amazon Kinesis",
+      "Amazon EventBridge",
+      "Amazon DynamoDB"
+    ]
+  },
+  {
+    "name": "Amazon ElastiCache",
+    "category": "Databases",
+    "exam_patterns": [
+      "Nhiều compute instance cần cache, session hoặc rate state dùng chung với độ trễ thấp.",
+      "Chọn ElastiCache khi dữ liệu nằm trong bộ nhớ để tăng tốc, không phải làm nguồn dữ liệu bền vững chính."
+    ],
+    "strengths": [
+      "Cung cấp cache in-memory được quản lý cho truy cập độ trễ thấp.",
+      "Phù hợp cho shared cache, session và trạng thái rate limiting."
+    ],
+    "elimination_signals": [
+      "Thấy dữ liệu phải là \"durable system of record\", không chọn ElastiCache làm kho chính.",
+      "Thấy \"semantic search\" hoặc vector index, ưu tiên Amazon OpenSearch Service hoặc Amazon Aurora."
+    ],
+    "trigger_keywords": [
+      "in-memory cache",
+      "shared session state",
+      "rate limiting state",
+      "low-latency cache",
+      "cache repeated results"
+    ],
+    "confused_with": [
+      "Amazon DynamoDB",
+      "Amazon OpenSearch Service",
+      "Amazon CloudFront"
+    ]
+  },
+  {
+    "name": "Amazon Neptune",
+    "category": "Databases",
+    "exam_patterns": [
+      "Dữ liệu là knowledge graph và câu hỏi cần duyệt các mối quan hệ giữa thực thể.",
+      "Chọn Neptune khi graph traversal là thao tác cốt lõi, không phải tìm kiếm vector hay bảng quan hệ thông thường."
+    ],
+    "strengths": [
+      "Cung cấp graph database được quản lý cho knowledge graph.",
+      "Tối ưu mô hình hóa và traversal các quan hệ nhiều bước."
+    ],
+    "elimination_signals": [
+      "Thấy \"vector similarity\" hoặc \"hybrid search\", ưu tiên Amazon OpenSearch Service.",
+      "Thấy dữ liệu tabular với \"relational transactions\", ưu tiên Amazon Aurora hoặc Amazon RDS."
+    ],
+    "trigger_keywords": [
+      "knowledge graph",
+      "graph database",
+      "relationship traversal",
+      "connected entities",
+      "multi-hop relationships"
+    ],
+    "confused_with": [
+      "Amazon OpenSearch Service",
+      "Amazon Aurora",
+      "Amazon RDS"
+    ]
+  },
+  {
+    "name": "Amazon RDS",
+    "category": "Databases",
+    "exam_patterns": [
+      "Ứng dụng cần một relational engine được quản lý và relational semantics là yêu cầu chính.",
+      "RDS phù hợp khi bài toán là database quan hệ truyền thống, không phải session key-value hay graph traversal."
+    ],
+    "strengths": [
+      "Cung cấp các relational database engine được quản lý.",
+      "Phù hợp với schema quan hệ, truy vấn SQL và giao dịch ứng dụng."
+    ],
+    "elimination_signals": [
+      "Thấy \"serverless key-value\", session state hoặc TTL metadata, ưu tiên Amazon DynamoDB.",
+      "Thấy \"knowledge graph\" và quan hệ nhiều bước, ưu tiên Amazon Neptune."
+    ],
+    "trigger_keywords": [
+      "managed relational database",
+      "relational semantics",
+      "SQL transactions",
+      "existing relational engine"
+    ],
+    "confused_with": [
+      "Amazon Aurora",
+      "Amazon DynamoDB",
+      "Amazon Neptune"
+    ]
+  }
+  ]
+}

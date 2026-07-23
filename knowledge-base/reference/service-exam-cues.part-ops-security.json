@@ -1,0 +1,994 @@
+{
+  "schema_version": "1.0.0",
+  "scope": [
+    "Management and governance",
+    "Migration and transfer",
+    "Networking and content delivery",
+    "Security, identity, and compliance",
+    "Storage"
+  ],
+  "items": [
+    {
+      "name": "AWS Auto Scaling",
+      "category": "Management and governance",
+      "exam_patterns": [
+        "Chọn khi đề yêu cầu điều chỉnh quy mô các tài nguyên được hỗ trợ như EC2, ECS, DynamoDB hoặc Aurora theo nhu cầu."
+      ],
+      "strengths": [
+        "Giảm việc điều chỉnh năng lực compute và database thủ công."
+      ],
+      "elimination_signals": [
+        "Nếu đề nói SageMaker endpoint autoscaling, không mặc định chọn AWS Auto Scaling chung vì luồng này dùng Application Auto Scaling.",
+        "Nếu nút thắt là Bedrock token quota hoặc model throughput, tăng quy mô compute không giải quyết đúng loại capacity."
+      ],
+      "trigger_keywords": [
+        "scaling plan",
+        "dynamic scaling",
+        "EC2 Auto Scaling",
+        "ECS scaling",
+        "DynamoDB scaling"
+      ],
+      "confused_with": [
+        "Amazon SageMaker AI"
+      ]
+    },
+    {
+      "name": "AWS Chatbot",
+      "category": "Management and governance",
+      "exam_patterns": [
+        "Chọn khi nhóm vận hành cần nhận thông báo hoặc thực hiện lệnh vận hành qua chat channel."
+      ],
+      "strengths": [
+        "Đưa tín hiệu và thao tác vận hành vào kênh cộng tác với ít hạ tầng tùy chỉnh."
+      ],
+      "elimination_signals": [
+        "Nếu đề cần dashboard lịch sử và phân tích telemetry, chat notification không thay thế dashboard.",
+        "Nếu đề cần trợ lý GenAI trả lời từ knowledge base, đây không phải dịch vụ enterprise assistant."
+      ],
+      "trigger_keywords": [
+        "chat operations",
+        "alarm notifications",
+        "operations commands",
+        "chat channel"
+      ],
+      "confused_with": [
+        "Amazon Managed Grafana",
+        "Amazon Q Business"
+      ]
+    },
+    {
+      "name": "AWS CloudTrail",
+      "category": "Management and governance",
+      "exam_patterns": [
+        "Chọn khi câu hỏi là ai đã gọi hoặc thay đổi AWS API hay resource, và hành động xảy ra khi nào."
+      ],
+      "strengths": [
+        "Cung cấp bằng chứng audit cho hoạt động API và thay đổi resource."
+      ],
+      "elimination_signals": [
+        "Nếu đề hỏi runtime errors, metric trends hoặc alarms, CloudTrail không phải nguồn vận hành chính.",
+        "Nếu đề cần full application decision, prompt body hoặc distributed latency, API audit một mình là chưa đủ."
+      ],
+      "trigger_keywords": [
+        "who called",
+        "API audit",
+        "resource changes",
+        "control plane",
+        "audit trail"
+      ],
+      "confused_with": [
+        "Amazon CloudWatch",
+        "CloudWatch Logs",
+        "AWS X-Ray"
+      ]
+    },
+    {
+      "name": "Amazon CloudWatch",
+      "category": "Management and governance",
+      "exam_patterns": [
+        "Chọn khi đề cần metrics, dashboards, alarms hoặc custom operational signals cho application và model."
+      ],
+      "strengths": [
+        "Tập trung theo dõi xu hướng, ngưỡng cảnh báo và tình trạng vận hành."
+      ],
+      "elimination_signals": [
+        "Nếu đề hỏi chính xác ai đã gọi một AWS API, dùng CloudTrail thay vì suy ra từ metric.",
+        "Nếu đề hỏi semantic answer quality hoặc đường đi latency giữa nhiều service, CloudWatch một mình không đủ."
+      ],
+      "trigger_keywords": [
+        "metrics",
+        "alarms",
+        "dashboards",
+        "custom metrics",
+        "operational telemetry"
+      ],
+      "confused_with": [
+        "AWS CloudTrail",
+        "CloudWatch Logs",
+        "AWS X-Ray"
+      ]
+    },
+    {
+      "name": "CloudWatch Logs",
+      "category": "Management and governance",
+      "exam_patterns": [
+        "Chọn khi application cần structured runtime logs, correlation metadata và truy vấn bằng Logs Insights."
+      ],
+      "strengths": [
+        "Cho phép tìm kiếm và tổng hợp runtime evidence theo trường dữ liệu có cấu trúc."
+      ],
+      "elimination_signals": [
+        "Nếu đề cần xác định thời gian ở từng hop của distributed request, logs không thay thế trace.",
+        "Nếu đề yêu cầu immutable evidence hoặc cấm lưu raw PII, không được mặc định log toàn bộ prompt và response."
+      ],
+      "trigger_keywords": [
+        "structured logs",
+        "Logs Insights",
+        "correlation ID",
+        "runtime logs",
+        "log retention"
+      ],
+      "confused_with": [
+        "Amazon CloudWatch",
+        "AWS CloudTrail",
+        "AWS X-Ray"
+      ]
+    },
+    {
+      "name": "CloudWatch Synthetics",
+      "category": "Management and governance",
+      "exam_patterns": [
+        "Chọn khi đề cần canary kiểm tra deployed user journey, endpoint availability hoặc latency theo lịch."
+      ],
+      "strengths": [
+        "Phát hiện regression của đường chạy production bằng kiểm tra chủ động."
+      ],
+      "elimination_signals": [
+        "Nếu đề hỏi relevance, faithfulness hoặc semantic answer quality, canary không thay thế model hay RAG evaluation.",
+        "Nếu đề chỉ cần offline comparison trước release, kiểm tra deployed path không phải bằng chứng duy nhất cần có."
+      ],
+      "trigger_keywords": [
+        "canary",
+        "user journey",
+        "availability check",
+        "endpoint latency",
+        "deployed path"
+      ],
+      "confused_with": [
+        "Amazon CloudWatch",
+        "AWS X-Ray"
+      ]
+    },
+    {
+      "name": "AWS Cost Anomaly Detection",
+      "category": "Management and governance",
+      "exam_patterns": [
+        "Chọn khi đề yêu cầu phát hiện và cảnh báo mức chi tiêu AWS bất thường."
+      ],
+      "strengths": [
+        "Tập trung vào tín hiệu unexpected spend thay vì bắt người vận hành tự dò xu hướng."
+      ],
+      "elimination_signals": [
+        "Nếu đề cần phân tích lịch sử hoặc forecast chi phí theo usage, Cost Explorer phù hợp hơn.",
+        "Nếu đề mô tả throttling do token capacity, cost anomaly không phải cơ chế admission control."
+      ],
+      "trigger_keywords": [
+        "unusual spend",
+        "cost anomaly",
+        "unexpected cost",
+        "spend alert"
+      ],
+      "confused_with": [
+        "AWS Cost Explorer",
+        "Amazon CloudWatch"
+      ]
+    },
+    {
+      "name": "AWS Cost Explorer",
+      "category": "Management and governance",
+      "exam_patterns": [
+        "Chọn khi đề cần xem lịch sử, xu hướng hoặc forecast cost and usage."
+      ],
+      "strengths": [
+        "Hỗ trợ phân tích chi phí theo thời gian để hiểu mô hình sử dụng."
+      ],
+      "elimination_signals": [
+        "Nếu yêu cầu chính là tự động phát hiện unexpected spend, ưu tiên Cost Anomaly Detection.",
+        "Nếu đề cần latency, quality hoặc request-level diagnostics, báo cáo cost không giải quyết đúng tín hiệu."
+      ],
+      "trigger_keywords": [
+        "historical cost",
+        "cost forecast",
+        "usage trend",
+        "cost breakdown"
+      ],
+      "confused_with": [
+        "AWS Cost Anomaly Detection"
+      ]
+    },
+    {
+      "name": "Amazon Managed Grafana",
+      "category": "Management and governance",
+      "exam_patterns": [
+        "Chọn khi đề cần Grafana dashboards hợp nhất dữ liệu từ nhiều observability sources."
+      ],
+      "strengths": [
+        "Cung cấp lớp visualization quen thuộc trên nhiều nguồn telemetry."
+      ],
+      "elimination_signals": [
+        "Nếu đề cần nơi phát sinh và lưu metrics hoặc logs, dashboard không thay thế telemetry source.",
+        "Nếu đề cần API actor audit hoặc semantic model evaluation, visualization không tạo ra loại evidence đó."
+      ],
+      "trigger_keywords": [
+        "Grafana dashboards",
+        "cross-source dashboards",
+        "visualize telemetry",
+        "observability sources"
+      ],
+      "confused_with": [
+        "Amazon CloudWatch",
+        "Amazon Quick Sight (formerly Amazon QuickSight)"
+      ]
+    },
+    {
+      "name": "AWS Service Catalog",
+      "category": "Management and governance",
+      "exam_patterns": [
+        "Chọn khi tổ chức cần quản trị và phân phối các infrastructure products đã được phê duyệt."
+      ],
+      "strengths": [
+        "Chuẩn hóa self-service infrastructure theo portfolio được kiểm soát."
+      ],
+      "elimination_signals": [
+        "Nếu đề cần architecture review với Generative AI Lens, Service Catalog không thay thế Well-Architected Tool.",
+        "Nếu đề cần định nghĩa và triển khai IaC trực tiếp, approved portfolio không thay thế CloudFormation hoặc CDK."
+      ],
+      "trigger_keywords": [
+        "approved products",
+        "governed portfolio",
+        "self-service infrastructure",
+        "standard offerings"
+      ],
+      "confused_with": [
+        "AWS Well-Architected Tool",
+        "AWS CloudFormation",
+        "AWS CDK"
+      ]
+    },
+    {
+      "name": "AWS Systems Manager",
+      "category": "Management and governance",
+      "exam_patterns": [
+        "Chọn khi đề cần quản lý fleet, configuration, parameters hoặc thao tác vận hành trên compute environments."
+      ],
+      "strengths": [
+        "Tập trung hóa nhiều tác vụ quản trị compute thay vì thao tác từng host."
+      ],
+      "elimination_signals": [
+        "Nếu đề yêu cầu lưu và rotate database credential hoặc API key, ưu tiên Secrets Manager.",
+        "Nếu đề yêu cầu staged rollout model routing với rollback mà không redeploy, AppConfig phù hợp hơn."
+      ],
+      "trigger_keywords": [
+        "fleet management",
+        "managed instances",
+        "operational automation",
+        "parameter management",
+        "compute operations"
+      ],
+      "confused_with": [
+        "AWS Secrets Manager",
+        "AWS AppConfig"
+      ]
+    },
+    {
+      "name": "AWS Well-Architected Tool",
+      "category": "Management and governance",
+      "exam_patterns": [
+        "Chọn khi đề cần ghi nhận architecture review và áp dụng Generative AI Lens."
+      ],
+      "strengths": [
+        "Tạo quy trình đánh giá kiến trúc nhất quán theo best practices."
+      ],
+      "elimination_signals": [
+        "Nếu đề cần runtime monitoring hoặc alarms, architecture review không thay thế CloudWatch.",
+        "Nếu đề cần thu thập audit evidence theo control framework, Well-Architected review không thay thế Audit Manager."
+      ],
+      "trigger_keywords": [
+        "architecture review",
+        "Generative AI Lens",
+        "well-architected review",
+        "best-practice assessment"
+      ],
+      "confused_with": [
+        "AWS Audit Manager",
+        "AWS Service Catalog",
+        "Amazon CloudWatch"
+      ]
+    },
+    {
+      "name": "AWS Audit Manager",
+      "category": "Management and governance",
+      "exam_patterns": [
+        "Chọn khi đề yêu cầu thu thập và tổ chức evidence theo Generative AI Best Practices Framework để chuẩn bị audit."
+      ],
+      "strengths": [
+        "Liên kết control assessment với automated và manual evidence trong một quy trình audit."
+      ],
+      "elimination_signals": [
+        "Nếu đáp án tuyên bố Audit Manager tự chứng minh legal compliance hoặc tạo certification, loại vì evidence không phải chứng nhận pháp lý.",
+        "Nếu đề chỉ hỏi ai gọi AWS API và khi nào, CloudTrail là nguồn audit trực tiếp hơn."
+      ],
+      "trigger_keywords": [
+        "audit evidence",
+        "GenAI Best Practices Framework",
+        "control assessment",
+        "audit preparation"
+      ],
+      "confused_with": [
+        "AWS Well-Architected Tool",
+        "AWS CloudTrail",
+        "AWS Service Catalog"
+      ]
+    },
+    {
+      "name": "AWS DataSync",
+      "category": "Migration and transfer",
+      "exam_patterns": [
+        "Chọn khi đề cần scheduled hoặc accelerated transfer file và object giữa storage systems với AWS."
+      ],
+      "strengths": [
+        "Giảm custom transfer tooling cho các luồng sao chép dữ liệu storage-to-storage."
+      ],
+      "elimination_signals": [
+        "Nếu external partner cần truy cập bằng SFTP, FTPS, FTP hoặc AS2 vào S3 hay EFS, Transfer Family phù hợp hơn.",
+        "Nếu nguồn là SaaS và yêu cầu managed application connector, file transfer service có thể sai lớp tích hợp."
+      ],
+      "trigger_keywords": [
+        "file transfer",
+        "bulk copy",
+        "scheduled sync",
+        "on-premises storage",
+        "object transfer"
+      ],
+      "confused_with": [
+        "AWS Transfer Family",
+        "Amazon AppFlow"
+      ]
+    },
+    {
+      "name": "AWS Transfer Family",
+      "category": "Migration and transfer",
+      "exam_patterns": [
+        "Chọn khi đối tác hoặc hệ thống legacy cần managed SFTP, FTPS, FTP hoặc AS2 access tới S3 hay EFS."
+      ],
+      "strengths": [
+        "Cung cấp protocol endpoint được quản lý mà không cần tự vận hành transfer server."
+      ],
+      "elimination_signals": [
+        "Nếu yêu cầu là scheduled storage-to-storage copy với throughput cao, DataSync phù hợp hơn.",
+        "Nếu đề cần event routing, API validation hoặc workflow orchestration, protocol transfer endpoint không giải quyết yêu cầu đó."
+      ],
+      "trigger_keywords": [
+        "SFTP",
+        "FTPS",
+        "FTP",
+        "AS2",
+        "partner file exchange"
+      ],
+      "confused_with": [
+        "AWS DataSync",
+        "Amazon API Gateway"
+      ]
+    },
+    {
+      "name": "Amazon API Gateway",
+      "category": "Networking and content delivery",
+      "exam_patterns": [
+        "Chọn khi đề cần HTTP, REST hoặc WebSocket API có authentication, validation, throttling và integration với Lambda hay AWS service.",
+        "Trong webhook cần phản hồi nhanh, API Gateway thường nhận và kiểm tra request trước khi đẩy xử lý dài sang queue hoặc event bus."
+      ],
+      "strengths": [
+        "Tạo stable API contract và tập trung các control ở biên ứng dụng."
+      ],
+      "elimination_signals": [
+        "Nếu yêu cầu chỉ là phân phối traffic đến compute targets, API management có thể thừa so với load balancer.",
+        "Nếu đề yêu cầu GraphQL data API và realtime subscriptions, AppSync thường trực tiếp hơn."
+      ],
+      "trigger_keywords": [
+        "webhook",
+        "REST API",
+        "HTTP API",
+        "WebSocket",
+        "request validation",
+        "throttling"
+      ],
+      "confused_with": [
+        "AWS AppSync",
+        "Elastic Load Balancing",
+        "Amazon CloudFront"
+      ]
+    },
+    {
+      "name": "AWS AppSync",
+      "category": "Networking and content delivery",
+      "exam_patterns": [
+        "Chọn khi ứng dụng cần managed GraphQL API và realtime application data."
+      ],
+      "strengths": [
+        "Giảm custom backend plumbing cho GraphQL và cập nhật dữ liệu realtime."
+      ],
+      "elimination_signals": [
+        "Nếu đề là REST webhook hoặc HTTP proxy đơn giản, API Gateway thường khớp contract hơn.",
+        "Nếu yêu cầu chỉ là CDN hoặc edge caching, GraphQL data API không phải lớp phân phối nội dung."
+      ],
+      "trigger_keywords": [
+        "GraphQL",
+        "subscriptions",
+        "realtime data",
+        "application data API"
+      ],
+      "confused_with": [
+        "Amazon API Gateway",
+        "AWS Amplify"
+      ]
+    },
+    {
+      "name": "Amazon CloudFront",
+      "category": "Networking and content delivery",
+      "exam_patterns": [
+        "Chọn khi đề cần global edge delivery hoặc cache cho nội dung có thể chia sẻ với cache key đúng.",
+        "Với GenAI response, chỉ cache khi tính xác định, tenant scope và dữ liệu freshness cho phép."
+      ],
+      "strengths": [
+        "Giảm latency phân phối và tải origin cho nội dung cacheable."
+      ],
+      "elimination_signals": [
+        "Nếu response là personalized, sensitive hoặc non-deterministic mà cache key không cô lập đúng, không chọn edge cache.",
+        "Nếu đề cần static IP và tối ưu network path tới regional endpoints mà không cần cache, Global Accelerator phù hợp hơn."
+      ],
+      "trigger_keywords": [
+        "CDN",
+        "edge cache",
+        "global content delivery",
+        "cache key",
+        "cacheable response"
+      ],
+      "confused_with": [
+        "AWS Global Accelerator",
+        "Amazon API Gateway",
+        "Elastic Load Balancing"
+      ]
+    },
+    {
+      "name": "Elastic Load Balancing",
+      "category": "Networking and content delivery",
+      "exam_patterns": [
+        "Chọn khi đề cần phân phối traffic tới EC2 hoặc container targets."
+      ],
+      "strengths": [
+        "Cân bằng tải cho compute targets mà không cần tự xây traffic distributor."
+      ],
+      "elimination_signals": [
+        "Nếu đề cần API contract, schema validation, authentication và throttling, load balancer không thay thế API Gateway.",
+        "Nếu đề cần edge caching hoặc global content delivery, target load balancing không giải quyết trực tiếp."
+      ],
+      "trigger_keywords": [
+        "load balancer",
+        "distribute traffic",
+        "EC2 targets",
+        "container targets"
+      ],
+      "confused_with": [
+        "Amazon API Gateway",
+        "Amazon CloudFront",
+        "AWS Global Accelerator"
+      ]
+    },
+    {
+      "name": "AWS Global Accelerator",
+      "category": "Networking and content delivery",
+      "exam_patterns": [
+        "Chọn khi đề cần static anycast IP và tối ưu global network path tới regional endpoints."
+      ],
+      "strengths": [
+        "Cung cấp điểm vào toàn cầu ổn định mà không dựa vào content caching."
+      ],
+      "elimination_signals": [
+        "Nếu workload chủ yếu là cacheable web content, CloudFront phù hợp hơn.",
+        "Nếu đề chỉ hỏi DNS records, routing và health checks, Route 53 mới là lớp quyết định."
+      ],
+      "trigger_keywords": [
+        "static IP",
+        "anycast",
+        "global path",
+        "regional endpoints",
+        "network acceleration"
+      ],
+      "confused_with": [
+        "Amazon CloudFront",
+        "Amazon Route 53",
+        "Elastic Load Balancing"
+      ]
+    },
+    {
+      "name": "AWS PrivateLink",
+      "category": "Networking and content delivery",
+      "exam_patterns": [
+        "Chọn khi workload trong VPC phải gọi supported AWS service qua interface endpoint mà không đi public internet."
+      ],
+      "strengths": [
+        "Tạo private service path bằng private IP và endpoint policy."
+      ],
+      "elimination_signals": [
+        "Nếu đáp án coi private endpoint là authorization hoàn chỉnh mà thiếu IAM và resource policy, loại vì private path không cấp quyền dữ liệu.",
+        "Nếu đề cần kết nối on-premises vào VPC, PrivateLink một mình không thay thế Direct Connect, VPN hoặc hybrid connectivity."
+      ],
+      "trigger_keywords": [
+        "no public internet",
+        "interface endpoint",
+        "private service access",
+        "VPC endpoint",
+        "private DNS"
+      ],
+      "confused_with": [
+        "Amazon VPC",
+        "AWS Global Accelerator"
+      ]
+    },
+    {
+      "name": "Amazon Route 53",
+      "category": "Networking and content delivery",
+      "exam_patterns": [
+        "Chọn khi đề cần DNS, routing hoặc health-check-based endpoint selection."
+      ],
+      "strengths": [
+        "Quản lý tên miền và quyết định endpoint ở lớp DNS."
+      ],
+      "elimination_signals": [
+        "Nếu đề cần request validation, authentication hoặc API throttling, DNS không thay thế API Gateway.",
+        "Nếu đề yêu cầu private path tới AWS service không qua internet, DNS routing một mình không tạo interface endpoint."
+      ],
+      "trigger_keywords": [
+        "DNS",
+        "domain routing",
+        "health checks",
+        "endpoint selection"
+      ],
+      "confused_with": [
+        "AWS Global Accelerator",
+        "Amazon CloudFront",
+        "Elastic Load Balancing"
+      ]
+    },
+    {
+      "name": "Amazon VPC",
+      "category": "Networking and content delivery",
+      "exam_patterns": [
+        "Chọn khi đề cần network isolation, subnets, routing, security groups và service endpoints."
+      ],
+      "strengths": [
+        "Tạo ranh giới mạng và đường đi có kiểm soát cho application resources."
+      ],
+      "elimination_signals": [
+        "Nếu đáp án nói private subnet tự động đồng nghĩa với no public internet, kiểm tra NAT, DNS và toàn bộ dependency path trước khi chọn.",
+        "Nếu đề cần data authorization hoặc least privilege, VPC controls không thay thế IAM, endpoint policy hay Lake Formation."
+      ],
+      "trigger_keywords": [
+        "private subnet",
+        "route table",
+        "security group",
+        "network isolation",
+        "VPC endpoint"
+      ],
+      "confused_with": [
+        "AWS PrivateLink",
+        "AWS Outposts"
+      ]
+    },
+    {
+      "name": "Amazon Cognito",
+      "category": "Security, identity, and compliance",
+      "exam_patterns": [
+        "Chọn khi customer-facing application cần user identity, tokens và federation."
+      ],
+      "strengths": [
+        "Quản lý application users và phát token cho server-side authorization flow."
+      ],
+      "elimination_signals": [
+        "Nếu người dùng là workforce truy cập AWS console, CLI hoặc SDK, IAM Identity Center phù hợp hơn.",
+        "Nếu đáp án gửi Cognito JWT trực tiếp tới Bedrock như AWS authorization, loại vì Bedrock runtime vẫn cần IAM và SigV4 qua backend phù hợp."
+      ],
+      "trigger_keywords": [
+        "application users",
+        "user identity",
+        "JWT",
+        "customer identity",
+        "federation"
+      ],
+      "confused_with": [
+        "IAM Identity Center",
+        "AWS IAM"
+      ]
+    },
+    {
+      "name": "AWS Encryption SDK",
+      "category": "Security, identity, and compliance",
+      "exam_patterns": [
+        "Chọn khi application cần client-side envelope encryption và tự xử lý data keys theo thư viện AWS."
+      ],
+      "strengths": [
+        "Đưa encryption logic vào client với mô hình envelope encryption nhất quán."
+      ],
+      "elimination_signals": [
+        "Nếu đề chỉ cần managed encryption keys và key policies cho AWS resources, KMS là dịch vụ trung tâm hơn.",
+        "Nếu đề cần lưu và rotate credentials, encryption library không thay thế Secrets Manager."
+      ],
+      "trigger_keywords": [
+        "client-side encryption",
+        "envelope encryption",
+        "data key",
+        "application encryption"
+      ],
+      "confused_with": [
+        "AWS KMS",
+        "AWS Secrets Manager"
+      ]
+    },
+    {
+      "name": "AWS IAM",
+      "category": "Security, identity, and compliance",
+      "exam_patterns": [
+        "Chọn khi đề cần authentication và authorization cho AWS APIs bằng roles, policies, conditions và resource scope.",
+        "Trong agent architecture, mỗi tool nên có least-privilege role và recheck authorization ngoài model."
+      ],
+      "strengths": [
+        "Thực thi least privilege ở lớp AWS resource và API."
+      ],
+      "elimination_signals": [
+        "Nếu đề cần table, column hoặc row-level data permissions, IAM một mình có thể quá thô và cần Lake Formation.",
+        "Nếu đề cần customer login hoặc workforce SSO lifecycle, dùng Cognito hoặc IAM Identity Center theo caller type thay vì IAM user dài hạn."
+      ],
+      "trigger_keywords": [
+        "least privilege",
+        "IAM role",
+        "policy condition",
+        "resource scope",
+        "temporary credentials"
+      ],
+      "confused_with": [
+        "Amazon Cognito",
+        "IAM Identity Center",
+        "IAM Access Analyzer"
+      ]
+    },
+    {
+      "name": "IAM Access Analyzer",
+      "category": "Security, identity, and compliance",
+      "exam_patterns": [
+        "Chọn khi đề cần phát hiện external hoặc public access và validate IAM policies."
+      ],
+      "strengths": [
+        "Hỗ trợ refine policy và tìm trust boundary mở ngoài dự kiến."
+      ],
+      "elimination_signals": [
+        "Nếu đề cần thực thi runtime authorization cho một request, analyzer không thay thế IAM policy đang được evaluate.",
+        "Nếu đề hỏi ai đã gọi hoặc thay đổi API, policy analysis không thay thế CloudTrail."
+      ],
+      "trigger_keywords": [
+        "external access",
+        "public access",
+        "policy validation",
+        "access findings"
+      ],
+      "confused_with": [
+        "AWS IAM",
+        "AWS CloudTrail"
+      ]
+    },
+    {
+      "name": "IAM Identity Center",
+      "category": "Security, identity, and compliance",
+      "exam_patterns": [
+        "Chọn khi workforce cần SSO, groups, permission sets và temporary credentials cho AWS access."
+      ],
+      "strengths": [
+        "Tập trung hóa workforce access và giảm long-lived IAM credentials."
+      ],
+      "elimination_signals": [
+        "Nếu đề mô tả customer-facing application users và JWT login, Cognito phù hợp hơn.",
+        "Nếu caller là Lambda, ECS hoặc agent tool, workload IAM role phù hợp hơn workforce permission set."
+      ],
+      "trigger_keywords": [
+        "workforce SSO",
+        "permission sets",
+        "employee access",
+        "temporary CLI credentials",
+        "multi-account access"
+      ],
+      "confused_with": [
+        "Amazon Cognito",
+        "AWS IAM"
+      ]
+    },
+    {
+      "name": "AWS KMS",
+      "category": "Security, identity, and compliance",
+      "exam_patterns": [
+        "Chọn khi đề cần managed encryption keys, key policy, grants hoặc customer-managed key control."
+      ],
+      "strengths": [
+        "Tập trung quản lý quyền sử dụng key và tích hợp encryption at rest với AWS services."
+      ],
+      "elimination_signals": [
+        "Nếu đề cần phát hiện hoặc redact PII trong prompt, encryption at rest không giải quyết content processing.",
+        "Nếu đề yêu cầu no public internet, KMS encryption không chứng minh network path là private."
+      ],
+      "trigger_keywords": [
+        "encryption key",
+        "key policy",
+        "customer-managed key",
+        "decrypt permission",
+        "encryption at rest"
+      ],
+      "confused_with": [
+        "AWS Encryption SDK",
+        "AWS Secrets Manager"
+      ]
+    },
+    {
+      "name": "Amazon Macie",
+      "category": "Security, identity, and compliance",
+      "exam_patterns": [
+        "Chọn khi đề cần discover và classify sensitive data đã được lưu trong S3."
+      ],
+      "strengths": [
+        "Tạo findings cho S3 sensitive-data posture mà không cần tự viết scanner."
+      ],
+      "elimination_signals": [
+        "Nếu đề cần redact live prompt trước FM invocation, Macie không phải inline request processor.",
+        "Nếu đề cần semantic safety trên cả FM input và output, S3 discovery không thay thế Guardrails và application controls."
+      ],
+      "trigger_keywords": [
+        "sensitive data discovery",
+        "S3 scanning",
+        "stored PII",
+        "classify data",
+        "Macie findings"
+      ],
+      "confused_with": [
+        "Amazon Comprehend",
+        "AWS WAF",
+        "CloudWatch Logs"
+      ]
+    },
+    {
+      "name": "AWS Secrets Manager",
+      "category": "Security, identity, and compliance",
+      "exam_patterns": [
+        "Chọn khi workload cần lưu, truy xuất và rotate database credentials, API keys hoặc secrets."
+      ],
+      "strengths": [
+        "Tách secret khỏi code và cho phép scope role tới đúng secret."
+      ],
+      "elimination_signals": [
+        "Nếu đề cần quản trị prompt templates, model routing hoặc ordinary configuration, không dùng secret store thay cho Prompt Management hay AppConfig.",
+        "Nếu đề cần workforce identity hoặc resource authorization, secret retrieval không thay thế Identity Center hay IAM."
+      ],
+      "trigger_keywords": [
+        "secret rotation",
+        "API key",
+        "database credential",
+        "retrieve secret",
+        "managed secret"
+      ],
+      "confused_with": [
+        "AWS KMS",
+        "AWS Systems Manager",
+        "AWS AppConfig"
+      ]
+    },
+    {
+      "name": "AWS WAF",
+      "category": "Security, identity, and compliance",
+      "exam_patterns": [
+        "Chọn khi đề cần web request filtering hoặc rate-based rules ở API hay edge layer."
+      ],
+      "strengths": [
+        "Giảm web-layer threats và abusive traffic trước khi request tới application."
+      ],
+      "elimination_signals": [
+        "Nếu đề hỏi prompt injection, harmful topics hoặc PII masking theo ngữ nghĩa, WAF không thay thế Bedrock Guardrails.",
+        "Nếu đề hỏi user hay workload có quyền gọi resource nào, web filtering không thay thế IAM authorization."
+      ],
+      "trigger_keywords": [
+        "web ACL",
+        "rate-based rules",
+        "web exploits",
+        "request filtering",
+        "edge protection"
+      ],
+      "confused_with": [
+        "Amazon API Gateway",
+        "Amazon CloudFront",
+        "AWS IAM"
+      ]
+    },
+    {
+      "name": "AWS Lake Formation",
+      "category": "Security, identity, and compliance",
+      "exam_patterns": [
+        "Chọn khi đề cần governed permissions trên Glue Data Catalog ở mức table, column, row hoặc cell, thường trong query path qua Athena."
+      ],
+      "strengths": [
+        "Cung cấp fine-grained data authorization vượt ra ngoài coarse AWS resource permissions."
+      ],
+      "elimination_signals": [
+        "Nếu đáp án chỉ cấu hình Lake Formation mà thiếu IAM, workgroup, S3 hoặc KMS permissions cần thiết, data path vẫn chưa hoàn chỉnh.",
+        "Nếu đề chỉ yêu cầu private network path, Lake Formation không thay thế VPC endpoint và endpoint policy."
+      ],
+      "trigger_keywords": [
+        "column-level access",
+        "row-level access",
+        "governed tables",
+        "Glue Data Catalog",
+        "Athena permissions"
+      ],
+      "confused_with": [
+        "AWS IAM",
+        "AWS Glue",
+        "Amazon Athena"
+      ]
+    },
+    {
+      "name": "Amazon EBS",
+      "category": "Storage",
+      "exam_patterns": [
+        "Chọn khi EC2 hoặc SageMaker endpoint cần block storage cho model artifacts, containers hoặc local volume."
+      ],
+      "strengths": [
+        "Cung cấp block volume phù hợp với compute instance và endpoint startup needs."
+      ],
+      "elimination_signals": [
+        "Nếu nhiều compute clients cần cùng mount một filesystem, EFS phù hợp hơn.",
+        "Nếu đề cần object data lake, batch input/output hoặc document corpus, S3 phù hợp hơn."
+      ],
+      "trigger_keywords": [
+        "block storage",
+        "EC2 volume",
+        "endpoint storage",
+        "model artifacts"
+      ],
+      "confused_with": [
+        "Amazon EFS",
+        "Amazon S3"
+      ]
+    },
+    {
+      "name": "Amazon EFS",
+      "category": "Storage",
+      "exam_patterns": [
+        "Chọn khi nhiều compute clients cần một shared elastic file system."
+      ],
+      "strengths": [
+        "Cung cấp shared file access mà không cần tự quản lý file server."
+      ],
+      "elimination_signals": [
+        "Nếu workload cần block volume gắn với một compute instance, EBS phù hợp hơn.",
+        "Nếu dữ liệu là object corpus, logs hoặc batch artifacts, S3 thường đơn giản và phù hợp hơn."
+      ],
+      "trigger_keywords": [
+        "shared file system",
+        "multiple clients",
+        "file mount",
+        "elastic files"
+      ],
+      "confused_with": [
+        "Amazon EBS",
+        "Amazon S3"
+      ]
+    },
+    {
+      "name": "Amazon S3",
+      "category": "Storage",
+      "exam_patterns": [
+        "Chọn khi đề cần object storage cho source documents, datasets, evaluation artifacts, logs hoặc batch input/output.",
+        "S3 thường là source of truth cho Knowledge Bases và các asynchronous data workflows."
+      ],
+      "strengths": [
+        "Lưu trữ bền vững, tách compute và tích hợp rộng với analytics, ML và GenAI services."
+      ],
+      "elimination_signals": [
+        "Nếu đề cần low-latency transactional session state hoặc conditional item updates, object storage không thay thế database.",
+        "Nếu đề cần shared mounted filesystem hoặc block device semantics, chọn EFS hoặc EBS theo access pattern."
+      ],
+      "trigger_keywords": [
+        "object storage",
+        "source documents",
+        "S3 bucket",
+        "batch input",
+        "artifacts",
+        "data lake"
+      ],
+      "confused_with": [
+        "Amazon EBS",
+        "Amazon EFS",
+        "Amazon DynamoDB"
+      ]
+    },
+    {
+      "name": "S3 Intelligent-Tiering",
+      "category": "Storage",
+      "exam_patterns": [
+        "Chọn khi access pattern thay đổi hoặc khó dự đoán và mục tiêu là tự động tối ưu storage tier cost."
+      ],
+      "strengths": [
+        "Giảm việc phải tự dự đoán và chuyển object giữa các access tiers."
+      ],
+      "elimination_signals": [
+        "Nếu đề yêu cầu xóa object sau retention period hoặc chuyển theo mốc thời gian xác định, S3 Lifecycle trực tiếp hơn.",
+        "Nếu đề yêu cầu bản sao ở Region khác cho resilience hoặc compliance, storage tiering không thay thế replication."
+      ],
+      "trigger_keywords": [
+        "unpredictable access",
+        "automatic tiering",
+        "storage cost",
+        "changing access patterns"
+      ],
+      "confused_with": [
+        "S3 Lifecycle",
+        "S3 Cross-Region Replication"
+      ]
+    },
+    {
+      "name": "S3 Lifecycle",
+      "category": "Storage",
+      "exam_patterns": [
+        "Chọn khi đề cần retention, transition hoặc expiration cho prompts, responses, logs và audit artifacts."
+      ],
+      "strengths": [
+        "Tự động hóa việc chuyển tier và xóa object theo chính sách vòng đời."
+      ],
+      "elimination_signals": [
+        "Nếu đề yêu cầu write-once protection hoặc ngăn xóa trong retention window, expiration policy không tự tạo immutable storage.",
+        "Nếu đề cần active copy sang Region khác, Lifecycle không thay thế Cross-Region Replication."
+      ],
+      "trigger_keywords": [
+        "expire after",
+        "delete after",
+        "retention period",
+        "storage transition",
+        "data lifecycle"
+      ],
+      "confused_with": [
+        "S3 Intelligent-Tiering",
+        "S3 Cross-Region Replication"
+      ]
+    },
+    {
+      "name": "S3 Cross-Region Replication",
+      "category": "Storage",
+      "exam_patterns": [
+        "Chọn khi đề cần replicate S3 objects sang Region khác cho resilience hoặc compliance và destination được phép."
+      ],
+      "strengths": [
+        "Duy trì object copy ở Region đích bằng managed replication."
+      ],
+      "elimination_signals": [
+        "Nếu destination Region vi phạm data residency hoặc geography constraint, không chọn cross-Region copy.",
+        "Nếu yêu cầu là expiration, retention hoặc storage tier optimization chứ không phải replica, dùng Lifecycle hoặc Intelligent-Tiering."
+      ],
+      "trigger_keywords": [
+        "cross-region copy",
+        "replica bucket",
+        "regional resilience",
+        "compliance copy",
+        "S3 replication"
+      ],
+      "confused_with": [
+        "S3 Lifecycle",
+        "AWS DataSync",
+        "S3 Intelligent-Tiering"
+      ]
+    }
+  ]
+}
